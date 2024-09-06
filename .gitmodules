@@ -1,0 +1,6 @@
+[submodule "generate/playdate-types"]
+	path = generate/playdate-types
+	url = https://github.com/balpha/playdate-types
+[submodule "generate/inspect"]
+	path = generate/inspect
+	url = https://github.com/kikito/inspect.lua.git
