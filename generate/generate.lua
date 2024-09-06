@@ -3,6 +3,28 @@ api = {}
 
 lines = {}
 
+function copy(orig, copies)
+  copies = copies or {}
+  local orig_type = type(orig)
+  local c
+  if orig_type == 'table' then
+    if copies[orig] then
+      c = copies[orig]
+    else
+      c = {}
+      copies[orig] = c
+      for orig_key, orig_value in next, orig, nil do
+        c[copy(orig_key, copies)] = copy(orig_value, copies)
+      end
+      setmetatable(c, copy(getmetatable(orig), copies))
+    end
+  else -- number, string, boolean, etc
+    c = orig
+  end
+  return c
+end
+
+
 function trim(s)
    return s:match "^%s*(.-)%s*$"
 end
@@ -111,5 +133,42 @@ for n,l in ipairs(lines) do
 	end
 	::continue::
 end
+
+foundLib = true
+
+function travel(t)
+	foundLib = false
+	for k,v in pairs(t) do
+		if v.type == 'value' and v.returns:sub(-5) == '_lib)' then
+			print('oh fuk')
+			lib = v.returns:sub(2,#v.returns-1)
+			print(lib)
+			foundLib = true
+			v.type = 'class'
+			
+			v.childs = copy(api[lib].childs)
+			v.returns = nil
+			api[lib] = nil
+			--error()
+		end
+		if v.childs then
+			travel(v.childs)
+		end
+	end
+end
+
+while(foundLib) do
+travel(api)
+end
+
+--todo: automate this
+api.playdate = copy(api.pd_playdate_lib)
+api.pd_playdate_lib = nil
+
+api.json = copy(api.pd_json_lib)
+api.pd_json_lib = nil
+
+api.table = copy(api.tablelib)
+api.tablelib = nil
 
 print(inspect(api))

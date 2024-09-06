@@ -18,7 +18,7 @@ end
 return {
 	name = 'Playdate',
 	description = 'Playdate Lua API',
-	api = {'baselib'},
+	api = {'baselib','playdate'},
 	frun = function(self,wfilename,rundebug)
 		
 		local sdkPath = os.getenv('PLAYDATE_SDK_PATH')
