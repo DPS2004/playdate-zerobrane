@@ -104,6 +104,17 @@ for n,l in ipairs(lines) do
 			end
 			
 			t = 'function'
+			
+			if startsWith(params,'(self:') then
+				t = 'method'
+				if params:find(',') then
+					local _,_,newParams = string.find(params, ".-%s*,%s*(.*)")
+					params = '('..newParams
+				else
+					params = '()'
+				end
+			end
+			
 		end
 		local child = {
 			type = t,

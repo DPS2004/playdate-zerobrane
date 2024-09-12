@@ -52,28 +52,28 @@ return {
   pd_affineTransform = {
     childs = {
       concat = {
-        args = "(self: pd_affineTransform, af: pd_affineTransform))",
+        args = "(af: pd_affineTransform))",
         description = "Mutates the the caller. The affine transform `af` is concatenated to the caller.\nConcatenation combines two affine transformation matrices by multiplying them together. You might perform several concatenations in order to create a single affine transform that contains the cumulative effects of several transformations.\nNote that matrix operations are not commutative — the order in which you concatenate matrices is important. That is, the result of multiplying matrix t1 by matrix t2 does not necessarily equal the result of multiplying matrix t2 by matrix t1.",
         returns = "(fun(self: pd_affineTransform, af: pd_affineTransform))",
-        type = "function"
+        type = "method"
       },
       copy = {
-        args = "(self: pd_affineTransform)",
+        args = "()",
         description = "Returns a new copy of the affine transform.",
         returns = "(pd_affineTransform)",
-        type = "function"
+        type = "method"
       },
       invert = {
-        args = "(self: pd_affineTransform))",
+        args = "()",
         description = "Mutates the caller so that it is an affine transformation matrix constructed by inverting itself.\nInversion is generally used to provide reverse transformation of points within transformed objects. Given the coordinates (x, y), which have been transformed by a given matrix to new coordinates (x’, y’), transforming the coordinates (x’, y’) by the inverse matrix produces the original coordinates (x, y).",
         returns = "(fun(self: pd_affineTransform))",
-        type = "function"
+        type = "method"
       },
       reset = {
-        args = "(self: pd_affineTransform))",
+        args = "()",
         description = "Mutates the the caller, changing it to an identity transform matrix.",
         returns = "(fun(self: pd_affineTransform))",
-        type = "function"
+        type = "method"
       },
       rotate = {
         args = "(fun(self: pd_affineTransform, angle: number, x?: number, y?: number)) | (fun(self: pd_affineTransform, angle: number, point?: pd_point))",
@@ -88,94 +88,94 @@ return {
         type = "function"
       },
       scale = {
-        args = "(self: pd_affineTransform, sx: number, sy?: number))",
+        args = "(sx: number, sy?: number))",
         description = "Mutates the caller by applying a scaling transformation.\nIf both parameters are passed, `sx` is used to scale the x values of the transform, `sy` is used to scale the y values.\nIf only one parameter is passed, it is used to scale both x and y values.",
         returns = "(fun(self: pd_affineTransform, sx: number, sy?: number | nil)",
-        type = "function"
+        type = "method"
       },
       scaledBy = {
-        args = "(self: pd_affineTransform, sx: number, sy?: number)",
+        args = "(sx: number, sy?: number)",
         description = "Returns a copy of the calling affine transform with a scaling transformation appended.\nIf both parameters are passed, `sx` is used to scale the x values of the transform, `sy` is used to scale the y values.\nIf only one parameter is passed, it is used to scale both x and y values.",
         returns = "(pd_affineTransform)",
-        type = "function"
+        type = "method"
       },
       skew = {
-        args = "(self: pd_affineTransform, sx: number, sy: number))",
+        args = "(sx: number, sy: number))",
         description = "Mutates the caller, appending a skew transformation. `sx` is the value by which to skew the x axis, and `sy` the value for the y axis. Values are in degrees.",
         returns = "(fun(self: pd_affineTransform, sx: number, sy: number))",
-        type = "function"
+        type = "method"
       },
       skewedBy = {
-        args = "(self: pd_affineTransform, sx: number, sy: number)",
+        args = "(sx: number, sy: number)",
         description = "Returns the given transform with a skew transformation appended. `sx` is the value by which to skew the x axis, and `sy` the value for the y axis. Values are in degrees.",
         returns = "(pd_affineTransform)",
-        type = "function"
+        type = "method"
       },
       transformAABB = {
-        args = "(self: pd_affineTransform, r: pd_rect))",
+        args = "(r: pd_rect))",
         description = "Modifies the axis aligned bounding box `r` (a rect) by applying the affine transform.",
         returns = "(fun(self: pd_affineTransform, r: pd_rect))",
-        type = "function"
+        type = "method"
       },
       transformLineSegment = {
-        args = "(self: pd_affineTransform, ls: pd_lineSegment))",
+        args = "(ls: pd_lineSegment))",
         description = "Modifies the line segment `ls` by applying the affine transform.",
         returns = "(fun(self: pd_affineTransform, ls: pd_lineSegment))",
-        type = "function"
+        type = "method"
       },
       transformPoint = {
-        args = "(self: pd_affineTransform, p: pd_point))",
+        args = "(p: pd_point))",
         description = "Modifies the point `p` by applying the affine transform.",
         returns = "(fun(self: pd_affineTransform, p: pd_point))",
-        type = "function"
+        type = "method"
       },
       transformPolygon = {
-        args = "(self: pd_affineTransform, p: pd_polygon))",
+        args = "(p: pd_polygon))",
         description = "Modifies the polygon `p` by applying the affine transform.",
         returns = "(fun(self: pd_affineTransform, p: pd_polygon))",
-        type = "function"
+        type = "method"
       },
       transformXY = {
-        args = "(self: pd_affineTransform, x: number, y: number)",
+        args = "(x: number, y: number)",
         description = "Returns two values calculated by applying the affine transform to the point (`x`, `y`)",
         returns = "((number, number))",
-        type = "function"
+        type = "method"
       },
       transformedAABB = {
-        args = "(self: pd_affineTransform, r: pd_rect)",
+        args = "(r: pd_rect)",
         description = "As above, but returns a new rect rather than modifying `r`.",
         returns = "(pd_rect)",
-        type = "function"
+        type = "method"
       },
       transformedLineSegment = {
-        args = "(self: pd_affineTransform, ls: pd_lineSegment)",
+        args = "(ls: pd_lineSegment)",
         description = "As above, but returns a new line segment rather than modifying `ls`.",
         returns = "(pd_lineSegment)",
-        type = "function"
+        type = "method"
       },
       transformedPoint = {
-        args = "(self: pd_affineTransform, p: pd_point)",
+        args = "(p: pd_point)",
         description = "As above, but returns a new point rather than modifying `p`.",
         returns = "(pd_point)",
-        type = "function"
+        type = "method"
       },
       transformedPolygon = {
-        args = "(self: pd_affineTransform, p: pd_polygon)",
+        args = "(p: pd_polygon)",
         description = "As above, but returns a new polygon rather than modifying `p`.",
         returns = "(pd_polygon)",
-        type = "function"
+        type = "method"
       },
       translate = {
-        args = "(self: pd_affineTransform, dx: number, dy: number))",
+        args = "(dx: number, dy: number))",
         description = "Mutates the caller by applying a translate transformation. x values are moved by `dx`, y values by `dy`.",
         returns = "(fun(self: pd_affineTransform, dx: number, dy: number))",
-        type = "function"
+        type = "method"
       },
       translatedBy = {
-        args = "(self: pd_affineTransform, dx: number, dy: number)",
+        args = "(dx: number, dy: number)",
         description = "Returns a copy of the calling affine transform with a translate transformation appended.",
         returns = "(pd_affineTransform)",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -183,10 +183,10 @@ return {
   pd_animator = {
     childs = {
       currentValue = {
-        args = "(self: pd_animator)",
+        args = "()",
         description = "Returns the current value of the animation, which will be either a number or a playdate.geometry.point, depending on the type of animator.",
         returns = "(number|pd_point)",
-        type = "function"
+        type = "method"
       },
       easingAmplitude = {
         description = "For easing functions that take additional amplitude (such as `inOutElastic`), set these values on animator instances to the desired values.",
@@ -199,16 +199,16 @@ return {
         type = "value"
       },
       ended = {
-        args = "(self: pd_animator)",
+        args = "()",
         description = "Returns true if the animation is completed. Only returns true if this function or currentValue() has been called since the animation ended in order to allow animations to fully finish before true is returned.",
         returns = "(boolean)",
-        type = "function"
+        type = "method"
       },
       progress = {
-        args = "(self: pd_animator)",
+        args = "()",
         description = "Returns the current progress of the animation as a value from 0 to 1.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       repeatCount = {
         description = "Indicates the number of times after the initial animation the animator should repeat; i.e., if repeatCount is set to 2, the animation will play through 3 times.",
@@ -216,10 +216,10 @@ return {
         type = "value"
       },
       reset = {
-        args = "(self: pd_animator, duration?: number))",
+        args = "(duration?: number))",
         description = "Resets the animation, setting its start time to the current time, and changes the animation’s duration if a new duration is given.",
         returns = "(fun(self: pd_animator, duration?: number | nil)",
-        type = "function"
+        type = "method"
       },
       reverses = {
         description = "If set to true, after the animation reaches the end, it runs in reverse from the end to the start. The time to complete both the forward and reverse will be `duration` x 2. Defaults to false.",
@@ -227,10 +227,10 @@ return {
         type = "value"
       },
       valueAtTime = {
-        args = "(self: pd_animator, time: number)",
+        args = "(time: number)",
         description = "Returns the value of the animation at the given number of milliseconds after the start time. The value will be either a number or a playdate.geometry.point, depending on the type of animator.",
         returns = "(number|pd_point)",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -243,10 +243,10 @@ return {
         type = "value"
       },
       copy = {
-        args = "(self: pd_arc)",
+        args = "()",
         description = "Returns a new copy of the arc.",
         returns = "(pd_arc)",
-        type = "function"
+        type = "method"
       },
       endAngle = {
         description = "You can directly read or write the `x`, `y`, `radius`, `startAngle`, `endAngle` and `clockwise` values of an arc.",
@@ -254,16 +254,16 @@ return {
         type = "value"
       },
       isClockwise = {
-        args = "(self: pd_arc)",
+        args = "()",
         description = "Returns true if the direction of the arc is clockwise.",
         returns = "(boolean)",
-        type = "function"
+        type = "method"
       },
       length = {
-        args = "(self: pd_arc)",
+        args = "()",
         description = "Returns the length of the arc.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       new = {
         args = "(x: number, y: number, radius: number, startAngle: number, endAngle: number, direction?: boolean)",
@@ -272,10 +272,10 @@ return {
         type = "function"
       },
       pointOnArc = {
-        args = "(self: pd_arc, distance: number, extend?: boolean)",
+        args = "(distance: number, extend?: boolean)",
         description = "Returns a new point on the arc, distance pixels from the arc’s start angle. If extend is true, the returned point is allowed to project past the arc’s endpoints; otherwise, it is constrained to the arc’s initial point if distance is negative, or the end point if distance is greater than the arc’s length.",
         returns = "(pd_arc)",
-        type = "function"
+        type = "method"
       },
       radius = {
         description = "You can directly read or write the `x`, `y`, `radius`, `startAngle`, `endAngle` and `clockwise` values of an arc.",
@@ -283,10 +283,10 @@ return {
         type = "value"
       },
       setIsClockwise = {
-        args = "(self: pd_arc, flag: boolean))",
+        args = "(flag: boolean))",
         description = "Sets the direction of the arc.",
         returns = "(fun(self: pd_arc, flag: boolean))",
-        type = "function"
+        type = "method"
       },
       startAngle = {
         description = "You can directly read or write the `x`, `y`, `radius`, `startAngle`, `endAngle` and `clockwise` values of an arc.",
@@ -309,40 +309,40 @@ return {
   pd_bitcrusher = {
     childs = {
       setAmount = {
-        args = "(self: pd_bitcrusher, amt: number))",
+        args = "(amt: number))",
         description = "Sets the amount of crushing to `amt`. Valid values are 0 (no effect) to 1 (quantizing output to 1-bit).",
         returns = "(fun(self: pd_bitcrusher, amt: number))",
-        type = "function"
+        type = "method"
       },
       setAmountMod = {
-        args = "(self: pd_bitcrusher, signal: pd_signal?))",
+        args = "(signal: pd_signal?))",
         description = "Sets a signal to modulate the filter level. Set to `nil` to clear the modulator.",
         returns = "(fun(self: pd_bitcrusher, signal: pd_signal? | nil)",
-        type = "function"
+        type = "method"
       },
       setMix = {
-        args = "(self: pd_bitcrusher, level: number))",
+        args = "(level: number))",
         description = "Sets the wet/dry mix for the effect. A level of 1 (full wet) replaces the input with the effect output; 0 leaves the effect out of the mix.",
         returns = "(fun(self: pd_bitcrusher, level: number))",
-        type = "function"
+        type = "method"
       },
       setMixMod = {
-        args = "(self: pd_bitcrusher, signal: pd_signal?))",
+        args = "(signal: pd_signal?))",
         description = "Sets a signal to modulate the mix level. Set to `nil` to clear the modulator.",
         returns = "(fun(self: pd_bitcrusher, signal: pd_signal? | nil)",
-        type = "function"
+        type = "method"
       },
       setUndersampling = {
-        args = "(self: pd_bitcrusher, amt: number))",
+        args = "(amt: number))",
         description = "Sets the number of samples to repeat; 0 is no undersampling, 1 effectively halves the sample rate.",
         returns = "(fun(self: pd_bitcrusher, amt: number))",
-        type = "function"
+        type = "method"
       },
       setUndersamplingMod = {
-        args = "(self: pd_bitcrusher, signal: pd_signal?))",
+        args = "(signal: pd_signal?))",
         description = "Sets a signal to modulate the filter level. Set to `nil` to clear the modulator.",
         returns = "(fun(self: pd_bitcrusher, signal: pd_signal? | nil)",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -350,34 +350,34 @@ return {
   pd_blinker = {
     childs = {
       remove = {
-        args = "(self: pd_blinker))",
+        args = "()",
         description = "Flags the caller for removal from the global list of blinkers",
         returns = "(fun(self: pd_blinker))",
-        type = "function"
+        type = "method"
       },
       start = {
-        args = "(self: pd_blinker, onDuration?: number, offDuration?: number, loop?: boolean, cycles?: integer, default?: boolean))",
+        args = "(onDuration?: number, offDuration?: number, loop?: boolean, cycles?: integer, default?: boolean))",
         description = "Starts a blinker if it’s not running. Pass values for any property values you wish to modify.",
         returns = "(fun(self: pd_blinker, onDuration?: number, offDuration?: number, loop?: boolean, cycles?: integer, default?: boolean | nil)",
-        type = "function"
+        type = "method"
       },
       startLoop = {
-        args = "(self: pd_blinker))",
+        args = "()",
         description = "Starts a blinker if it’s not running and sets its loop property to true. Equivalent to calling playdate.graphics.animation.blinker:start(nil, nil, true)",
         returns = "(fun(self: pd_blinker))",
-        type = "function"
+        type = "method"
       },
       stop = {
-        args = "(self: pd_blinker))",
+        args = "()",
         description = "Stops a blinker if it’s running, returning the blinker’s on properly to the default value.",
         returns = "(fun(self: pd_blinker))",
-        type = "function"
+        type = "method"
       },
       update = {
-        args = "(self: pd_blinker))",
+        args = "()",
         description = "Updates the caller’s state.",
         returns = "(fun(self: pd_blinker))",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -391,64 +391,64 @@ return {
   pd_channel = {
     childs = {
       addEffect = {
-        args = "(self: pd_channel, effect: pd_effect))",
+        args = "(effect: pd_effect))",
         description = "Adds an effect to the channel.",
         returns = "(fun(self: pd_channel, effect: pd_effect))",
-        type = "function"
+        type = "method"
       },
       addSource = {
-        args = "(self: pd_channel, source: pd_source))",
+        args = "(source: pd_source))",
         description = "Adds a source to the channel. If a source is not assigned to a channel, it plays on the default global channel.",
         returns = "(fun(self: pd_channel, source: pd_source))",
-        type = "function"
+        type = "method"
       },
       getVolume = {
-        args = "(self: pd_channel)",
+        args = "()",
         description = "Gets the volume (0.0 - 1.0) for the channel.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       remove = {
-        args = "(self: pd_channel))",
+        args = "()",
         description = "Removes the channel from the global list.",
         returns = "(fun(self: pd_channel))",
-        type = "function"
+        type = "method"
       },
       removeEffect = {
-        args = "(self: pd_channel, effect: pd_effect))",
+        args = "(effect: pd_effect))",
         description = "Removes an effect from the channel.",
         returns = "(fun(self: pd_channel, effect: pd_effect))",
-        type = "function"
+        type = "method"
       },
       removeSource = {
-        args = "(self: pd_channel, source: pd_source))",
+        args = "(source: pd_source))",
         description = "Removes a source from the channel.",
         returns = "(fun(self: pd_channel, source: pd_source))",
-        type = "function"
+        type = "method"
       },
       setPan = {
-        args = "(self: pd_channel, pan: number))",
+        args = "(pan: number))",
         description = "Sets the pan parameter for the channel. -1 is left, 0 is center, and 1 is right.",
         returns = "(fun(self: pd_channel, pan: number))",
-        type = "function"
+        type = "method"
       },
       setPanMod = {
-        args = "(self: pd_channel, signal: pd_signal?))",
+        args = "(signal: pd_signal?))",
         description = "Sets a signal to automate the pan parameter. Set to `nil` to clear the modulator.",
         returns = "(fun(self: pd_channel, signal: pd_signal? | nil)",
-        type = "function"
+        type = "method"
       },
       setVolume = {
-        args = "(self: pd_channel, volume: number))",
+        args = "(volume: number))",
         description = "Sets the volume (0.0 - 1.0) for the channel.",
         returns = "(fun(self: pd_channel, volume: number))",
-        type = "function"
+        type = "method"
       },
       setVolumeMod = {
-        args = "(self: pd_channel, signal: pd_signal?))",
+        args = "(signal: pd_signal?))",
         description = "Sets a signal to automate the volume parameter. Set to `nil` to clear the modulator.",
         returns = "(fun(self: pd_channel, signal: pd_signal? | nil)",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -468,10 +468,10 @@ return {
         type = "function"
       },
       clearEvents = {
-        args = "(self: pd_controlsignal))",
+        args = "()",
         description = "Clears all events from the control signal.",
         returns = "(fun(self: pd_controlsignal))",
-        type = "function"
+        type = "method"
       },
       events = {
         description = "The signal’s event list is modified by getting and setting the events property of the object. This is an array of tables, each containing values for keys step and value, and optionally interpolate.",
@@ -479,16 +479,16 @@ return {
         type = "value"
       },
       getControllerType = {
-        args = "(self: pd_controlsignal)",
+        args = "()",
         description = "Control signals in midi files are assigned a controller number, which describes the intent of the control. This function returns the controller number.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       setControllerType = {
-        args = "(self: pd_controlsignal, number: number))",
+        args = "(number: number))",
         description = "Sets the midi controller number for the control signal, if that’s something you want to do. The value has no effect on playback.",
         returns = "(fun(self: pd_controlsignal, number: number))",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -501,22 +501,22 @@ return {
         type = "value"
       },
       draw = {
-        args = "(self: pd_crankIndicator, xOffset?: number, yOffset?: number))",
+        args = "(xOffset?: number, yOffset?: number))",
         description = "Draws the next frame of the crank indicator animation, and is typically invoked in the playdate.update() callback. `xOffset` and `yOffset` can be used to alter the position of the indicator by a specified number of pixels if desired. To stop drawing the crank indicator, simply stop calling :draw() in playdate.update().\nNote that if sprites are being used, this call should usually happen after playdate.graphics.sprite.update().",
         returns = "(fun(self: pd_crankIndicator, xOffset?: number, yOffset?: number | nil)",
-        type = "function"
+        type = "method"
       },
       getBounds = {
-        args = "(self: pd_crankIndicator)",
+        args = "()",
         description = "Returns `x`, `y`, `width`, `height` representing the bounds that the crank indicator draws within. If necessary, this rect could be passed into playdate.graphics.sprite.addDirtyRect(), or used to manually draw over the indicator image drawn by playdate.ui.crankIndicator:draw() when you want to stop showing the crank indicator.",
         returns = "((number, number, number, number))",
-        type = "function"
+        type = "method"
       },
       resetAnimation = {
-        args = "(self: pd_crankIndicator))",
+        args = "()",
         description = "Resets the crank animation to the beginning of its sequence.",
         returns = "(fun(self: pd_crankIndicator))",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -524,28 +524,28 @@ return {
   pd_delayline = {
     childs = {
       addTap = {
-        args = "(self: pd_delayline, delay: number)",
+        args = "(delay: number)",
         description = "Returns a new playdate.sound.delaylinetap on the delay line, at the given delay (which must be less than or equal to the delay line’s length).",
         returns = "(pd_delayline)",
-        type = "function"
+        type = "method"
       },
       setFeedback = {
-        args = "(self: pd_delayline, level: number))",
+        args = "(level: number))",
         description = "Sets the feedback level of the delay line.",
         returns = "(fun(self: pd_delayline, level: number))",
-        type = "function"
+        type = "method"
       },
       setMix = {
-        args = "(self: pd_delayline, level: number))",
+        args = "(level: number))",
         description = "Sets the wet/dry mix for the effect. A level of 1 (full wet) replaces the input with the effect output; 0 leaves the effect out of the mix, which is useful if you’re using taps for varying delays.",
         returns = "(fun(self: pd_delayline, level: number))",
-        type = "function"
+        type = "method"
       },
       setMixMod = {
-        args = "(self: pd_delayline, signal: pd_signal?))",
+        args = "(signal: pd_signal?))",
         description = "Sets a signal to modulate the mix level. Set to `nil` to clear the modulator.",
         returns = "(fun(self: pd_delayline, signal: pd_signal? | nil)",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -553,34 +553,34 @@ return {
   pd_delaylinetap = {
     childs = {
       getVolume = {
-        args = "(self: pd_delaylinetap)",
+        args = "()",
         description = "Returns the tap’s volume.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       setDelay = {
-        args = "(self: pd_delaylinetap, time: number))",
+        args = "(time: number))",
         description = "Sets the position of the tap on the delay line, up to the delay line’s length.",
         returns = "(fun(self: pd_delaylinetap, time: number))",
-        type = "function"
+        type = "method"
       },
       setDelayMod = {
-        args = "(self: pd_delaylinetap, signal: pd_signal?))",
+        args = "(signal: pd_signal?))",
         description = "Sets a signal to modulate the tap delay. If the signal is continuous (e.g. an envelope or a triangle LFO, but not a square LFO) playback is sped up or slowed down to compress or expand time. Set to `nil` to clear the modulator.",
         returns = "(fun(self: pd_delaylinetap, signal: pd_signal? | nil)",
-        type = "function"
+        type = "method"
       },
       setFlipChannels = {
-        args = "(self: pd_delaylinetap, flag: boolean))",
+        args = "(flag: boolean))",
         description = "If set and the delay line is stereo, the tap outputs the delay line’s left channel to its right output and vice versa.",
         returns = "(fun(self: pd_delaylinetap, flag: boolean))",
-        type = "function"
+        type = "method"
       },
       setVolume = {
-        args = "(self: pd_delaylinetap, level: number))",
+        args = "(level: number))",
         description = "Sets the tap’s volume.",
         returns = "(fun(self: pd_delaylinetap, level: number))",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -594,82 +594,82 @@ return {
   pd_envelope = {
     childs = {
       setAttack = {
-        args = "(self: pd_envelope, attack: number))",
+        args = "(attack: number))",
         description = "Sets the envelope attack time to `attack`, in seconds.",
         returns = "(fun(self: pd_envelope, attack: number))",
-        type = "function"
+        type = "method"
       },
       setCurvature = {
-        args = "(self: pd_envelope, amount: number))",
+        args = "(amount: number))",
         description = "Smoothly changes the envelope’s shape from linear (amount=0) to exponential (amount=1).",
         returns = "(fun(self: pd_envelope, amount: number))",
-        type = "function"
+        type = "method"
       },
       setDecay = {
-        args = "(self: pd_envelope, decay: number))",
+        args = "(decay: number))",
         description = "Sets the envelope decay time to `decay`, in seconds.",
         returns = "(fun(self: pd_envelope, decay: number))",
-        type = "function"
+        type = "method"
       },
       setGlobal = {
-        args = "(self: pd_envelope, flag: boolean))",
+        args = "(flag: boolean))",
         description = "If an envelope is marked global, it is continuously updated whether or not it’s attached to any source.",
         returns = "(fun(self: pd_envelope, flag: boolean))",
-        type = "function"
+        type = "method"
       },
       setLegato = {
-        args = "(self: pd_envelope, flag: boolean))",
+        args = "(flag: boolean))",
         description = "Sets whether to use legato phrasing for the envelope. If the legato flag is set, when the envelope is re-triggered before it’s released, it remains in the sustain phase instead of jumping back to the attack phase.",
         returns = "(fun(self: pd_envelope, flag: boolean))",
-        type = "function"
+        type = "method"
       },
       setOffset = {
-        args = "(self: pd_envelope, offset: number))",
+        args = "(offset: number))",
         description = "Sets the offset value for the envelope. The transformed envelope has an initial value of `offset` and a maximum (minimum if `scale` is negative) of `offset` + `scale`.",
         returns = "(fun(self: pd_envelope, offset: number))",
-        type = "function"
+        type = "method"
       },
       setRateScaling = {
-        args = "(self: pd_envelope, scaling: number, start?: number|string, end?: number|string))",
+        args = "(scaling: number, start?: number|string, end?: number|string))",
         description = 'Scales the envelope rate according to the played note. For notes below start, the envelope’s set rate is used; for notes above end envelope rates are scaled by the scaling parameter. Between the two notes the scaling factor is interpolated from 1.0 to scaling. start and end are either MIDI note numbers or names like "C4". If omitted, the default range is C1 (36) to C5 (84).',
         returns = "(fun(self: pd_envelope, scaling: number, start?: number|string, end?: number|string | nil)",
-        type = "function"
+        type = "method"
       },
       setRelease = {
-        args = "(self: pd_envelope, release: number))",
+        args = "(release: number))",
         description = "Sets the envelope release time to `release`, in seconds.",
         returns = "(fun(self: pd_envelope, release: number))",
-        type = "function"
+        type = "method"
       },
       setRetrigger = {
-        args = "(self: pd_envelope, flag: boolean))",
+        args = "(flag: boolean))",
         description = "If retrigger is on, the envelope always starts from 0 when a note starts playing, instead of the current value if it’s active.",
         returns = "(fun(self: pd_envelope, flag: boolean))",
-        type = "function"
+        type = "method"
       },
       setScale = {
-        args = "(self: pd_envelope, scale: number))",
+        args = "(scale: number))",
         description = "Sets the scale value for the envelope. The transformed envelope has an initial value of `offset` and a maximum (minimum if `scale` is negative) of `offset` + `scale`.",
         returns = "(fun(self: pd_envelope, scale: number))",
-        type = "function"
+        type = "method"
       },
       setSustain = {
-        args = "(self: pd_envelope, sustain: number))",
+        args = "(sustain: number))",
         description = "Sets the envelope sustain level to `sustain`, as a proportion of the maximum. For example, if the sustain level is 0.5, the signal value rises to its full value over the attack phase of the envelope, then drops to half its maximum over the decay phase, and remains there while the envelope is active.",
         returns = "(fun(self: pd_envelope, sustain: number))",
-        type = "function"
+        type = "method"
       },
       setVelocitySensitivity = {
-        args = "(self: pd_envelope, amount: number))",
+        args = "(amount: number))",
         description = "Changes the amount by which note velocity scales output level. At the default value of 1, output is proportional to velocity; at 0 velocity has no effect on output level.",
         returns = "(fun(self: pd_envelope, amount: number))",
-        type = "function"
+        type = "method"
       },
       trigger = {
-        args = "(self: pd_envelope, velocity: number, length?: number))",
+        args = "(velocity: number, length?: number))",
         description = "Triggers the envelope at the given `velocity`. If a `length` parameter is given, the envelope moves to the release phase after the given time. Otherwise, the envelope is held in the sustain phase until the trigger function is called again with `velocity` equal to zero.",
         returns = "(fun(self: pd_envelope, velocity: number, length?: number | nil)",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -694,46 +694,46 @@ return {
   pd_file_file = {
     childs = {
       close = {
-        args = "(self: pd_file_file))",
+        args = "()",
         description = "Closes the file.\nEquivalent to playdate->file->close() in the C API.",
         returns = "(fun(self: pd_file_file))",
-        type = "function"
+        type = "method"
       },
       flush = {
-        args = "(self: pd_file_file))",
+        args = "()",
         description = "Flushes any buffered data written to the file to the disk.\nEquivalent to playdate->file->flush() in the C API.",
         returns = "(fun(self: pd_file_file))",
-        type = "function"
+        type = "method"
       },
       read = {
-        args = "(self: pd_file_file, numberOfBytes: number)",
+        args = "(numberOfBytes: number)",
         description = "Returns a buffer containing up to `numberOfBytes` bytes from the file, and the number of bytes read. If the read failed, the function returns nil and a second value describing the error.\nEquivalent to playdate->file->read() in the C API.",
         returns = "(pd_UNDOCUMENTED)",
-        type = "function"
+        type = "method"
       },
       readline = {
-        args = "(self: pd_file_file)",
+        args = "()",
         description = "Returns the next line of the file, delimited by either \\n or \\r\\n. The returned string does not include newline characters.",
         returns = "(string)",
-        type = "function"
+        type = "method"
       },
       seek = {
-        args = "(self: pd_file_file, offset: number))",
+        args = "(offset: number))",
         description = "Sets the file read/write position to the given byte offset.\nEquivalent to playdate->file->seek() in the C API.",
         returns = "(fun(self: pd_file_file, offset: number))",
-        type = "function"
+        type = "method"
       },
       tell = {
-        args = "(self: pd_file_file)",
+        args = "()",
         description = "Returns the current byte offset of the read/write position in the file.\nEquivalent to playdate->file->tell() in the C API.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       write = {
-        args = "(self: pd_file_file, string: string)",
+        args = "(string: string)",
         description = "Writes the given string to the file and returns the number of bytes written if successful, or 0 and a second return value describing the error. If you wish to include line termination characters (\\n, \\r), please include them in the string.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -773,118 +773,118 @@ return {
   pd_fileplayer = {
     childs = {
       didUnderrun = {
-        args = "(self: pd_fileplayer)",
+        args = "()",
         description = "Returns the fileplayer’s underrun flag, indicating that the player ran out of data. This can be checked in the finish callback function to check for an underrun error.",
         returns = "(boolean)",
-        type = "function"
+        type = "method"
       },
       getLength = {
-        args = "(self: pd_fileplayer)",
+        args = "()",
         description = "Returns the length, in seconds, of the audio file.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       getOffset = {
-        args = "(self: pd_fileplayer)",
+        args = "()",
         description = "Returns the current offset of the fileplayer, in seconds. This value is not adjusted for rate.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       getRate = {
-        args = "(self: pd_fileplayer)",
+        args = "()",
         description = "Returns the playback rate for the file. as set with setRate().",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       getVolume = {
-        args = "(self: pd_fileplayer)",
+        args = "()",
         description = "Returns the current volume for the fileplayer, a single value for mono sources or a pair of values (left, right) for stereo sources.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       isPlaying = {
-        args = "(self: pd_fileplayer)",
+        args = "()",
         description = "Returns a boolean indicating whether the fileplayer is playing.",
         returns = "(boolean)",
-        type = "function"
+        type = "method"
       },
       load = {
-        args = "(self: pd_fileplayer, path: string))",
+        args = "(path: string))",
         description = "Instructs the fileplayer to load the file at `path` when play() is called on it. The fileplayer must not be playing when this function is called. The fileplayer’s play offset is reset to the beginning of the file, and its loop range is cleared.",
         returns = "(fun(self: pd_fileplayer, path: string))",
-        type = "function"
+        type = "method"
       },
       pause = {
-        args = "(self: pd_fileplayer))",
+        args = "()",
         description = "Stops playing the file. A subsequent play() call resumes playback from where it was paused.",
         returns = "(fun(self: pd_fileplayer))",
-        type = "function"
+        type = "method"
       },
       play = {
-        args = "(self: pd_fileplayer, repeatCount?: number)",
+        args = "(repeatCount?: number)",
         description = "Opens and starts playing the file, first creating and filling a 1/4 second playback buffer if a buffer size hasn’t been set yet.\nIf repeatCount is set, playback repeats when it reaches the end of the file or the end of the loop range if one is set. After the loop has run `repeatCount` times, it continues playing to the end of the file. A `repeatCount` of zero loops endlessly. If repeatCount is not set, the file plays once.\nThe function returns true if the file was successfully opened and the fileplayer added to the sound channel, otherwise false and a string describing the error.",
         returns = "(boolean)",
-        type = "function"
+        type = "method"
       },
       setBufferSize = {
-        args = "(self: pd_fileplayer, seconds: number)",
+        args = "(seconds: number)",
         description = "Sets the buffer size for the fileplayer, in seconds. Larger buffers protect against buffer underruns, but consume more memory. Calling this function also fills the output buffer if a source file has been set. On success, the function returns `true`; otherwise it returns `false` and a string describing the error.",
         returns = "(boolean)",
-        type = "function"
+        type = "method"
       },
       setFinishCallback = {
-        args = "(self: pd_fileplayer, func: fun(pd_fileplayer, any), arg?: any))",
+        args = "(func: fun(pd_fileplayer, any), arg?: any))",
         description = "Sets a function to be called when playback has completed. The fileplayer is passed as the first argument to `func`. The optional argument `arg` is passed as the second.",
         returns = "(fun(self: pd_fileplayer, func: fun(pd_fileplayer, any), arg?: any | nil)",
-        type = "function"
+        type = "method"
       },
       setLoopCallback = {
-        args = "(self: pd_fileplayer, callback: fun(pd_fileplayer, any), arg?: any))",
+        args = "(callback: fun(pd_fileplayer, any), arg?: any))",
         description = "Sets a function to be called every time the fileplayer loops. The fileplayer object is passed to this function as the first argument, and `arg` as the second.\nThe fileplayer:play([repeatCount]) call needs to be invoked with a `repeatCount` value of 0 (infinite looping), or 2 or greater in order for the loop callback to be invoked.",
         returns = "(fun(self: pd_fileplayer, callback: fun(pd_fileplayer, any), arg?: any | nil)",
-        type = "function"
+        type = "method"
       },
       setLoopRange = {
-        args = "(self: pd_fileplayer, start: number, end?: number, loopCallback?: fun(pd_fileplayer, any), arg?: any))",
+        args = "(start: number, end?: number, loopCallback?: fun(pd_fileplayer, any), arg?: any))",
         description = 'Provides a way to loop a portion of an audio file. In the following code:\nlocal fp = playdate.sound.fileplayer.new( "myaudiofile" )\nfp:setLoopRange( 10, 20 )\nfp:play( 3 )\n…the fileplayer will start playing from the beginning of the audio file, loop the 10-20 second range three times, and then stop playing.\n`start` and `end` are specified in seconds. If `end` is omitted, the end of the file is used. If the function `loopCallback` is provided, it is called every time the player loops, with the fileplayer as the first argument and the optional `arg` argument as the second.\nThe fileplayer:play([repeatCount]) call needs to be invoked with a `repeatCount` value of 0 (infinite looping), or 2 or greater in order for the looping action to happen.',
         returns = "(fun(self: pd_fileplayer, start: number, end?: number, loopCallback?: fun(pd_fileplayer, any), arg?: any | nil)",
-        type = "function"
+        type = "method"
       },
       setOffset = {
-        args = "(self: pd_fileplayer, seconds: number))",
+        args = "(seconds: number))",
         description = "Sets the current offset of the fileplayer, in seconds. This value is not adjusted for rate.",
         returns = "(fun(self: pd_fileplayer, seconds: number))",
-        type = "function"
+        type = "method"
       },
       setRate = {
-        args = "(self: pd_fileplayer, rate: number))",
+        args = "(rate: number))",
         description = "Sets the playback rate for the file. 1.0 is normal speed, 0.5 is down an octave, 2.0 is up an octave, etc. Unlike sampleplayers, fileplayers can’t play in reverse (i.e., rate < 0).",
         returns = "(fun(self: pd_fileplayer, rate: number))",
-        type = "function"
+        type = "method"
       },
       setRateMod = {
-        args = "(self: pd_fileplayer, signal: pd_signal?))",
+        args = "(signal: pd_signal?))",
         description = "Sets the signal to use as a rate modulator, added to the rate set with playdate.sound.fileplayer:setRate(). Set to `nil` to clear the modulator.",
         returns = "(fun(self: pd_fileplayer, signal: pd_signal? | nil)",
-        type = "function"
+        type = "method"
       },
       setStopOnUnderrun = {
-        args = "(self: pd_fileplayer, flag: boolean))",
+        args = "(flag: boolean))",
         description = "By default, the fileplayer stops playback if it can’t provide data fast enough. Setting the flag to `false` tells the fileplayer to restart playback (after an audible stutter) as soon as data is available.",
         returns = "(fun(self: pd_fileplayer, flag: boolean))",
-        type = "function"
+        type = "method"
       },
       setVolume = {
-        args = "(self: pd_fileplayer, left: number, right?: number, fadeSeconds?: number, fadeCallback?: fun(pd_fileplayer, any), arg?: any))",
+        args = "(left: number, right?: number, fadeSeconds?: number, fadeCallback?: fun(pd_fileplayer, any), arg?: any))",
         description = "Sets the playback volume (0.0 - 1.0). If a single value is passed in, both left side and right side volume are set to the given value. If two values are given, volumes are set separately. The optional `fadeSeconds` specifies the time it takes to fade from the current volume to the specified volume, in seconds. If the function `fadeCallback` is given, it is called when the volume fade has completed. The fileplayer object is passed as the first argument to the callback, and the optional `arg` argument is passed as the second.",
         returns = "(fun(self: pd_fileplayer, left: number, right?: number, fadeSeconds?: number, fadeCallback?: fun(pd_fileplayer, any), arg?: any | nil)",
-        type = "function"
+        type = "method"
       },
       stop = {
-        args = "(self: pd_fileplayer))",
+        args = "()",
         description = "Stops playing the file, resets the playback offset to zero, and calls the finish callback.",
         returns = "(fun(self: pd_fileplayer))",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -895,58 +895,58 @@ return {
   pd_font = {
     childs = {
       drawText = {
-        args = "(self: pd_font, text: string, x: number, y: number, leadingAdjustment?: number)",
+        args = "(text: string, x: number, y: number, leadingAdjustment?: number)",
         description = 'Draws a string at the specified x, y coordinate using this particular font instance. (Compare to playdate.graphics.drawText(text, x, y), which draws the string with whatever the "current font", as defined by playdate.graphics.setFont(font)).\nThe optional `leadingAdjustment` may be used to modify the spacing between lines of text. Pass nil to use the default leading for the font.\nReturns `width`, `height`, indicating the size in pixels of the drawn text.\nfont:drawText() does not support inline styles like bold and italics. Instead use playdate.graphics.drawText().',
         returns = "((number, number))",
-        type = "function"
+        type = "method"
       },
       drawTextAligned = {
-        args = "(self: pd_font, text: string, x: number, y: number, alignment: pd_text_alignment, leadingAdjustment?: number))",
+        args = "(text: string, x: number, y: number, alignment: pd_text_alignment, leadingAdjustment?: number))",
         description = 'You must import `CoreLibs/graphics` to use this function.\nDraws the string `text` aligned to the left, right, or centered on the `x` coordinate. Pass one of `kTextAlignment.left`, `kTextAlignment.center`, `kTextAlignment.right` for the `alignment` parameter. (Compare to playdate.graphics.drawTextAligned(text, x, y, alignment), which draws the string with the "current font", as defined by playdate.graphics.setFont(font)).',
         returns = "(fun(self: pd_font, text: string, x: number, y: number, alignment: pd_text_alignment, leadingAdjustment?: number | nil)",
-        type = "function"
+        type = "method"
       },
       getGlyph = {
-        args = "(self: pd_font, character: string|number)",
+        args = "(character: string|number)",
         description = "Returns the playdate.graphics.image containing the requested glyph. `character` can either be a string or a unicode codepoint number.",
         returns = "(pd_image)",
-        type = "function"
+        type = "method"
       },
       getHeight = {
-        args = "(self: pd_font)",
+        args = "()",
         description = "Returns the pixel height of this font.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       getLeading = {
-        args = "(self: pd_font)",
+        args = "()",
         description = "Returns the leading (spacing between lines) of this font, in pixels.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       getTextWidth = {
-        args = "(self: pd_font, text: string)",
+        args = "(text: string)",
         description = "Returns the pixel width of the text when rendered with this font.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       getTracking = {
-        args = "(self: pd_font)",
+        args = "()",
         description = "Returns the tracking of this font (spacing between letters), in pixels.\nEquivalent to playdate->graphics->getTextTracking() in the C API.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       setLeading = {
-        args = "(self: pd_font, pixels: number))",
+        args = "(pixels: number))",
         description = "Sets the leading (spacing between lines) of this font, in pixels.\nEquivalent to playdate->graphics->setTextLeading() in the C API.",
         returns = "(fun(self: pd_font, pixels: number))",
-        type = "function"
+        type = "method"
       },
       setTracking = {
-        args = "(self: pd_font, pixels: number))",
+        args = "(pixels: number))",
         description = "Sets the tracking of this font (spacing between letters), in pixels.\nEquivalent to playdate->graphics->setTextTracking() in the C API.",
         returns = "(fun(self: pd_font, pixels: number))",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -998,16 +998,16 @@ return {
         type = "value"
       },
       pause = {
-        args = "(self: pd_frameTimer))",
+        args = "()",
         description = "Pauses a timer.",
         returns = "(fun(self: pd_frameTimer))",
-        type = "function"
+        type = "method"
       },
       remove = {
-        args = "(self: pd_frameTimer))",
+        args = "()",
         description = "Removes this timer from the list of timers. This happens automatically when a non-repeating timer reaches it’s end, but you can use this method to dispose of timers manually.",
         returns = "(fun(self: pd_frameTimer))",
-        type = "function"
+        type = "method"
       },
       repeats = {
         description = "If true, the timer starts over from the beginning when it completes. Defaults to false.",
@@ -1015,10 +1015,10 @@ return {
         type = "value"
       },
       reset = {
-        args = "(self: pd_frameTimer))",
+        args = "()",
         description = "Resets a timer to its initial values.",
         returns = "(fun(self: pd_frameTimer))",
-        type = "function"
+        type = "method"
       },
       reverseEasingFunction = {
         args = "(fun(number, number, number, number",
@@ -1032,10 +1032,10 @@ return {
         type = "value"
       },
       start = {
-        args = "(self: pd_frameTimer))",
+        args = "()",
         description = "Resumes a timer. There is no need to call :start() on a newly-instantiated frame timer: frame timers start automatically.",
         returns = "(fun(self: pd_frameTimer))",
-        type = "function"
+        type = "method"
       },
       startValue = {
         description = "Start value used when calculating `value`.",
@@ -1070,106 +1070,106 @@ return {
   pd_graph = {
     childs = {
       addConnectionToNodeWithID = {
-        args = "(self: pd_graph, fromNodeID: integer, toNodeID: integer, weight: number, addReciprocalConnection: boolean))",
+        args = "(fromNodeID: integer, toNodeID: integer, weight: number, addReciprocalConnection: boolean))",
         description = "Adds a connection from the node with id fromNodeID to the node with id toNodeID with a weight value of weight. Weights affect the path the A* algorithm will solve for. A longer, lighter-weighted path will be chosen over a shorter heavier path, if available. If addReciprocalConnection is true, the reverse connection will also be added.",
         returns = "(fun(self: pd_graph, fromNodeID: integer, toNodeID: integer, weight: number, addReciprocalConnection: boolean))",
-        type = "function"
+        type = "method"
       },
       addConnections = {
-        args = "(self: pd_graph, connections: number[][]))",
+        args = "(connections: number[][]))",
         description = "connections should be a table of array-style tables. The keys of the outer table should correspond to node IDs, while the inner array should be a series if connecting node ID and weight combinations that will be assigned to that node. For example, {[1]={2, 10, 3, 12}, [2]={1, 20}, [3]={1, 20, 2, 10}} will create a connection from node ID 1 to node ID 2 with a weight of 10, and a connection to node ID 3 with a weight of 12, and so on for the other entries.",
         returns = "(fun(self: pd_graph, connections: number[][]))",
-        type = "function"
+        type = "method"
       },
       addNewNode = {
-        args = "(self: pd_graph, id: integer, x?: number, y?: number, connectedNodes?: pd_node[], weights?: number[], addReciprocalConnections?: boolean))",
+        args = "(id: integer, x?: number, y?: number, connectedNodes?: pd_node[], weights?: number[], addReciprocalConnections?: boolean))",
         description = "Creates a new playdate.pathfinder.node and adds it to the graph.\n`id`: id value for the new node.\n`x`: Optional x value for the node.\n`y`: Optional y value for the node.\n`connectedNodes`: Array of existing nodes to create connections to from the new node.\n`weights`: Array of weights for the new connections. Array must be the same length as `connectedNodes`. Weights affect the path the A* algorithm will solve for. A longer, lighter-weighted path will be chosen over a shorter heavier path, if available.\n`addReciprocalConnections`: If true, connections will also be added in the reverse direction for each node.",
         returns = "(fun(self: pd_graph, id: integer, x?: number, y?: number, connectedNodes?: pd_node[], weights?: number[], addReciprocalConnections?: boolean | nil)",
-        type = "function"
+        type = "method"
       },
       addNewNodes = {
-        args = "(self: pd_graph, count: number)",
+        args = "(count: number)",
         description = "Creates `count` new nodes, adding them to the graph, and returns them in an array-style table. The new node’s `id_s will be assigned values 1 through _count`-1.\nThis method is useful to improve performance if many nodes need to be allocated at once rather than one at a time, for example when creating a new graph.",
         returns = "(pd_node[])",
-        type = "function"
+        type = "method"
       },
       addNode = {
-        args = "(self: pd_graph, node: pd_node, connectedNodes?: pd_node[], weights?: number[], addReciprocalConnections?: boolean))",
+        args = "(node: pd_node, connectedNodes?: pd_node[], weights?: number[], addReciprocalConnections?: boolean))",
         description = "Adds an already-existing node to the graph. The node must have originally belonged to the same graph.\n`node`: Node to be added to the graph.\n`connectedNodes`: Array of existing nodes to create connections to from the new node.\n`weights`: Array of weights for the new connections. Array must be the same length as `connectedNodes`. Weights affect the path the A* algorithm will solve for. A longer, lighter-weighted path will be chosen over a shorter heavier path, if available.\n`addReciprocalConnections`: If true, connections will also be added in the reverse direction for each connection added.",
         returns = "(fun(self: pd_graph, node: pd_node, connectedNodes?: pd_node[], weights?: number[], addReciprocalConnections?: boolean | nil)",
-        type = "function"
+        type = "method"
       },
       addNodes = {
-        args = "(self: pd_graph, nodes: pd_node[]))",
+        args = "(nodes: pd_node[]))",
         description = "Adds an array of already-existing nodes to the graph.",
         returns = "(fun(self: pd_graph, nodes: pd_node[]))",
-        type = "function"
+        type = "method"
       },
       allNodes = {
-        args = "(self: pd_graph)",
+        args = "()",
         description = "Returns an array containing all nodes in the graph.",
         returns = "(pd_node[])",
-        type = "function"
+        type = "method"
       },
       findPath = {
-        args = "(self: pd_graph, startNode: pd_node, goalNode: pd_node, heuristicFunction?: nil | (fun(pd_node, pd_node): number), findPathToGoalAdjacentNodes?: boolean)",
+        args = "(startNode: pd_node, goalNode: pd_node, heuristicFunction?: nil | (fun(pd_node, pd_node): number), findPathToGoalAdjacentNodes?: boolean)",
         description = "Returns an array of nodes representing the path from `startNode` to `goalNode`, or `nil` if no path can be found.\n`heuristicFunction`: If provided, this function should be of the form `function(startNode, goalNode)` and should return an integer value estimate or underestimate of the distance from `startNode` to `goalNode`. If not provided, a manhattan distance function will be used to calculate the estimate. This requires that the `x, y` values of the nodes in the graph have been set properly.\n`findPathToGoalAdjacentNodes`: If true, a path will be found to any node adjacent to the goal node, based on the `x, y` values of those nodes and the goal node. This does not rely on connections between adjacent nodes and the goal node, which can be entirely disconnected from the rest of the graph.",
         returns = "(pd_node[] | nil)",
-        type = "function"
+        type = "method"
       },
       findPathWithIDs = {
-        args = "(self: pd_graph, startNodeID: integer, goalNodeID: integer, heuristicFunction?: nil | (fun(pd_node, pd_node): number), findPathToGoalAdjacentNodes?: boolean)",
+        args = "(startNodeID: integer, goalNodeID: integer, heuristicFunction?: nil | (fun(pd_node, pd_node): number), findPathToGoalAdjacentNodes?: boolean)",
         description = "Works the same as findPath, but looks up nodes to find a path between using startNodeID and goalNodeID and returns a list of nodeIDs rather than the nodes themselves.",
         returns = "(integer[] | nil)",
-        type = "function"
+        type = "method"
       },
       nodeWithID = {
-        args = "(self: pd_graph, id: integer)",
+        args = "(id: integer)",
         description = "Returns the first node found in the graph with a matching `id`, or nil if no such node is found.",
         returns = "(pd_node | nil)",
-        type = "function"
+        type = "method"
       },
       nodeWithXY = {
-        args = "(self: pd_graph, x: number, y: number)",
+        args = "(x: number, y: number)",
         description = "Returns the first node found in the graph with matching `x` and `y` values, or nil if no such node is found.",
         returns = "(pd_node | nil)",
-        type = "function"
+        type = "method"
       },
       removeAllConnections = {
-        args = "(self: pd_graph))",
+        args = "()",
         description = "Removes all connections from all nodes in the graph.",
         returns = "(fun(self: pd_graph))",
-        type = "function"
+        type = "method"
       },
       removeAllConnectionsFromNodeWithID = {
-        args = "(self: pd_graph, id: integer, removeIncoming?: boolean))",
+        args = "(id: integer, removeIncoming?: boolean))",
         description = "Removes all connections from the matching node.\nIf removeIncoming is true, all connections from other nodes to the calling node are also removed. False by default. Please note: this can signficantly increase the time this function takes as it requires a full search of the graph - O(1) vs O(n)).",
         returns = "(fun(self: pd_graph, id: integer, removeIncoming?: boolean | nil)",
-        type = "function"
+        type = "method"
       },
       removeNode = {
-        args = "(self: pd_graph, node: pd_node))",
+        args = "(node: pd_node))",
         description = "Removes node from the graph. Also removes all connections to and from the node.",
         returns = "(fun(self: pd_graph, node: pd_node))",
-        type = "function"
+        type = "method"
       },
       removeNodeWithID = {
-        args = "(self: pd_graph, id: integer)",
+        args = "(id: integer)",
         description = "Returns the first node found with a matching `id`, after removing it from the graph and removing all connections to and from the node.",
         returns = "(pd_node)",
-        type = "function"
+        type = "method"
       },
       removeNodeWithXY = {
-        args = "(self: pd_graph, x: number, y: number)",
+        args = "(x: number, y: number)",
         description = "Returns the first node found with coordinates matching `x, y`, after removing it from the graph and removing all connections to and from the node.",
         returns = "(pd_node)",
-        type = "function"
+        type = "method"
       },
       setXYForNodeWithID = {
-        args = "(self: pd_graph, id: integer, x: number, y: number))",
+        args = "(id: integer, x: number, y: number))",
         description = "Sets the matching node’s x and y values.",
         returns = "(fun(self: pd_graph, id: integer, x: number, y: number))",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -1177,10 +1177,10 @@ return {
   pd_gridview = {
     childs = {
       addHorizontalDividerAbove = {
-        args = "(self: pd_gridview, section: integer, row: number))",
+        args = "(section: integer, row: number))",
         description = "Causes a horizontal divider to be drawn above the specified row. Drawing can be customized by overriding playdate.ui.gridview:drawHorizontalDivider.",
         returns = "(fun(self: pd_gridview, section: integer, row: number))",
-        type = "function"
+        type = "method"
       },
       backgroundImage = {
         description = "A background image that draws behind the gridview’s cells. This image can be either a playdate.graphics.image which will be tiled or a playdate.nineSlice.",
@@ -1193,28 +1193,28 @@ return {
         type = "value"
       },
       drawCell = {
-        args = "(self: pd_gridview, section: integer, row: number, column: number, selected: boolean, x: number, y: number, width: number, height: number))",
+        args = "(section: integer, row: number, column: number, selected: boolean, x: number, y: number, width: number, height: number))",
         description = "Override this method to draw the cells in the gridview. `selected` is a boolean, true if the cell being drawn is the currently-selected cell.",
         returns = "(fun(self: pd_gridview, section: integer, row: number, column: number, selected: boolean, x: number, y: number, width: number, height: number))",
-        type = "function"
+        type = "method"
       },
       drawHorizontalDivider = {
-        args = "(self: pd_gridview, x: number, y: number, width: number, height: number))",
+        args = "(x: number, y: number, width: number, height: number))",
         description = "Override this method to customize the drawing of horizontal dividers. This function will only be called if the horizontal divider height is greater than zero (0) and at least one divider has been added.",
         returns = "(fun(self: pd_gridview, x: number, y: number, width: number, height: number))",
-        type = "function"
+        type = "method"
       },
       drawInRect = {
-        args = "(self: pd_gridview, x: number, y: number, width: number, height: number))",
+        args = "(x: number, y: number, width: number, height: number))",
         description = "Draws the gridview in the specified rect. Ideally this should be called on every playdate.update() to accommodate scrolling.",
         returns = "(fun(self: pd_gridview, x: number, y: number, width: number, height: number))",
-        type = "function"
+        type = "method"
       },
       drawSectionHeader = {
-        args = "(self: pd_gridview, section: integer, x: number, y: number, width: number, height: number))",
+        args = "(section: integer, x: number, y: number, width: number, height: number))",
         description = "Override this method to draw section headers. This function will only be called if the header height has been set to a value greater than zero (0).",
         returns = "(fun(self: pd_gridview, section: integer, x: number, y: number, width: number, height: number))",
-        type = "function"
+        type = "method"
       },
       easingAmplitude = {
         description = "For easing functions that take additional amplitude and period arguments (such as `inOutElastic`), set these to the desired values.",
@@ -1227,40 +1227,40 @@ return {
         type = "value"
       },
       getCellBounds = {
-        args = "(self: pd_gridview, section: integer, row: number, column: number, gridWidth?: number)",
+        args = "(section: integer, row: number, column: number, gridWidth?: number)",
         description = "Returns multiple values (x, y, width, height) representing the bounds of the cell, not including padding, relative to the top-right corner of the grid view.\nIf the grid view is configured with zero width cells (see playdate.ui.gridview:new), `gridWidth` is required, and should be the same value you would pass to playdate.ui.gridview:drawInRect.",
         returns = "((number, number, number, number))",
-        type = "function"
+        type = "method"
       },
       getHorizontalDividerHeight = {
-        args = "(self: pd_gridview)",
+        args = "()",
         description = "Returns the height of the horizontal dividers.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       getNumberOfColumns = {
-        args = "(self: pd_gridview)",
+        args = "()",
         description = "Returns the number of columns in the gridview. 1 by default.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       getNumberOfRowsInSection = {
-        args = "(self: pd_gridview, section: integer)",
+        args = "(section: integer)",
         description = "Returns the number of rows in `section`.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       getNumberOfSections = {
-        args = "(self: pd_gridview)",
+        args = "()",
         description = "Returns the number of sections in the grid view.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       getScrollPosition = {
-        args = "(self: pd_gridview)",
+        args = "()",
         description = "Returns the current scroll location as a pair `x`, `y`.",
         returns = "((number, number))",
-        type = "function"
+        type = "method"
       },
       getSectionHeaderHeight = {
         args = "()",
@@ -1269,16 +1269,16 @@ return {
         type = "function"
       },
       getSelectedRow = {
-        args = "(self: pd_gridview)",
+        args = "()",
         description = "Convenience method for list-style gridviews. Returns the selected cell at `row` in section 1.",
         returns = "(integer)",
-        type = "function"
+        type = "method"
       },
       getSelection = {
-        args = "(self: pd_gridview)",
+        args = "()",
         description = "Returns the currently-selected cell as `section`, `row`, `column`",
         returns = "((integer, integer, integer))",
-        type = "function"
+        type = "method"
       },
       isScrolling = {
         description = "Read-only. True if the gridview is currently performing a scroll animation.",
@@ -1291,16 +1291,16 @@ return {
         type = "value"
       },
       removeHorizontalDividers = {
-        args = "(self: pd_gridview))",
+        args = "()",
         description = "Removes all horizontal dividers from the grid view.",
         returns = "(fun(self: pd_gridview))",
-        type = "function"
+        type = "method"
       },
       scrollCellToCenter = {
-        args = "(self: pd_gridview, section: integer, row: number, column: number, animated?: boolean))",
+        args = "(section: integer, row: number, column: number, animated?: boolean))",
         description = "Scrolls to the specified cell, so the cell is centered in the gridview, if possible.",
         returns = "(fun(self: pd_gridview, section: integer, row: number, column: number, animated?: boolean | nil)",
-        type = "function"
+        type = "method"
       },
       scrollCellsToCenter = {
         description = "If true, the gridview will attempt to center cells when scrolling. If false, the gridview will be scrolled just as much as necessary to make the cell visible.",
@@ -1314,130 +1314,130 @@ return {
         type = "function"
       },
       scrollToCell = {
-        args = "(self: pd_gridview, section: integer, row: number, column: number, animated?: boolean))",
+        args = "(section: integer, row: number, column: number, animated?: boolean))",
         description = "Scrolls to the specified cell, just enough so the cell is visible.",
         returns = "(fun(self: pd_gridview, section: integer, row: number, column: number, animated?: boolean | nil)",
-        type = "function"
+        type = "method"
       },
       scrollToRow = {
-        args = "(self: pd_gridview, row: number, animated?: boolean))",
+        args = "(row: number, animated?: boolean))",
         description = "Convenience function for list-style gridviews. Scrolls to the specified row in the list.",
         returns = "(fun(self: pd_gridview, row: number, animated?: boolean | nil)",
-        type = "function"
+        type = "method"
       },
       scrollToTop = {
-        args = "(self: pd_gridview, animated?: boolean))",
+        args = "(animated?: boolean))",
         description = "Scrolls to the top of the gridview.",
         returns = "(fun(self: pd_gridview, animated?: boolean | nil)",
-        type = "function"
+        type = "method"
       },
       selectNextColumn = {
-        args = "(self: pd_gridview, wrapSelection: boolean, scrollToSelection?: boolean, animate?: boolean))",
+        args = "(wrapSelection: boolean, scrollToSelection?: boolean, animate?: boolean))",
         description = "Selects the cell directly to the right of the currently-selected cell.\nIf the last column is currently selected and `wrapSelection` is true, the selection will wrap around to the opposite side of the grid. If a wrap occurs and the gridview’s changeRowOnColumnWrap is true the row will also be advanced or moved back.\nIf `scrollToSelection` is true (or not provided), the newly-selected cell will be scrolled to. If `animate` is true (or not provided), the scroll will be animated.",
         returns = "(fun(self: pd_gridview, wrapSelection: boolean, scrollToSelection?: boolean, animate?: boolean | nil)",
-        type = "function"
+        type = "method"
       },
       selectNextRow = {
-        args = "(self: pd_gridview, wrapSelection: boolean, scrollToSelection?: boolean, animate?: boolean))",
+        args = "(wrapSelection: boolean, scrollToSelection?: boolean, animate?: boolean))",
         description = "Selects the cell directly below the currently-selected cell.\nIf `wrapSelection` is true, the selection will wrap around to the opposite end of the grid. If `scrollToSelection` is true (or not provided), the newly-selected cell will be scrolled to. If `animate` is true (or not provided), the scroll will be animated.",
         returns = "(fun(self: pd_gridview, wrapSelection: boolean, scrollToSelection?: boolean, animate?: boolean | nil)",
-        type = "function"
+        type = "method"
       },
       selectPreviousColumn = {
-        args = "(self: pd_gridview, wrapSelection: boolean, scrollToSelection?: boolean, animate?: boolean))",
+        args = "(wrapSelection: boolean, scrollToSelection?: boolean, animate?: boolean))",
         description = "Identical to selectNextColumn() but goes the other direction.",
         returns = "(fun(self: pd_gridview, wrapSelection: boolean, scrollToSelection?: boolean, animate?: boolean | nil)",
-        type = "function"
+        type = "method"
       },
       selectPreviousRow = {
-        args = "(self: pd_gridview, wrapSelection: boolean, scrollToSelection?: boolean, animate?: boolean))",
+        args = "(wrapSelection: boolean, scrollToSelection?: boolean, animate?: boolean))",
         description = "Identical to selectNextRow() but goes the other direction.",
         returns = "(fun(self: pd_gridview, wrapSelection: boolean, scrollToSelection?: boolean, animate?: boolean | nil)",
-        type = "function"
+        type = "method"
       },
       setCellPadding = {
-        args = "(self: pd_gridview, left: number, right: number, top: number, bottom: number))",
+        args = "(left: number, right: number, top: number, bottom: number))",
         description = "Sets the amount of padding around cells.",
         returns = "(fun(self: pd_gridview, left: number, right: number, top: number, bottom: number))",
-        type = "function"
+        type = "method"
       },
       setCellSize = {
-        args = "(self: pd_gridview, cellWidth: number, cellHeight: number))",
+        args = "(cellWidth: number, cellHeight: number))",
         description = "Sets the size of the cells in the gridview. If cells should span the entire width of the grid (as in a list view), pass zero (0) for `cellWidth`.",
         returns = "(fun(self: pd_gridview, cellWidth: number, cellHeight: number))",
-        type = "function"
+        type = "method"
       },
       setContentInset = {
-        args = "(self: pd_gridview, left: number, right: number, top: number, bottom: number))",
+        args = "(left: number, right: number, top: number, bottom: number))",
         description = "Sets the amount of space the content is inset from the edges of the gridview. Useful if a background image is being used as a border.",
         returns = "(fun(self: pd_gridview, left: number, right: number, top: number, bottom: number))",
-        type = "function"
+        type = "method"
       },
       setHorizontalDividerHeight = {
-        args = "(self: pd_gridview, height: number))",
+        args = "(height: number))",
         description = "Sets the height of the horizontal dividers. The default height is half the cell height specified when creating the grid view.",
         returns = "(fun(self: pd_gridview, height: number))",
-        type = "function"
+        type = "method"
       },
       setNumberOfColumns = {
-        args = "(self: pd_gridview, num: integer))",
+        args = "(num: integer))",
         description = "Sets the number of columns in the gridview. 1 by default.",
         returns = "(fun(self: pd_gridview, num: integer))",
-        type = "function"
+        type = "method"
       },
       setNumberOfRows = {
-        args = "(self: pd_gridview, count1: integer, ...: integer))",
+        args = "(count1: integer, ...: integer))",
         description = "Convenience method for list-style gridviews, or for setting the number of rows for multiple sections at a time. Pass in a list of numbers of rows for sections starting from section 1.",
         returns = "(fun(self: pd_gridview, count1: integer, ...: integer))",
-        type = "function"
+        type = "method"
       },
       setNumberOfRowsInSection = {
-        args = "(self: pd_gridview, section: integer, num: integer))",
+        args = "(section: integer, num: integer))",
         description = "Sets the number of rows in `section`.",
         returns = "(fun(self: pd_gridview, section: integer, num: integer))",
-        type = "function"
+        type = "method"
       },
       setNumberOfSections = {
-        args = "(self: pd_gridview, num: integer))",
+        args = "(num: integer))",
         description = "Sets the number of sections in the grid view. Each section contains at least one row, and row numbering starts at 1 in each section.",
         returns = "(fun(self: pd_gridview, num: integer))",
-        type = "function"
+        type = "method"
       },
       setScrollDuration = {
-        args = "(self: pd_gridview, ms: number))",
+        args = "(ms: number))",
         description = "Controls the duration of scroll animations. 250ms by default.",
         returns = "(fun(self: pd_gridview, ms: number))",
-        type = "function"
+        type = "method"
       },
       setScrollPosition = {
-        args = "(self: pd_gridview, x: number, y: number, animated?: boolean))",
+        args = "(x: number, y: number, animated?: boolean))",
         description = "'set' scrolls to the coordinate `x`, `y`.\nIf `animated` is true (or not provided) the new scroll position is animated to using playdate.ui.gridview.scrollEasingFunction and the value set in playdate.ui.gridview:setScrollDuration().",
         returns = "(fun(self: pd_gridview, x: number, y: number, animated?: boolean | nil)",
-        type = "function"
+        type = "method"
       },
       setSectionHeaderHeight = {
-        args = "(self: pd_gridview, height: number))",
+        args = "(height: number))",
         description = "Sets the height of the section headers. 0 by default, which causes section headers not to be drawn.",
         returns = "(fun(self: pd_gridview, height: number))",
-        type = "function"
+        type = "method"
       },
       setSectionHeaderPadding = {
-        args = "(self: pd_gridview, left: number, right: number, top: number, bottom: number))",
+        args = "(left: number, right: number, top: number, bottom: number))",
         description = "Sets the amount of padding around section headers.",
         returns = "(fun(self: pd_gridview, left: number, right: number, top: number, bottom: number))",
-        type = "function"
+        type = "method"
       },
       setSelectedRow = {
-        args = "(self: pd_gridview, row: number))",
+        args = "(row: number))",
         description = "Convenience method for list-style gridviews. Selects the cell at `row` in section 1.",
         returns = "(fun(self: pd_gridview, row: number))",
-        type = "function"
+        type = "method"
       },
       setSelection = {
-        args = "(self: pd_gridview, section: integer, row: number, column: number))",
+        args = "(section: integer, row: number, column: number))",
         description = "Selects the cell at the given position.",
         returns = "(fun(self: pd_gridview, section: integer, row: number, column: number))",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -1445,40 +1445,40 @@ return {
   pd_image = {
     childs = {
       addMask = {
-        args = "(self: pd_image, opaque?: boolean))",
+        args = "(opaque?: boolean))",
         description = "Adds a mask to the image if it doesn’t already have one. If `opaque` is true or not specified, the image mask applied will be completely white, so the image will be entirely opaque. If `opaque` is false, the mask will be completely black, so the image will be entirely transparent.",
         returns = "(fun(self: pd_image, opaque?: boolean | nil)",
-        type = "function"
+        type = "method"
       },
       blendWithImage = {
-        args = "(self: pd_image, image: pd_image, alpha: number, ditherType: pd_dither_type)",
+        args = "(image: pd_image, alpha: number, ditherType: pd_dither_type)",
         description = "Returns an image that is a blend between the caller and `image`.\n`image`: the playdate.graphics.image to be blended with the caller.\n`alpha`: The alpha value assigned to the caller. `image` will have an alpha of (1 - `alpha`).\n`ditherType`: The caller and `image` are blended into a greyscale image and dithered with one of the dithering algorithms listed in playdate.graphics.image:blurredImage()",
         returns = "(pd_image)",
-        type = "function"
+        type = "method"
       },
       blurredImage = {
-        args = "(self: pd_image, radius: number, numPasses: number, ditherType: pd_dither_type, padEdges?: boolean, xPhase?: number, yPhase?: number)",
+        args = "(radius: number, numPasses: number, ditherType: pd_dither_type, padEdges?: boolean, xPhase?: number, yPhase?: number)",
         description = "Returns a blurred copy of the caller.\n`radius`: A bigger radius means a more blurred result. Processing time is independent of the radius.\n`numPasses`: A box blur is used to blur the image. The more passes, the more closely the blur approximates a gaussian blur. However, higher values will take more time to process.\n`ditherType`: The original image is blurred into a greyscale image then dithered back to 1-bit using one of the following dithering algorithms:\n`playdate.graphics.image.kDitherTypeNone`\n`playdate.graphics.image.kDitherTypeDiagonalLine`\n`playdate.graphics.image.kDitherTypeVerticalLine`\n`playdate.graphics.image.kDitherTypeHorizontalLine`\n`playdate.graphics.image.kDitherTypeScreen`\n`playdate.graphics.image.kDitherTypeBayer2x2`\n`playdate.graphics.image.kDitherTypeBayer4x4`\n`playdate.graphics.image.kDitherTypeBayer8x8`\n`playdate.graphics.image.kDitherTypeFloydSteinberg`\n`playdate.graphics.image.kDitherTypeBurkes`\n`playdate.graphics.image.kDitherTypeAtkinson`\n`padEdges`: Boolean indicating whether the edges of the images should be padded to accommodate the blur radius. Defaults to false.\n`xPhase`, `yPhase`: optional; integer values that affect the appearance of `playdate.graphics.image.kDitherTypeDiagonalLine`, `playdate.graphics.image.kDitherTypeVerticalLine`, `playdate.graphics.image.kDitherTypeHorizontalLine`, `playdate.graphics.image.kDitherTypeScreen`, `playdate.graphics.image.kDitherTypeBayer2x2`, `playdate.graphics.image.kDitherTypeBayer4x4`, and `playdate.graphics.image.kDitherTypeBayer8x8`.",
         returns = "(pd_image)",
-        type = "function"
+        type = "method"
       },
       clear = {
-        args = "(self: pd_image, color: pd_color))",
+        args = "(color: pd_color))",
         description = "Erases the contents of the image, setting all pixels to white if `color` is `playdate.graphics.kColorWhite`, black if it’s `playdate.graphics.kColorBlack`, or clear if it’s `playdate.graphics.kColorClear`. If the image is cleared to black or white, the mask (if it exists) is set to fully opaque. If the image is cleared to kColorClear and the image doesn’t have a mask, a mask is added to it.",
         returns = "(fun(self: pd_image, color: pd_color))",
-        type = "function"
+        type = "method"
       },
       clearMask = {
-        args = "(self: pd_image, opaque?: boolean))",
+        args = "(opaque?: boolean))",
         description = "Erases the contents of the image’s mask, so that the image is entirely opaque if `opaque` is 1, transparent otherwise. This function has no effect if the image doesn’t have a mask.",
         returns = "(fun(self: pd_image, opaque?: boolean | nil)",
-        type = "function"
+        type = "method"
       },
       copy = {
-        args = "(self: pd_image)",
+        args = "()",
         description = "Returns a new playdate.graphics.image that is an exact copy of the original.",
         returns = "(pd_image)",
-        type = "function"
+        type = "method"
       },
       draw = {
         args = "(fun(self: pd_image, x: number, y: number, flip?: pd_image_flip, sourceRect?: pd_rect)) | (fun(self: pd_image, p: pd_point, flip?: pd_image_flip, sourceRect?: pd_rect)) | (fun(self: pd_image, x: number, y: number, flip?: pd_image_flip, rx?: number, ry?: number, rw?: number, rh?: number)) | (fun(self: pd_image, p: pd_point, flip?: pd_image_flip, rx?: number, ry?: number, rw?: number, rh?: number))",
@@ -1487,28 +1487,28 @@ return {
         type = "function"
       },
       drawAnchored = {
-        args = "(self: pd_image, x: number, y: number, ax: number, ay: number, flip?: pd_image_flip))",
+        args = "(x: number, y: number, ax: number, ay: number, flip?: pd_image_flip))",
         description = "Draws the image at location `(x, y)` centered at the point within the image represented by `(ax, ay)` in unit coordinate space. For example, values of `ax = 0.0`, `ay = 0.0` represent the image’s top-left corner, `ax = 1.0`, `ay = 1.0` represent the bottom-right, and `ax = 0.5`, `ay = 0.5` represent the center of the image.\nThe `flip` argument is optional; see playdate.graphics.image:draw() for valid values.\nYou must import `CoreLibs/graphics` to use this method.",
         returns = "(fun(self: pd_image, x: number, y: number, ax: number, ay: number, flip?: pd_image_flip | nil)",
-        type = "function"
+        type = "method"
       },
       drawBlurred = {
-        args = "(self: pd_image, x: number, y: number, radius: number, numPasses: number, ditherType: pd_dither_type, flip?: pd_image_flip, xPhase?: number, yPhase?: number))",
+        args = "(x: number, y: number, radius: number, numPasses: number, ditherType: pd_dither_type, flip?: pd_image_flip, xPhase?: number, yPhase?: number))",
         description = "Draws a blurred version of the image at (`x`, `y`).\n`radius`: A bigger radius means a more blurred result. Processing time is independent of the radius.\n`numPasses`: A box blur is used to blur the image. The more passes, the more closely the blur approximates a gaussian blur. However, higher values will take more time to process.\n`ditherType`: The algorithm to use when blurring the image, must be one of the values listed in playdate.graphics.image:blurredImage()\n`flip`: optional; see playdate.graphics.image:draw() for valid values.\n`xPhase`, `yPhase`: optional; integer values that affect the appearance of `playdate.graphics.image.kDitherTypeDiagonalLine`, `playdate.graphics.image.kDitherTypeVerticalLine`, `playdate.graphics.image.kDitherTypeHorizontalLine`, `playdate.graphics.image.kDitherTypeScreen`, `playdate.graphics.image.kDitherTypeBayer2x2`, `playdate.graphics.image.kDitherTypeBayer4x4`, and `playdate.graphics.image.kDitherTypeBayer8x8`.",
         returns = "(fun(self: pd_image, x: number, y: number, radius: number, numPasses: number, ditherType: pd_dither_type, flip?: pd_image_flip, xPhase?: number, yPhase?: number | nil)",
-        type = "function"
+        type = "method"
       },
       drawCentered = {
-        args = "(self: pd_image, x: number, y: number, flip?: pd_image_flip))",
+        args = "(x: number, y: number, flip?: pd_image_flip))",
         description = "Draws the image centered at location `(x, y)`.\nThe `flip` argument is optional; see playdate.graphics.image:draw() for valid values.\nYou must import `CoreLibs/graphics` to use this method.",
         returns = "(fun(self: pd_image, x: number, y: number, flip?: pd_image_flip | nil)",
-        type = "function"
+        type = "method"
       },
       drawFaded = {
-        args = "(self: pd_image, x: number, y: number, alpha: number, ditherType: pd_dither_type))",
+        args = "(x: number, y: number, alpha: number, ditherType: pd_dither_type))",
         description = "Draws a partially transparent image with its upper-left corner at location (`x`, `y`)\n`alpha`: The alpha value used to draw the image, with 1 being fully opaque, and 0 being completely transparent.\n`ditherType`: The caller is faded using one of the dithering algorithms listed in playdate.graphics.image:blurredImage()",
         returns = "(fun(self: pd_image, x: number, y: number, alpha: number, ditherType: pd_dither_type))",
-        type = "function"
+        type = "method"
       },
       drawIgnoringOffset = {
         args = "(fun(self: pd_image, x: number, y: number, flip?: pd_image_flip)) | (fun(self: pd_image, p: pd_point, flip?: pd_image_flip))",
@@ -1517,22 +1517,22 @@ return {
         type = "function"
       },
       drawRotated = {
-        args = "(self: pd_image, x: number, y: number, angle: number, scale?: number, yscale?: number))",
+        args = "(x: number, y: number, angle: number, scale?: number, yscale?: number))",
         description = "Draws this image centered at point `(x,y)` at (clockwise) `angle` degrees, scaled by optional argument `scale`, with an optional separate scaling for the y axis.",
         returns = "(fun(self: pd_image, x: number, y: number, angle: number, scale?: number, yscale?: number | nil)",
-        type = "function"
+        type = "method"
       },
       drawSampled = {
-        args = "(self: pd_image, x: number, y: number, width: number, height: number, centerx: number, centery: number, dxx: number, dyx: number, dxy: number, dyy: number, dx: number, dy: number, z: number, tiltAngle: number, tile: boolean))",
+        args = "(x: number, y: number, width: number, height: number, centerx: number, centery: number, dxx: number, dyx: number, dxy: number, dyy: number, dx: number, dy: number, z: number, tiltAngle: number, tile: boolean))",
         description = "Draws the image as if it’s mapped onto a tilted plane, transforming the target coordinates to image coordinates using an affine transform:\nx' = dxx * x + dyx * y + dx\ny' = dxy * x + dyy * y + dy\n`x, y, width, height`: The rectangle to fill\n`centerx, centery`: The point in the above rectangle [in (0,1)x(0,1) coordinates] for the center of the transform\n`dxx, dyx, dxy, dyy, dx, dy`: Defines an affine transform from geometry coordinates to image coordinates\n`z`: The distance from the viewer to the target plane — lower z means more exaggerated perspective\n`tiltAngle`: The tilt of the target plane about the x axis, in degrees\n`tile`: A boolean, indicating whether the image is tiled on the target plane\nThe `Mode7Driver` demo in the `/Examples` folder of the SDK demonstrates the usage of this function.",
         returns = "(fun(self: pd_image, x: number, y: number, width: number, height: number, centerx: number, centery: number, dxx: number, dyx: number, dxy: number, dyy: number, dx: number, dy: number, z: number, tiltAngle: number, tile: boolean))",
-        type = "function"
+        type = "method"
       },
       drawScaled = {
-        args = "(self: pd_image, x: number, y: number, scale: number, yscale?: number))",
+        args = "(x: number, y: number, scale: number, yscale?: number))",
         description = "Draws this image with its upper-left corner at point `(x,y)`, scaled by amount `scale`, with an optional separate scaling for the y axis.",
         returns = "(fun(self: pd_image, x: number, y: number, scale: number, yscale?: number | nil)",
-        type = "function"
+        type = "method"
       },
       drawTiled = {
         args = "(fun(self: pd_image, x: number, y: number, width: number, height: number, flip?: pd_image_flip)) | (fun(self: pd_image, rect: pd_rect, flip?: pd_image_flip))",
@@ -1541,94 +1541,94 @@ return {
         type = "function"
       },
       drawWithTransform = {
-        args = "(self: pd_image, xform: pd_affineTransform, x: number, y: number))",
+        args = "(xform: pd_affineTransform, x: number, y: number))",
         description = "Draws this image centered at point `(x,y)` with the transform `xform` applied.",
         returns = "(fun(self: pd_image, xform: pd_affineTransform, x: number, y: number))",
-        type = "function"
+        type = "method"
       },
       fadedImage = {
-        args = "(self: pd_image, alpha: number, ditherType: pd_dither_type)",
+        args = "(alpha: number, ditherType: pd_dither_type)",
         description = "Returns a faded version of the caller.\n`alpha`: The alpha value assigned to the caller, in the range 0.0 - 1.0. If an image mask already exists it is multiplied by `alpha`.\n`ditherType`: The caller is faded into a greyscale image and dithered with one of the dithering algorithms listed in playdate.graphics.image:blurredImage()",
         returns = "(pd_image)",
-        type = "function"
+        type = "method"
       },
       getMaskImage = {
-        args = "(self: pd_image)",
+        args = "()",
         description = "If the image has a mask, returns the mask as a separate image. Otherwise, returns nil.\nThe returned image references the original’s data, so drawing into this image alters the original image’s mask.",
         returns = "(pd_image)",
-        type = "function"
+        type = "method"
       },
       getSize = {
-        args = "(self: pd_image)",
+        args = "()",
         description = "Returns the pair (`width`, `height`)",
         returns = "((number, number))",
-        type = "function"
+        type = "method"
       },
       hasMask = {
-        args = "(self: pd_image)",
+        args = "()",
         description = "Returns `true` if the image has a mask.",
         returns = "(boolean)",
-        type = "function"
+        type = "method"
       },
       invertedImage = {
-        args = "(self: pd_image)",
+        args = "()",
         description = "Returns a color-inverted copy of the caller.",
         returns = "(pd_image)",
-        type = "function"
+        type = "method"
       },
       load = {
-        args = "(self: pd_image, path: string)",
+        args = "(path: string)",
         description = "Loads a new image from the data at `path` into an already-existing image, without allocating additional memory. The image at `path` must be of the same dimensions as the original.\nReturns `(success, [error])`. If the boolean `success` is false, `error` is also returned.",
         returns = "((boolean, string? | nil)",
-        type = "function"
+        type = "method"
       },
       removeMask = {
-        args = "(self: pd_image))",
+        args = "()",
         description = "Removes the mask from the image if it has one.",
         returns = "(fun(self: pd_image))",
-        type = "function"
+        type = "method"
       },
       rotatedImage = {
-        args = "(self: pd_image, angle: number, scale?: number, yscale?: number)",
+        args = "(angle: number, scale?: number, yscale?: number)",
         description = "Returns a new image containing this image rotated by (clockwise) `angle` degrees, scaled by optional argument `scale`, with an optional separate scaling for the y axis.\nUnless rotating by a multiple of 180 degrees, the new image will have different dimensions than the original.",
         returns = "(pd_image)",
-        type = "function"
+        type = "method"
       },
       sample = {
-        args = "(self: pd_image, x: number, y: number)",
+        args = "(x: number, y: number)",
         description = "Returns `playdate.graphics.kColorWhite` if the image is white at (`x`, `y`), `playdate.graphics.kColorBlack` if it’s black, or `playdate.graphics.kColorClear` if it’s transparent.\nThe upper-left pixel of the image is at coordinate `(0, 0)`.",
         returns = "(pd_color)",
-        type = "function"
+        type = "method"
       },
       scaledImage = {
-        args = "(self: pd_image, scale: number, yscale?: number)",
+        args = "(scale: number, yscale?: number)",
         description = "Returns a new image containing this image scaled by amount `scale`, with an optional separate scaling for the y axis.",
         returns = "(pd_image)",
-        type = "function"
+        type = "method"
       },
       setInverted = {
-        args = "(self: pd_image, flag: boolean))",
+        args = "(flag: boolean))",
         description = "If `flag` is true, the image will be drawn with its colors inverted. If the image is being used as a stencil, its behavior is reversed: pixels are drawn where the stencil is black, nothing is drawn where the stencil is white.",
         returns = "(fun(self: pd_image, flag: boolean))",
-        type = "function"
+        type = "method"
       },
       setMaskImage = {
-        args = "(self: pd_image, maskImage: pd_image))",
+        args = "(maskImage: pd_image))",
         description = "Sets the image’s mask to a copy of `maskImage`.",
         returns = "(fun(self: pd_image, maskImage: pd_image))",
-        type = "function"
+        type = "method"
       },
       transformedImage = {
-        args = "(self: pd_image, xform: pd_affineTransform)",
+        args = "(xform: pd_affineTransform)",
         description = "Returns a new image containing the image with the transform `xform` applied.",
         returns = "(pd_image)",
-        type = "function"
+        type = "method"
       },
       vcrPauseFilterImage = {
-        args = "(self: pd_image)",
+        args = "()",
         description = "Returns an image created by applying a VCR pause effect to the calling image.",
         returns = "(pd_image)",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -1639,10 +1639,10 @@ return {
   pd_imagetable = {
     childs = {
       drawImage = {
-        args = "(self: pd_imagetable, n: integer, x: number, y: number, flip?: pd_image_flip))",
+        args = "(n: integer, x: number, y: number, flip?: pd_image_flip))",
         description = "Equivalent to graphics.imagetable:getImage(n):draw(x,y,[flip]).",
         returns = "(fun(self: pd_imagetable, n: integer, x: number, y: number, flip?: pd_image_flip | nil)",
-        type = "function"
+        type = "method"
       },
       getImage = {
         args = "(fun(self: pd_imagetable, n: integer): pd_image) | (fun(self: pd_imagetable, x: number, y: number",
@@ -1651,28 +1651,28 @@ return {
         type = "function"
       },
       getLength = {
-        args = "(self: pd_imagetable)",
+        args = "()",
         description = "Returns the number of images in the table. See also #imagetable.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       getSize = {
-        args = "(self: pd_imagetable)",
+        args = "()",
         description = "Returns the pair (`cellsWide`, `cellsHigh`).",
         returns = "((number, number))",
-        type = "function"
+        type = "method"
       },
       load = {
-        args = "(self: pd_imagetable, path: string)",
+        args = "(path: string)",
         description = "Loads a new image table from the data at `path` into an already-existing image table, without allocating additional memory. The image table at `path` must contain images of the same dimensions as the previous.\nReturns (success, [error]). If the boolean success is false, error is also returned.",
         returns = "((boolean, string? | nil)",
-        type = "function"
+        type = "method"
       },
       setImage = {
-        args = "(self: pd_imagetable, n: integer, image: pd_image))",
+        args = "(n: integer, image: pd_image))",
         description = "Sets the image at slot `n` in the image table by creating a reference to the data in `image`.",
         returns = "(fun(self: pd_imagetable, n: integer, image: pd_image))",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -1775,52 +1775,52 @@ return {
   pd_instrument = {
     childs = {
       addVoice = {
-        args = "(self: pd_instrument, v: pd_synth, note?: string|number, rangeend?: string|number, transpose?: number))",
+        args = "(v: pd_synth, note?: string|number, rangeend?: string|number, transpose?: number))",
         description = 'Adds the given playdate.sound.synth to the instrument. If only the `note` argument is given, the voice is only used for that note, and is transposed to play at normal speed (i.e. rate=1.0 for samples, or C4 for synths). If `rangeend` is given, the voice is assigned to the range `note` to `rangeend`, inclusive, with the first note in the range transposed to rate=1.0/C4. The note and rangeend arguments can be MIDI note numbers or note names like "Db3". The final transpose argument transposes the note played, in half-tone units.',
         returns = "(fun(self: pd_instrument, v: pd_synth, note?: string|number, rangeend?: string|number, transpose?: number | nil)",
-        type = "function"
+        type = "method"
       },
       allNotesOff = {
-        args = "(self: pd_instrument))",
+        args = "()",
         description = "Sends a stop signal to all playing notes.",
         returns = "(fun(self: pd_instrument))",
-        type = "function"
+        type = "method"
       },
       getVolume = {
-        args = "(self: pd_instrument)",
+        args = "()",
         description = "Returns the current volume for the synth, a single value for mono sources or a pair of values (left, right) for stereo sources.\nVolume values are between 0.0 and 1.0.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       noteOff = {
-        args = "(self: pd_instrument, note: string|number, when?: number))",
+        args = "(note: string|number, when?: number))",
         description = "Stops the instrument voice playing note `note`. If `when` is given, the note is stopped `when` seconds in the future, otherwise it’s stopped immediately.",
         returns = "(fun(self: pd_instrument, note: string|number, when?: number | nil)",
-        type = "function"
+        type = "method"
       },
       playMIDINote = {
-        args = "(self: pd_instrument, note: string|number, vel?: number, length?: number, when?: number))",
+        args = "(note: string|number, vel?: number, length?: number, when?: number))",
         description = "Identical to instrument:playNote() but `note` is a MIDI note number: 60=C4, 61=C#4, etc. Fractional values are allowed.",
         returns = "(fun(self: pd_instrument, note: string|number, vel?: number, length?: number, when?: number | nil)",
-        type = "function"
+        type = "method"
       },
       playNote = {
-        args = "(self: pd_instrument, frequency: number, vel?: number, length?: number, when?: number))",
+        args = "(frequency: number, vel?: number, length?: number, when?: number))",
         description = "Plays the given note on the instrument. A string like Db3 can be used instead of a pitch/note number. Fractional values are allowed. `vel` defaults to 1.0, fully on. If `length` isn’t specified, the note stays on until `instrument.noteOff(note)` is called. `when` is the number of seconds in the future to start playing the note, default is immediately.",
         returns = "(fun(self: pd_instrument, frequency: number, vel?: number, length?: number, when?: number | nil)",
-        type = "function"
+        type = "method"
       },
       setTranspose = {
-        args = "(self: pd_instrument, halfsteps: number))",
+        args = "(halfsteps: number))",
         description = "Transposes all voices in the instrument. `halfsteps` can be a fractional value.",
         returns = "(fun(self: pd_instrument, halfsteps: number))",
-        type = "function"
+        type = "method"
       },
       setVolume = {
-        args = "(self: pd_instrument, left: number, right?: number))",
+        args = "(left: number, right?: number))",
         description = "Sets the instrument volume. If a single value is passed in, sets both left side and right side volume to the given value. If two values are given, volumes are set separately.\nVolume values are between 0.0 and 1.0.",
         returns = "(fun(self: pd_instrument, left: number, right?: number | nil)",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -1828,34 +1828,34 @@ return {
   pd_item = {
     childs = {
       getTitle = {
-        args = "(self: pd_item)",
+        args = "()",
         description = "Returns the title displayed for this menu item.",
         returns = "(string)",
-        type = "function"
+        type = "method"
       },
       getValue = {
-        args = "(self: pd_item)",
+        args = "()",
         description = "Returns the value for this menu item.",
         returns = "(integer|boolean|string)",
-        type = "function"
+        type = "method"
       },
       setCallback = {
-        args = "(self: pd_item, callback: fun()))",
+        args = "(callback: fun()))",
         description = "Sets the callback function for this menu item.",
         returns = "(fun(self: pd_item, callback: fun()))",
-        type = "function"
+        type = "method"
       },
       setTitle = {
-        args = "(self: pd_item, newTitle: string))",
+        args = "(newTitle: string))",
         description = "Sets the title displayed for this menu item.\nThe title for a menu item can also be set using dot syntax.",
         returns = "(fun(self: pd_item, newTitle: string))",
-        type = "function"
+        type = "method"
       },
       setValue = {
-        args = "(self: pd_item, newValue: integer|boolean|string))",
+        args = "(newValue: integer|boolean|string))",
         description = "Sets the value for this menu item. The value is of a different type depending on the type of menu item:\nnormal: integer\ncheckmark: boolean\noptions: string\nValues for any menu type can also be set using integers.\nThe value for a menu item can also be set using dot syntax.",
         returns = "(fun(self: pd_item, newValue: integer|boolean|string))",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -1866,64 +1866,64 @@ return {
   pd_lfo = {
     childs = {
       setArpeggio = {
-        args = "(self: pd_lfo, note1: number, ...: number))",
+        args = "(note1: number, ...: number))",
         description = "Sets the LFO type to arpeggio, where the given values are in half-steps from the center note. For example, the sequence (0, 4, 7, 12) plays the notes of a major chord.",
         returns = "(fun(self: pd_lfo, note1: number, ...: number))",
-        type = "function"
+        type = "method"
       },
       setCenter = {
-        args = "(self: pd_lfo, center: number))",
+        args = "(center: number))",
         description = "Sets the center value of the LFO.",
         returns = "(fun(self: pd_lfo, center: number))",
-        type = "function"
+        type = "method"
       },
       setDelay = {
-        args = "(self: pd_lfo, holdoff: number, ramp: number))",
+        args = "(holdoff: number, ramp: number))",
         description = "Sets an initial holdoff time for the LFO where the LFO remains at its center value, and a ramp time where the value increases linearly to its maximum depth. Values are in seconds.",
         returns = "(fun(self: pd_lfo, holdoff: number, ramp: number))",
-        type = "function"
+        type = "method"
       },
       setDepth = {
-        args = "(self: pd_lfo, depth: number))",
+        args = "(depth: number))",
         description = "Sets the depth of the LFO’s modulation.",
         returns = "(fun(self: pd_lfo, depth: number))",
-        type = "function"
+        type = "method"
       },
       setGlobal = {
-        args = "(self: pd_lfo, flag: boolean))",
+        args = "(flag: boolean))",
         description = "If an LFO is marked global, it is continuously updated whether or not it’s attached to any source.",
         returns = "(fun(self: pd_lfo, flag: boolean))",
-        type = "function"
+        type = "method"
       },
       setPhase = {
-        args = "(self: pd_lfo, phase: number))",
+        args = "(phase: number))",
         description = "Sets the current phase of the LFO, from 0 to 1.",
         returns = "(fun(self: pd_lfo, phase: number))",
-        type = "function"
+        type = "method"
       },
       setRate = {
-        args = "(self: pd_lfo, rate: number))",
+        args = "(rate: number))",
         description = "Sets the rate of the LFO, in cycles per second.",
         returns = "(fun(self: pd_lfo, rate: number))",
-        type = "function"
+        type = "method"
       },
       setRetrigger = {
-        args = "(self: pd_lfo, flag: boolean))",
+        args = "(flag: boolean))",
         description = "If retrigger is on, the LFO’s phase is reset to its initial phase (default 0) when a synth using the LFO starts playing a note.",
         returns = "(fun(self: pd_lfo, flag: boolean))",
-        type = "function"
+        type = "method"
       },
       setStartPhase = {
-        args = "(self: pd_lfo, phase: number))",
+        args = "(phase: number))",
         description = "Sets the initial phase of the LFO, from 0 to 1.",
         returns = "(fun(self: pd_lfo, phase: number))",
-        type = "function"
+        type = "method"
       },
       setType = {
-        args = "(self: pd_lfo, type: pd_lfo_type))",
+        args = "(type: pd_lfo_type))",
         description = "Sets the waveform of the LFO. Valid values are\n`playdate.sound.kLFOSquare`\n`playdate.sound.kLFOSawtoothUp`\n`playdate.sound.kLFOSawtoothDown`\n`playdate.sound.kLFOTriangle`\n`playdate.sound.kLFOSine`\n`playdate.sound.kLFOSampleAndHold`",
         returns = "(fun(self: pd_lfo, type: pd_lfo_type))",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -1934,76 +1934,76 @@ return {
   pd_lineSegment = {
     childs = {
       closestPointOnLineToPoint = {
-        args = "(self: pd_lineSegment, p: pd_point)",
+        args = "(p: pd_point)",
         description = "Returns a playdate.geometry.point that is the closest point to point `p` that is on the line segment.",
         returns = "(pd_point)",
-        type = "function"
+        type = "method"
       },
       copy = {
-        args = "(self: pd_lineSegment)",
+        args = "()",
         description = "Returns a new copy of the line segment.",
         returns = "(pd_lineSegment)",
-        type = "function"
+        type = "method"
       },
       intersectsLineSegment = {
-        args = "(self: pd_lineSegment, ls: pd_lineSegment)",
+        args = "(ls: pd_lineSegment)",
         description = "Returns true if there is an intersection between the caller and the line segment `ls`.\nIf there is an intersection, a playdate.geometry.point representing that point is also returned.",
         returns = "(boolean)",
-        type = "function"
+        type = "method"
       },
       intersectsPolygon = {
-        args = "(self: pd_lineSegment, poly: pd_polygon)",
+        args = "(poly: pd_polygon)",
         description = "Returns the values (`intersects`, `intersectionPoints`).\n`intersects` is true if there is at least one intersection between the caller and poly.\n`intersectionPoints` is an array of playdate.geometry.points containing all intersection points between the caller and poly.",
         returns = "((boolean, pd_point[]))",
-        type = "function"
+        type = "method"
       },
       intersectsRect = {
-        args = "(self: pd_lineSegment, rect: pd_rect)",
+        args = "(rect: pd_rect)",
         description = "Returns the values (`intersects`, `intersectionPoints`).\n`intersects` is true if there is at least one intersection between the caller and rect.\n`intersectionPoints` is an array of playdate.geometry.points containing all intersection points between the caller and rect.",
         returns = "((boolean, pd_point[]))",
-        type = "function"
+        type = "method"
       },
       length = {
-        args = "(self: pd_lineSegment)",
+        args = "()",
         description = "Returns the length of the line segment.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       midPoint = {
-        args = "(self: pd_lineSegment)",
+        args = "()",
         description = "Returns a playdate.geometry.point representing the mid point of the line segment.",
         returns = "(pd_point)",
-        type = "function"
+        type = "method"
       },
       offset = {
-        args = "(self: pd_lineSegment, dx: number, dy: number))",
+        args = "(dx: number, dy: number))",
         description = "Modifies the line segment, offsetting its values by `dx`, `dy`.",
         returns = "(fun(self: pd_lineSegment, dx: number, dy: number))",
-        type = "function"
+        type = "method"
       },
       offsetBy = {
-        args = "(self: pd_lineSegment, dx: number, dy: number)",
+        args = "(dx: number, dy: number)",
         description = "Returns a new line segment, the given segment offset by `dx`, `dy`.",
         returns = "(pd_lineSegment)",
-        type = "function"
+        type = "method"
       },
       pointOnLine = {
-        args = "(self: pd_lineSegment, distance: number, extend?: boolean)",
+        args = "(distance: number, extend?: boolean)",
         description = "Returns a playdate.geometry.point on the line segment, distance pixels from the start of the line. If extend is true, the returned point is allowed to project past the segment’s endpoints; otherwise, it is constrained to the line segment’s initial point if distance is negative, or the end point if distance is greater than the segment’s length.",
         returns = "(pd_point)",
-        type = "function"
+        type = "method"
       },
       segmentVector = {
-        args = "(self: pd_lineSegment)",
+        args = "()",
         description = "Returns a playdate.geometry.vector2D representation of the line segment.",
         returns = "(pd_vector2D)",
-        type = "function"
+        type = "method"
       },
       unpack = {
-        args = "(self: pd_lineSegment)",
+        args = "()",
         description = "Returns the values `x1, y1, x2, y2`.",
         returns = "((number, number, number, number))",
-        type = "function"
+        type = "method"
       },
       x1 = {
         description = "You can directly read or write `x1`, `y1`, `x2`, or `y2` values to a lineSegment.",
@@ -2059,28 +2059,28 @@ return {
   pd_loop = {
     childs = {
       draw = {
-        args = "(self: pd_loop, x: number, y: number, flip?: pd_image_flip))",
+        args = "(x: number, y: number, flip?: pd_image_flip))",
         description = "Draw’s the loop’s current image at `x`, `y`.\nThe `flip` argument is optional; see playdate.graphics.image:draw() for valid values.",
         returns = "(fun(self: pd_loop, x: number, y: number, flip?: pd_image_flip | nil)",
-        type = "function"
+        type = "method"
       },
       image = {
-        args = "(self: pd_loop)",
+        args = "()",
         description = "Returns a playdate.graphics.image from the caller’s `imageTable` if it exists. The image returned will be at the imageTable’s index that matches the caller’s `frame`.",
         returns = "(pd_image)",
-        type = "function"
+        type = "method"
       },
       isValid = {
-        args = "(self: pd_loop)",
+        args = "()",
         description = "Returns false if the loop has passed its last frame and does not loop.",
         returns = "(boolean)",
-        type = "function"
+        type = "method"
       },
       setImageTable = {
-        args = "(self: pd_loop, imageTable: pd_imagetable))",
+        args = "(imageTable: pd_imagetable))",
         description = "Sets the playdate.graphics.imagetable to be used for this animation loop, and sets the loop’s endFrame property to #imageTable.",
         returns = "(fun(self: pd_loop, imageTable: pd_imagetable))",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -2088,40 +2088,40 @@ return {
   pd_menu = {
     childs = {
       addCheckmarkMenuItem = {
-        args = "(self: pd_menu, title: string, initialValue?: number, callback?: fun(boolean))",
+        args = "(title: string, initialValue?: number, callback?: fun(boolean))",
         description = "Creates a new menu item that can be checked or unchecked by the player.\n`title` will be the title displayed by the menu item.\n`initialValue` can be set to true or false, indicating the checked state of the menu item. Optional, defaults to false.\nIf this menu item is interacted with while the system menu is open, `callback` will be called when the menu is closed, before playdate.gameWillResume is called. The callback function will be passed one argument, a boolean value, indicating the current value of the menu item.\nIf the returned playdate.menu.item is nil, a second errorMessage return value will indicate the reason the operation failed.\nPlaydate OS allows a maximum of three custom menu items to be added to the System Menu.",
         returns = "(pd_item)",
-        type = "function"
+        type = "method"
       },
       addMenuItem = {
-        args = "(self: pd_menu, title: string, callback: fun()))",
+        args = "(title: string, callback: fun()))",
         description = "`title` will be the title displayed by the menu item.",
         returns = "(fun(self: pd_menu, title: string, callback: fun()))",
-        type = "function"
+        type = "method"
       },
       addOptionsMenuItem = {
-        args = "(self: pd_menu, title: string, options: string[], initalValue?: string, callback?: fun(string))",
+        args = "(title: string, options: string[], initalValue?: string, callback?: fun(string))",
         description = "Creates a menu item that allows the player to cycle through a set of options.\n`title` will be the title displayed by the menu item.\n`options` should be an array-style table of strings representing the states the menu item can have. Due to limited horizontal space, the option strings and title should be kept short for this type of menu item.\n`initialValue` can optionally be set to any of the values in the options array.\nIf the value of this menu item is changed while the system menu is open, `callback` will be called when the menu is closed, before playdate.gameWillResume is called. The callback function will be passed one string argument indicating the currently selection option.\nIf the returned playdate.menu.item is nil, a second errorMessage return value will indicate the reason the operation failed.\nPlaydate OS allows a maximum of three custom menu items to be added to the System Menu.",
         returns = "(pd_item)",
-        type = "function"
+        type = "method"
       },
       getMenuItems = {
-        args = "(self: pd_menu)",
+        args = "()",
         description = "Returns an array-style table containing all playdate.menu.items your game has added to the menu.",
         returns = "(pd_item[])",
-        type = "function"
+        type = "method"
       },
       removeAllMenuItems = {
-        args = "(self: pd_menu))",
+        args = "()",
         description = "Removes from the referenced menu object all playdate.menu.items added by your game.\nItems that were added to the System Menu by the operating system cannot be removed by this operation, or any other.",
         returns = "(fun(self: pd_menu))",
-        type = "function"
+        type = "method"
       },
       removeMenuItem = {
-        args = "(self: pd_menu, menuItem: pd_item))",
+        args = "(menuItem: pd_item))",
         description = "Removes the specified playdate.menu.item from the menu.",
         returns = "(fun(self: pd_menu, menuItem: pd_item))",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -2175,16 +2175,16 @@ return {
         type = "function"
       },
       getMinSize = {
-        args = "(self: pd_nineSlice)",
+        args = "()",
         description = "Returns the minimum size of the 9 slice image as a pair `(width, height)`.",
         returns = "((number, number))",
-        type = "function"
+        type = "method"
       },
       getSize = {
-        args = "(self: pd_nineSlice)",
+        args = "()",
         description = "Returns the size of the 9 slice image as a pair `(width, height)`.",
         returns = "((number, number))",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -2192,28 +2192,28 @@ return {
   pd_node = {
     childs = {
       addConnection = {
-        args = "(self: pd_node, node: pd_node, weight: number, addReciprocalConnection: boolean))",
+        args = "(node: pd_node, weight: number, addReciprocalConnection: boolean))",
         description = "Adds a new connection between nodes.\n`node`: The node the new connection will point to.\n`weight`: Weight for the new connection. Weights affect the path the A* algorithm will solve for. A longer, lighter-weighted path will be chosen over a shorter heavier path, if available.\n`addReciprocalConnection`: If true, a second connection will be created with the same weight in the opposite direction.",
         returns = "(fun(self: pd_node, node: pd_node, weight: number, addReciprocalConnection: boolean))",
-        type = "function"
+        type = "method"
       },
       addConnectionToNodeWithXY = {
-        args = "(self: pd_node, x: number, y: number, weight: number, addReciprocalConnection: boolean))",
+        args = "(x: number, y: number, weight: number, addReciprocalConnection: boolean))",
         description = "Adds a connection to the first node found with matching `x` and `y` values, if it exists.\n`weight`: The weight for the new connection. Weights affect the path the A* algorithm will solve for. A longer, lighter-weighted path will be chosen over a shorter heavier path, if available.\n`addReciprocalConnections`: If true, a connection will also be added in the reverse direction, from the node at x, y to the caller.",
         returns = "(fun(self: pd_node, x: number, y: number, weight: number, addReciprocalConnection: boolean))",
-        type = "function"
+        type = "method"
       },
       addConnections = {
-        args = "(self: pd_node, nodes: pd_node[], weights: number[], addReciprocalConnections: boolean))",
+        args = "(nodes: pd_node[], weights: number[], addReciprocalConnections: boolean))",
         description = "Adds a new connection to each node in the nodes array.\n`nodes`: An array of nodes which the new connections will point to.\n`weights`: An array of weights for the new connections. Must be of the same length as the nodes array. Weights affect the path the A* algorithm will solve for. A longer, lighter-weighted path will be chosen over a shorter heavier path, if available.\n`addReciprocalConnections`: If true, connections will also be added in the reverse direction for each node.",
         returns = "(fun(self: pd_node, nodes: pd_node[], weights: number[], addReciprocalConnections: boolean))",
-        type = "function"
+        type = "method"
       },
       connectedNodes = {
-        args = "(self: pd_node)",
+        args = "()",
         description = "Returns an array of nodes that have been added as connections to this node.",
         returns = "(pd_node[])",
-        type = "function"
+        type = "method"
       },
       id = {
         description = "You can directly read or write `x`, `y` and `id` values on a `playdate.pathfinder.node`.",
@@ -2221,22 +2221,22 @@ return {
         type = "value"
       },
       removeAllConnections = {
-        args = "(self: pd_node, removeIncoming?: boolean))",
+        args = "(removeIncoming?: boolean))",
         description = "Removes all connections from the calling node.\nIf removeIncoming is true, all connections from other nodes to the calling node are also removed. False by default. Please note: this can signficantly increase the time this function takes as it requires a full search of the graph - O(1) vs O(n)).",
         returns = "(fun(self: pd_node, removeIncoming?: boolean | nil)",
-        type = "function"
+        type = "method"
       },
       removeConnection = {
-        args = "(self: pd_node, node: pd_node, removeReciprocal?: boolean))",
+        args = "(node: pd_node, removeReciprocal?: boolean))",
         description = "Removes a connection to node, if it exists. If `removeReciprocal` is true the reverse connection will also be removed, if it exists.",
         returns = "(fun(self: pd_node, node: pd_node, removeReciprocal?: boolean | nil)",
-        type = "function"
+        type = "method"
       },
       setXY = {
-        args = "(self: pd_node, x: number, y: number))",
+        args = "(x: number, y: number))",
         description = "Sets the `x` and `y` values for the node.",
         returns = "(fun(self: pd_node, x: number, y: number))",
-        type = "function"
+        type = "method"
       },
       x = {
         description = "You can directly read or write `x`, `y` and `id` values on a `playdate.pathfinder.node`.",
@@ -2275,28 +2275,28 @@ return {
   pd_onepolefilter = {
     childs = {
       setMix = {
-        args = "(self: pd_onepolefilter, level: number))",
+        args = "(level: number))",
         description = "Sets the wet/dry mix for the effect. A level of 1 (full wet) replaces the input with the effect output; 0 leaves the effect out of the mix.",
         returns = "(fun(self: pd_onepolefilter, level: number))",
-        type = "function"
+        type = "method"
       },
       setMixMod = {
-        args = "(self: pd_onepolefilter, signal: pd_signal?))",
+        args = "(signal: pd_signal?))",
         description = "Sets a signal to modulate the mix level. Set to `nil` to clear the modulator.",
         returns = "(fun(self: pd_onepolefilter, signal: pd_signal? | nil)",
-        type = "function"
+        type = "method"
       },
       setParameter = {
-        args = "(self: pd_onepolefilter, p: number))",
+        args = "(p: number))",
         description = "Sets the filter’s single parameter (cutoff frequency) to `p`.",
         returns = "(fun(self: pd_onepolefilter, p: number))",
-        type = "function"
+        type = "method"
       },
       setParameterMod = {
-        args = "(self: pd_onepolefilter, m: pd_signal))",
+        args = "(m: pd_signal))",
         description = "Sets a modulator for the filter’s parameter. Set to `nil` to clear the modulator.",
         returns = "(fun(self: pd_onepolefilter, m: pd_signal))",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -2304,46 +2304,46 @@ return {
   pd_overdrive = {
     childs = {
       setGain = {
-        args = "(self: pd_overdrive, level: number))",
+        args = "(level: number))",
         description = "Sets the gain of the filter.",
         returns = "(fun(self: pd_overdrive, level: number))",
-        type = "function"
+        type = "method"
       },
       setLimit = {
-        args = "(self: pd_overdrive, level: number))",
+        args = "(level: number))",
         description = "Sets the level where the amplified input clips.",
         returns = "(fun(self: pd_overdrive, level: number))",
-        type = "function"
+        type = "method"
       },
       setLimitMod = {
-        args = "(self: pd_overdrive, signal: pd_signal?))",
+        args = "(signal: pd_signal?))",
         description = "Sets a signal to modulate the limit level. Set to `nil` to clear the modulator.",
         returns = "(fun(self: pd_overdrive, signal: pd_signal? | nil)",
-        type = "function"
+        type = "method"
       },
       setMix = {
-        args = "(self: pd_overdrive, level: number))",
+        args = "(level: number))",
         description = "Sets the wet/dry mix for the effect. A level of 1 (full wet) replaces the input with the effect output; 0 leaves the effect out of the mix.",
         returns = "(fun(self: pd_overdrive, level: number))",
-        type = "function"
+        type = "method"
       },
       setMixMod = {
-        args = "(self: pd_overdrive, signal: pd_signal?))",
+        args = "(signal: pd_signal?))",
         description = "Sets a signal to modulate the mix level. Set to `nil` to clear the modulator.",
         returns = "(fun(self: pd_overdrive, signal: pd_signal? | nil)",
-        type = "function"
+        type = "method"
       },
       setOffset = {
-        args = "(self: pd_overdrive, level: number))",
+        args = "(level: number))",
         description = "Adds an offset to the upper and lower limits to create an asymmetric clipping.",
         returns = "(fun(self: pd_overdrive, level: number))",
-        type = "function"
+        type = "method"
       },
       setOffsetMod = {
-        args = "(self: pd_overdrive, signal: pd_signal?))",
+        args = "(signal: pd_signal?))",
         description = "Sets a signal to modulate the offset value. Set to `nil` to clear the modulator.",
         returns = "(fun(self: pd_overdrive, signal: pd_signal? | nil)",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -2351,40 +2351,40 @@ return {
   pd_point = {
     childs = {
       copy = {
-        args = "(self: pd_point)",
+        args = "()",
         description = "Returns a new copy of the point.",
         returns = "(pd_point)",
-        type = "function"
+        type = "method"
       },
       distanceToPoint = {
-        args = "(self: pd_point, p: pd_point)",
+        args = "(p: pd_point)",
         description = "Returns the distance to point `p`.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       offset = {
-        args = "(self: pd_point, dx: number, dy: number))",
+        args = "(dx: number, dy: number))",
         description = "Modifies the point, offsetting its values by `dx`, `dy`.",
         returns = "(fun(self: pd_point, dx: number, dy: number))",
-        type = "function"
+        type = "method"
       },
       offsetBy = {
-        args = "(self: pd_point, dx: number, dy: number)",
+        args = "(dx: number, dy: number)",
         description = "Returns a new point object, the given point offset by `dx`, `dy`.",
         returns = "(pd_point)",
-        type = "function"
+        type = "method"
       },
       squaredDistanceToPoint = {
-        args = "(self: pd_point, p: pd_point)",
+        args = "(p: pd_point)",
         description = "Returns the square of the distance to point `p`.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       unpack = {
-        args = "(self: pd_point)",
+        args = "()",
         description = "Returns the values `x, y`.",
         returns = "((number, number))",
-        type = "function"
+        type = "method"
       },
       x = {
         description = "Returns a new point by adding the vector `v` to point `p`.\nReturns the vector constructed by subtracting `p2` from `p1`. By this construction, `p2` + (`p1` - `p2`) == `p1`.\nReturns a new polygon formed by applying the transform `t` to polygon `p`.\nReturns a new lineSegment connecting points `p1` and `p2`.\nYou can directly read or write the `x` and `y` values of a point.",
@@ -2402,10 +2402,10 @@ return {
   pd_polygon = {
     childs = {
       close = {
-        args = "(self: pd_polygon))",
+        args = "()",
         description = ":close() closes a polygon. If the polygon’s first and last point aren’t coincident, a line segment will be generated to connect them.",
         returns = "(fun(self: pd_polygon))",
-        type = "function"
+        type = "method"
       },
       containsPoint = {
         args = "(fun(self: pd_polygon, p: pd_point, fillRule?: pd_polygon_fill_rule): boolean) | (fun(self: pd_polygon, x: number, y: number, fillRule?: pd_polygon_fill_rule",
@@ -2414,70 +2414,70 @@ return {
         type = "function"
       },
       copy = {
-        args = "(self: pd_polygon)",
+        args = "()",
         description = "Returns a copy of a polygon.",
         returns = "(pd_polygon)",
-        type = "function"
+        type = "method"
       },
       count = {
-        args = "(self: pd_polygon)",
+        args = "()",
         description = "Returns the number of points in the polygon.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       getBounds = {
-        args = "(self: pd_polygon)",
+        args = "()",
         description = "Returns multiple values (`x`, `y`, `width`, `height`) giving the axis-aligned bounding box for the polygon.",
         returns = "((number, number, number, number))",
-        type = "function"
+        type = "method"
       },
       getBoundsRect = {
-        args = "(self: pd_polygon)",
+        args = "()",
         description = "Returns the axis-aligned bounding box for the given polygon as a playdate.geometry.rect object.",
         returns = "(pd_rect)",
-        type = "function"
+        type = "method"
       },
       getPointAt = {
-        args = "(self: pd_polygon, n: number)",
+        args = "(n: number)",
         description = "Returns the polygon’s `n`-th point.",
         returns = "(pd_point)",
-        type = "function"
+        type = "method"
       },
       intersects = {
-        args = "(self: pd_polygon, p: pd_polygon)",
+        args = "(p: pd_polygon)",
         description = "Returns true if the given polygon intersects the polygon `p`.",
         returns = "(boolean)",
-        type = "function"
+        type = "method"
       },
       isClosed = {
-        args = "(self: pd_polygon)",
+        args = "()",
         description = "Returns true if the polygon is closed, false if not.",
         returns = "(boolean)",
-        type = "function"
+        type = "method"
       },
       length = {
-        args = "(self: pd_polygon)",
+        args = "()",
         description = "Returns the total length of all line segments in the polygon.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       pointOnPolygon = {
-        args = "(self: pd_polygon, distance: number, extend?: boolean)",
+        args = "(distance: number, extend?: boolean)",
         description = "Returns a playdate.geometry.point on one of the polygon’s line segments, distance pixels from the start of the polygon. If extend is true, the point is allowed to project past the polygon’s ends; otherwise, it is constrained to the polygon’s initial point if distance is negative, or the last point if distance is greater than the polygon’s length.",
         returns = "(pd_point)",
-        type = "function"
+        type = "method"
       },
       setPointAt = {
-        args = "(self: pd_polygon, n: number, x: number, y: number))",
+        args = "(n: number, x: number, y: number))",
         description = "Sets the polygon’s `n`-th point to (`x`, `y`).",
         returns = "(fun(self: pd_polygon, n: number, x: number, y: number))",
-        type = "function"
+        type = "method"
       },
       translate = {
-        args = "(self: pd_polygon, dx: number, dy: number))",
+        args = "(dx: number, dy: number))",
         description = "Translates each point on the polygon by `dx`, `dy` pixels.",
         returns = "(fun(self: pd_polygon, dx: number, dy: number))",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -2493,10 +2493,10 @@ return {
         type = "value"
       },
       centerPoint = {
-        args = "(self: pd_rect)",
+        args = "()",
         description = "Returns a point at the center of the caller.",
         returns = "(pd_point)",
-        type = "function"
+        type = "method"
       },
       containsPoint = {
         args = "(fun(self: pd_rect, p: pd_point): boolean) | (fun(self: pd_rect, x: number, y: number",
@@ -2511,16 +2511,16 @@ return {
         type = "function"
       },
       copy = {
-        args = "(self: pd_rect)",
+        args = "()",
         description = "Returns a new copy of the rect.",
         returns = "(pd_rect)",
-        type = "function"
+        type = "method"
       },
       flipRelativeToRect = {
-        args = "(self: pd_rect, r2: pd_rect, flip: pd_flip))",
+        args = "(r2: pd_rect, flip: pd_flip))",
         description = "Flips the caller about the center of rect `r2`.\n`flip` should be one of the following constants:\n`playdate.geometry.kUnflipped`\n`playdate.geometry.kFlippedX`\n`playdate.geometry.kFlippedY`\n`playdate.geometry.kFlippedXY`",
         returns = "(fun(self: pd_rect, r2: pd_rect, flip: pd_flip))",
-        type = "function"
+        type = "method"
       },
       height = {
         description = "You can directly read or write `x`, `y`, `width`, or `height` values to a rect.",
@@ -2528,40 +2528,40 @@ return {
         type = "value"
       },
       inset = {
-        args = "(self: pd_rect, dx: number, dy: number))",
+        args = "(dx: number, dy: number))",
         description = "Insets the rect by the given `dx` and `dy`.",
         returns = "(fun(self: pd_rect, dx: number, dy: number))",
-        type = "function"
+        type = "method"
       },
       insetBy = {
-        args = "(self: pd_rect, dx: number, dy: number)",
+        args = "(dx: number, dy: number)",
         description = "Returns a rect that is inset by the given `dx` and `dy`, with the same center point.",
         returns = "(pd_rect)",
-        type = "function"
+        type = "method"
       },
       intersection = {
-        args = "(self: pd_rect, r2: pd_rect)",
+        args = "(r2: pd_rect)",
         description = "Returns a rect representing the overlapping portion of the caller and `r2`.",
         returns = "(pd_rect)",
-        type = "function"
+        type = "method"
       },
       intersects = {
-        args = "(self: pd_rect, r2: pd_rect)",
+        args = "(r2: pd_rect)",
         description = "Returns true if `r2` intersects the caller.",
         returns = "(boolean)",
-        type = "function"
+        type = "method"
       },
       isEmpty = {
-        args = "(self: pd_rect)",
+        args = "()",
         description = "Returns true if a rectangle has zero width or height.",
         returns = "(boolean)",
-        type = "function"
+        type = "method"
       },
       isEqual = {
-        args = "(self: pd_rect, r2: pd_rect)",
+        args = "(r2: pd_rect)",
         description = "Returns true if the `x`, `y`, `width`, and `height` values of the caller and `r2` are all equal.",
         returns = "(boolean)",
-        type = "function"
+        type = "method"
       },
       left = {
         description = "**READ-ONLY**. While you can directly read or write `x`, `y`, `width`, or `height` values to a rect, the values of `top`, `bottom`, `right`, `left`, `origin`, and `size` are read-only.",
@@ -2569,16 +2569,16 @@ return {
         type = "value"
       },
       offset = {
-        args = "(self: pd_rect, dx: number, dy: number))",
+        args = "(dx: number, dy: number))",
         description = "Offsets the rect by the given `dx` and `dy`.",
         returns = "(fun(self: pd_rect, dx: number, dy: number))",
-        type = "function"
+        type = "method"
       },
       offsetBy = {
-        args = "(self: pd_rect, dx: number, dy: number)",
+        args = "(dx: number, dy: number)",
         description = "Returns a rect with its origin point offset by `dx`, `dy`.",
         returns = "(pd_rect)",
-        type = "function"
+        type = "method"
       },
       origin = {
         description = "**READ-ONLY**. While you can directly read or write `x`, `y`, `width`, or `height` values to a rect, the values of `top`, `bottom`, `right`, `left`, `origin`, and `size` are read-only.",
@@ -2596,10 +2596,10 @@ return {
         type = "value"
       },
       toPolygon = {
-        args = "(self: pd_rect)",
+        args = "()",
         description = "Returns a new playdate.geometry.polygon version of the rect.",
         returns = "(pd_rect)",
-        type = "function"
+        type = "method"
       },
       top = {
         description = "**READ-ONLY**. While you can directly read or write `x`, `y`, `width`, or `height` values to a rect, the values of `top`, `bottom`, `right`, `left`, `origin`, and `size` are read-only.",
@@ -2607,16 +2607,16 @@ return {
         type = "value"
       },
       union = {
-        args = "(self: pd_rect, r2: pd_rect)",
+        args = "(r2: pd_rect)",
         description = "Returns the smallest possible rect that contains both the source rect and `r2`.",
         returns = "(pd_rect)",
-        type = "function"
+        type = "method"
       },
       unpack = {
-        args = "(self: pd_rect)",
+        args = "()",
         description = "Returns `x`, `y`, `width` and `height` as individual values.",
         returns = "((number, number, number, number))",
-        type = "function"
+        type = "method"
       },
       width = {
         description = "You can directly read or write `x`, `y`, `width`, or `height` values to a rect.",
@@ -2639,28 +2639,28 @@ return {
   pd_ringmod = {
     childs = {
       setFrequency = {
-        args = "(self: pd_ringmod, f: number))",
+        args = "(f: number))",
         description = "Sets the ringmod frequency to `f`.",
         returns = "(fun(self: pd_ringmod, f: number))",
-        type = "function"
+        type = "method"
       },
       setFrequencyMod = {
-        args = "(self: pd_ringmod, signal: pd_signal?))",
+        args = "(signal: pd_signal?))",
         description = "Sets a signal to modulate the ringmod frequency. Set to `nil` to clear the modulator.",
         returns = "(fun(self: pd_ringmod, signal: pd_signal? | nil)",
-        type = "function"
+        type = "method"
       },
       setMix = {
-        args = "(self: pd_ringmod, level: number))",
+        args = "(level: number))",
         description = "Sets the wet/dry mix for the effect. A level of 1 (full wet) replaces the input with the effect output; 0 leaves the effect out of the mix.",
         returns = "(fun(self: pd_ringmod, level: number))",
-        type = "function"
+        type = "method"
       },
       setMixMod = {
-        args = "(self: pd_ringmod, signal: pd_signal?))",
+        args = "(signal: pd_signal?))",
         description = "Sets a signal to modulate the mix level. Set to `nil` to clear the modulator.",
         returns = "(fun(self: pd_ringmod, signal: pd_signal? | nil)",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -2668,58 +2668,58 @@ return {
   pd_sample = {
     childs = {
       decompress = {
-        args = "(self: pd_sample)",
+        args = "()",
         description = "If the sample is ADPCM compressed, decompresses the sample data to 16-bit PCM data. This increases the sample’s memory footprint by 4x and does not affect the quality in any way, but it is necessary if you want to use the sample in a synth or play the file backwards. Returns true if successful, or false and an error message as a second return value if decompression failed.",
         returns = "(boolean)",
-        type = "function"
+        type = "method"
       },
       getFormat = {
-        args = "(self: pd_sample)",
+        args = "()",
         description = "Returns the format of the sample, one of\n`playdate.sound.kFormat8bitMono`\n`playdate.sound.kFormat8bitStereo`\n`playdate.sound.kFormat16bitMono`\n`playdate.sound.kFormat16bitStereo`",
         returns = "(pd_sound_format)",
-        type = "function"
+        type = "method"
       },
       getLength = {
-        args = "(self: pd_sample)",
+        args = "()",
         description = "Returns two values, the length of the available sample data and the size of the allocated buffer. Both values are measured in seconds. For a sample loaded from disk, these will be the same; for a sample used for recording, the available data may be less than the allocated size.",
         returns = "((number, number))",
-        type = "function"
+        type = "method"
       },
       getSampleRate = {
-        args = "(self: pd_sample)",
+        args = "()",
         description = "Returns the sample rate as an integer, such as 44100 or 22050.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       getSubsample = {
-        args = "(self: pd_sample, startOffset: number, endOffset: number)",
+        args = "(startOffset: number, endOffset: number)",
         description = "Returns a new subsample containing a subrange of the given sample. Offset values are in frames, not bytes.",
         returns = "(pd_sample)",
-        type = "function"
+        type = "method"
       },
       load = {
-        args = "(self: pd_sample, path: string)",
+        args = "(path: string)",
         description = "Loads the sound data from the file at `path` into an existing sample buffer. If there is no file at `path`, the function returns nil.",
         returns = "(pd_UNDOCUMENTED | nil)",
-        type = "function"
+        type = "method"
       },
       play = {
-        args = "(self: pd_sample, repeatCount?: number, rate?: number))",
+        args = "(repeatCount?: number, rate?: number))",
         description = "Convenience function: Creates a new sampleplayer for the sample and passes the function arguments to its play function.",
         returns = "(fun(self: pd_sample, repeatCount?: number, rate?: number | nil)",
-        type = "function"
+        type = "method"
       },
       playAt = {
-        args = "(self: pd_sample, when: number, vol?: number, rightvol?: number, rate?: number))",
+        args = "(when: number, vol?: number, rightvol?: number, rate?: number))",
         description = "Convenience function: Creates a new sampleplayer for the sample and passes the function arguments to its playAt function.",
         returns = "(fun(self: pd_sample, when: number, vol?: number, rightvol?: number, rate?: number | nil)",
-        type = "function"
+        type = "method"
       },
       save = {
-        args = "(self: pd_sample, filename: string))",
+        args = "(filename: string))",
         description = "Saves the sample to the given file. If filename has a .wav extension it will be saved in WAV format (and be unreadable by the Playdate sound functions), otherwise it will be saved in the Playdate pda format.",
         returns = "(fun(self: pd_sample, filename: string))",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -2727,118 +2727,118 @@ return {
   pd_sampleplayer = {
     childs = {
       copy = {
-        args = "(self: pd_sampleplayer)",
+        args = "()",
         description = "Returns a new playdate.sound.sampleplayer with the same sample, volume, and rate as the given sampleplayer.",
         returns = "(pd_sampleplayer)",
-        type = "function"
+        type = "method"
       },
       getLength = {
-        args = "(self: pd_sampleplayer)",
+        args = "()",
         description = "Returns the length of the sampleplayer’s sample, in seconds. Length is not scaled by playback rate.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       getOffset = {
-        args = "(self: pd_sampleplayer)",
+        args = "()",
         description = "Returns the current offset of the sampleplayer, in seconds. This value is not adjusted for rate.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       getRate = {
-        args = "(self: pd_sampleplayer)",
+        args = "()",
         description = "Returns the playback rate for the sample.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       getSample = {
-        args = "(self: pd_sampleplayer)",
+        args = "()",
         description = "Gets the sample to be played.",
         returns = "(pd_sample)",
-        type = "function"
+        type = "method"
       },
       getVolume = {
-        args = "(self: pd_sampleplayer)",
+        args = "()",
         description = "Returns the playback volume for the sampleplayer, a single value for mono sources or a pair of values (left, right) for stereo sources.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       isPlaying = {
-        args = "(self: pd_sampleplayer)",
+        args = "()",
         description = "Returns a boolean indicating whether the sample is playing.",
         returns = "(boolean)",
-        type = "function"
+        type = "method"
       },
       play = {
-        args = "(self: pd_sampleplayer, repeatCount?: number, rate?: number))",
+        args = "(repeatCount?: number, rate?: number))",
         description = "Starts playing the sample. If `repeatCount` is greater than one, it loops the given number of times. If zero, it loops endlessly until it is stopped with playdate.sound.sampleplayer:stop(). If `rate` is set, the sample will be played at the given rate instead of the rate previous set with playdate.sound.sampleplayer.setRate().",
         returns = "(fun(self: pd_sampleplayer, repeatCount?: number, rate?: number | nil)",
-        type = "function"
+        type = "method"
       },
       playAt = {
-        args = "(self: pd_sampleplayer, when: number, vol?: number, rightvol?: number, rate?: number)",
+        args = "(when: number, vol?: number, rightvol?: number, rate?: number)",
         description = "Schedules the sound for playing at device time `when`. If `vol` is specified, the sample will be played at level `vol` (with optional separate right channel volume `rightvol`), otherwise it plays at the volume set by playdate.sound.sampleplayer.setVolume(). Note that the `when` argument is an offset in the audio device’s time scale, as returned by playdate.sound.getCurrentTime(); it is not relative to the current time! If `when` is less than the current audio time, the sample is played immediately. If `rate` is set, the sample will be played at the given rate instead of the rate previously set with playdate.sound.sampleplayer.setRate().\nOnly one event can be queued at a time. If playAt() is called while another event is queued, it will overwrite it with the new values.\nThe function returns true if the sample was successfully added to the sound channel, otherwise false (i.e., if the channel is full).",
         returns = "(boolean)",
-        type = "function"
+        type = "method"
       },
       setFinishCallback = {
-        args = "(self: pd_sampleplayer, func: fun(pd_sample, any), arg?: any))",
+        args = "(func: fun(pd_sample, any), arg?: any))",
         description = "Sets a function to be called when playback has completed. The sample object is passed to this function as the first argument, and the optional `arg` argument is passed as the second.",
         returns = "(fun(self: pd_sampleplayer, func: fun(pd_sample, any), arg?: any | nil)",
-        type = "function"
+        type = "method"
       },
       setLoopCallback = {
-        args = "(self: pd_sampleplayer, callback: fun(pd_sample, any), arg?: any))",
+        args = "(callback: fun(pd_sample, any), arg?: any))",
         description = "Sets a function to be called every time the sample loops. The sample object is passed to this function as the first argument, and the optional `arg` argument is passed as the second.",
         returns = "(fun(self: pd_sampleplayer, callback: fun(pd_sample, any), arg?: any | nil)",
-        type = "function"
+        type = "method"
       },
       setOffset = {
-        args = "(self: pd_sampleplayer, seconds: number))",
+        args = "(seconds: number))",
         description = "Sets the current offset of the sampleplayer, in seconds. This value is not adjusted for rate.",
         returns = "(fun(self: pd_sampleplayer, seconds: number))",
-        type = "function"
+        type = "method"
       },
       setPaused = {
-        args = "(self: pd_sampleplayer, flag: boolean))",
+        args = "(flag: boolean))",
         description = "Pauses or resumes playback.",
         returns = "(fun(self: pd_sampleplayer, flag: boolean))",
-        type = "function"
+        type = "method"
       },
       setPlayRange = {
-        args = "(self: pd_sampleplayer, start: number, end: number))",
+        args = "(start: number, end: number))",
         description = "Sets the range of the sample to play. `start` and `end` are frame offsets from the beginning of the sample.",
         returns = "(fun(self: pd_sampleplayer, start: number, end: number))",
-        type = "function"
+        type = "method"
       },
       setRate = {
-        args = "(self: pd_sampleplayer, rate: number))",
+        args = "(rate: number))",
         description = "Sets the playback rate for the sample. 1.0 is normal speed, 0.5 is down an octave, 2.0 is up an octave, etc. Sampleplayers can also play samples backwards, by setting a negative rate; note, however, this does not work with ADPCM-encoded files.",
         returns = "(fun(self: pd_sampleplayer, rate: number))",
-        type = "function"
+        type = "method"
       },
       setRateMod = {
-        args = "(self: pd_sampleplayer, signal: pd_signal?))",
+        args = "(signal: pd_signal?))",
         description = "Sets the signal to use as a rate modulator, added to the rate set with playdate.sound.sampleplayer:setRate(). Set to `nil` to clear the modulator.",
         returns = "(fun(self: pd_sampleplayer, signal: pd_signal? | nil)",
-        type = "function"
+        type = "method"
       },
       setSample = {
-        args = "(self: pd_sampleplayer, sample: pd_sample))",
+        args = "(sample: pd_sample))",
         description = "Sets the sample to be played.",
         returns = "(fun(self: pd_sampleplayer, sample: pd_sample))",
-        type = "function"
+        type = "method"
       },
       setVolume = {
-        args = "(self: pd_sampleplayer, left: number, right?: number))",
+        args = "(left: number, right?: number))",
         description = "Sets the playback volume (0.0 - 1.0) for left and right channels. If the optional `right` argument is omitted, it is the same as `left`. If the sampleplayer is currently playing using the default volume (that is, it wasn’t triggered by playAt() with a volume given) it also changes the volume of the playing sample.",
         returns = "(fun(self: pd_sampleplayer, left: number, right?: number | nil)",
-        type = "function"
+        type = "method"
       },
       stop = {
-        args = "(self: pd_sampleplayer))",
+        args = "()",
         description = "Stops playing the sample.",
         returns = "(fun(self: pd_sampleplayer))",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -2846,64 +2846,64 @@ return {
   pd_sequence = {
     childs = {
       addTrack = {
-        args = "(self: pd_sequence, track?: pd_track)",
+        args = "(track?: pd_track)",
         description = "Adds the given playdate.sound.track to the sequence. If track omitted, the function creates and returns a new track.",
         returns = "(pd_track | nil)",
-        type = "function"
+        type = "method"
       },
       allNotesOff = {
-        args = "(self: pd_sequence))",
+        args = "()",
         description = "Sends an allNotesOff() message to each track’s instrument.",
         returns = "(fun(self: pd_sequence))",
-        type = "function"
+        type = "method"
       },
       getCurrentStep = {
-        args = "(self: pd_sequence)",
+        args = "()",
         description = "Returns the step number the sequence is currently at.",
         returns = "(integer)",
-        type = "function"
+        type = "method"
       },
       getLength = {
-        args = "(self: pd_sequence)",
+        args = "()",
         description = "Returns the length of the longest track in the sequence, in steps. See also playdate.sound.track.getLength().",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       getTempo = {
-        args = "(self: pd_sequence)",
+        args = "()",
         description = "Returns the tempo of the sequence, in steps per second.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       getTrackAtIndex = {
-        args = "(self: pd_sequence, n: integer)",
+        args = "(n: integer)",
         description = "Returns the playdate.sound.track object at position n in the sequence.",
         returns = "(pd_track)",
-        type = "function"
+        type = "method"
       },
       getTrackCount = {
-        args = "(self: pd_sequence)",
+        args = "()",
         description = "Returns the number of tracks in the sequence.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       goToStep = {
-        args = "(self: pd_sequence, step: integer, play?: boolean))",
+        args = "(step: integer, play?: boolean))",
         description = "Moves the play position for the sequence to step number step. If play is set, triggers the notes at that step.",
         returns = "(fun(self: pd_sequence, step: integer, play?: boolean | nil)",
-        type = "function"
+        type = "method"
       },
       isPlaying = {
-        args = "(self: pd_sequence)",
+        args = "()",
         description = "Returns true if the sequence is currently playing.",
         returns = "(boolean)",
-        type = "function"
+        type = "method"
       },
       play = {
-        args = "(self: pd_sequence, finishCallback?: fun(pd_sequence)))",
+        args = "(finishCallback?: fun(pd_sequence)))",
         description = "Starts playing the sequence. finishCallback is an optional function to be called when the sequence finishes playing or is stopped. The sequence is passed to the callback as its single argument.",
         returns = "(fun(self: pd_sequence, finishCallback?: fun(pd_sequence) | nil)",
-        type = "function"
+        type = "method"
       },
       setLoops = {
         args = "(fun(self: pd_sequence, startStep: integer, endStep: integer, loopCount?: number)) | (fun(self: pd_sequence, loopCount: number))",
@@ -2912,22 +2912,22 @@ return {
         type = "function"
       },
       setTempo = {
-        args = "(self: pd_sequence, stepsPerSecond: number))",
+        args = "(stepsPerSecond: number))",
         description = "Sets the tempo of the sequence, in steps per second.",
         returns = "(fun(self: pd_sequence, stepsPerSecond: number))",
-        type = "function"
+        type = "method"
       },
       setTrackAtIndex = {
-        args = "(self: pd_sequence, n: integer, track: pd_track))",
+        args = "(n: integer, track: pd_track))",
         description = "Sets the given playdate.sound.track object at position n in the sequence.",
         returns = "(fun(self: pd_sequence, n: integer, track: pd_track))",
-        type = "function"
+        type = "method"
       },
       stop = {
-        args = "(self: pd_sequence))",
+        args = "()",
         description = "Stops playing the sequence.",
         returns = "(fun(self: pd_sequence))",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -2935,16 +2935,16 @@ return {
   pd_signal = {
     childs = {
       setOffset = {
-        args = "(self: pd_signal, offset: number))",
+        args = "(offset: number))",
         description = "Adds a constant offset to the signal (lfo, envelope, etc.).",
         returns = "(fun(self: pd_signal, offset: number))",
-        type = "function"
+        type = "method"
       },
       setScale = {
-        args = "(self: pd_signal, scale: number))",
+        args = "(scale: number))",
         description = "Multiplies the signal’s output by the given scale factor. The scale is applied before the offset.",
         returns = "(fun(self: pd_signal, scale: number))",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -2952,10 +2952,10 @@ return {
   pd_size = {
     childs = {
       copy = {
-        args = "(self: pd_size)",
+        args = "()",
         description = "Returns a new copy of the size.",
         returns = "(pd_size)",
-        type = "function"
+        type = "method"
       },
       height = {
         description = "You can directly read or write  the `width` and `height` values of a `size`.",
@@ -2963,10 +2963,10 @@ return {
         type = "value"
       },
       unpack = {
-        args = "(self: pd_size)",
+        args = "()",
         description = "Returns the values `width, height`.",
         returns = "((number, number))",
-        type = "function"
+        type = "method"
       },
       width = {
         description = "You can directly read or write  the `width` and `height` values of a `size`.",
@@ -2985,10 +2985,10 @@ return {
   pd_sprite = {
     childs = {
       add = {
-        args = "(self: pd_sprite))",
+        args = "()",
         description = "Adds the given sprite to the display list, so that it is drawn in the current scene.",
         returns = "(fun(self: pd_sprite))",
-        type = "function"
+        type = "method"
       },
       addDirtyRect = {
         args = "(x: number, y: number, width: number, height: number))",
@@ -2997,10 +2997,10 @@ return {
         type = "function"
       },
       alphaCollision = {
-        args = "(self: pd_sprite, anotherSprite: pd_sprite)",
+        args = "(anotherSprite: pd_sprite)",
         description = "Returns a boolean value set to true if a pixel-by-pixel comparison of the sprite images shows that non-transparent pixels are overlapping, based on the current bounds of the sprites.\nThis method may be used in conjunction with the standard collision architecture. Say, if overlappingSprites() or moveWithCollisions() report a collision of two sprite’s bounding rects, alphaCollision() could then be used to discern if a pixel-level collision occurred.",
         returns = "(boolean)",
-        type = "function"
+        type = "method"
       },
       checkCollisions = {
         args = "(fun(self: pd_sprite, x: number, y: number): (number, number, pd_sprite_collision_info[], integer)) | (fun(self: pd_sprite, point: pd_point",
@@ -3009,22 +3009,22 @@ return {
         type = "function"
       },
       clearClipRect = {
-        args = "(self: pd_sprite))",
+        args = "()",
         description = "Clears the sprite’s current clipping rectangle.",
         returns = "(fun(self: pd_sprite))",
-        type = "function"
+        type = "method"
       },
       clearCollideRect = {
-        args = "(self: pd_sprite))",
+        args = "()",
         description = "Clears the sprite’s collide rect set with setCollideRect().",
         returns = "(fun(self: pd_sprite))",
-        type = "function"
+        type = "method"
       },
       clearStencil = {
-        args = "(self: pd_sprite))",
+        args = "()",
         description = "Clears the sprite’s stencil.",
         returns = "(fun(self: pd_sprite))",
-        type = "function"
+        type = "method"
       },
       collisionResponse = {
         args = "nil | ((fun(self: pd_sprite, other: pd_sprite",
@@ -3033,16 +3033,16 @@ return {
         type = "function"
       },
       collisionsEnabled = {
-        args = "(self: pd_sprite)",
+        args = "()",
         description = "Returns the sprite’s `collisionsEnabled` flag.",
         returns = "(boolean)",
-        type = "function"
+        type = "method"
       },
       copy = {
-        args = "(self: pd_sprite)",
+        args = "()",
         description = "Returns a copy of the caller.",
         returns = "(pd_sprite)",
-        type = "function"
+        type = "method"
       },
       draw = {
         args = "nil | (fun(self: pd_sprite, x: number, y: number, width: number, height: number))",
@@ -3051,100 +3051,100 @@ return {
         type = "function"
       },
       getBounds = {
-        args = "(self: pd_sprite)",
+        args = "()",
         description = "getBounds() returns multiple values (`x`, `y`, `width`, `height`).",
         returns = "((number, number, number, number))",
-        type = "function"
+        type = "method"
       },
       getBoundsRect = {
-        args = "(self: pd_sprite)",
+        args = "()",
         description = "getBoundsRect() returns the sprite bounds as a playdate.geometry.rect object.",
         returns = "(pd_rect)",
-        type = "function"
+        type = "method"
       },
       getCenter = {
-        args = "(self: pd_sprite)",
+        args = "()",
         description = "Returns multiple values (x, y) representing the sprite’s drawing center as a fraction (ranging from 0.0 to 1.0) of the height and width.",
         returns = "((number, number))",
-        type = "function"
+        type = "method"
       },
       getCenterPoint = {
-        args = "(self: pd_sprite)",
+        args = "()",
         description = "Returns a playdate.geometry.point representing the sprite’s drawing center as a fraction (ranging from 0.0 to 1.0) of the height and width.",
         returns = "(pd_point)",
-        type = "function"
+        type = "method"
       },
       getCollideBounds = {
-        args = "(self: pd_sprite)",
+        args = "()",
         description = "Returns the sprite’s collide rect as multiple values, (`x`, `y`, `width`, `height`).\nThis function return coordinates relative to the sprite itself; the sprite’s position has no bearing on these values.",
         returns = "((number, number, number, number))",
-        type = "function"
+        type = "method"
       },
       getCollideRect = {
-        args = "(self: pd_sprite)",
+        args = "()",
         description = "Returns the sprite’s collide rect set with setCollideRect(). Return value is a playdate.geometry.rect.\nThis function return coordinates relative to the sprite itself; the sprite’s position has no bearing on these values.",
         returns = "(pd_rect)",
-        type = "function"
+        type = "method"
       },
       getCollidesWithGroupsMask = {
-        args = "(self: pd_sprite)",
+        args = "()",
         description = "Returns the integer value of the sprite’s collision bitmask.",
         returns = "(integer)",
-        type = "function"
+        type = "method"
       },
       getGroupMask = {
-        args = "(self: pd_sprite)",
+        args = "()",
         description = "getGroupMask() returns the integer value of the sprite’s group bitmask.",
         returns = "(integer)",
-        type = "function"
+        type = "method"
       },
       getImage = {
-        args = "(self: pd_sprite)",
+        args = "()",
         description = "Returns the playdate.graphics.image object that was set with setImage().",
         returns = "(pd_image)",
-        type = "function"
+        type = "method"
       },
       getImageFlip = {
-        args = "(self: pd_sprite)",
+        args = "()",
         description = "Returns one of the values listed at playdate.graphics.image:draw().",
         returns = "(pd_image)",
-        type = "function"
+        type = "method"
       },
       getPosition = {
-        args = "(self: pd_sprite)",
+        args = "()",
         description = "Returns the sprite’s current x, y position as multiple values (`x`, `y`).",
         returns = "((number, number))",
-        type = "function"
+        type = "method"
       },
       getRotation = {
-        args = "(self: pd_sprite)",
+        args = "()",
         description = "Returns the current rotation of the sprite.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       getScale = {
-        args = "(self: pd_sprite)",
+        args = "()",
         description = "Returns multiple values `(xScale, yScale)`, the current scaling of the sprite.",
         returns = "((number, number))",
-        type = "function"
+        type = "method"
       },
       getSize = {
-        args = "(self: pd_sprite)",
+        args = "()",
         description = "Returns multiple values `(width, height)`, the current size of the sprite.",
         returns = "((number, number))",
-        type = "function"
+        type = "method"
       },
       getTag = {
-        args = "(self: pd_sprite)",
+        args = "()",
         description = "Returns the sprite’s tag, an integer value.",
         returns = "(integer)",
-        type = "function"
+        type = "method"
       },
       getZIndex = {
-        args = "(self: pd_sprite)",
+        args = "()",
         description = "Returns the Z-index of the given sprite.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       height = {
         description = "Can be used to directly read your sprite’s height.",
@@ -3152,34 +3152,34 @@ return {
         type = "value"
       },
       isOpaque = {
-        args = "(self: pd_sprite)",
+        args = "()",
         description = "Returns the sprite’s current opaque flag.",
         returns = "(boolean)",
-        type = "function"
+        type = "method"
       },
       isVisible = {
-        args = "(self: pd_sprite)",
+        args = "()",
         description = "Returns a boolean value, true if the sprite is visible.",
         returns = "(boolean)",
-        type = "function"
+        type = "method"
       },
       markDirty = {
-        args = "(self: pd_sprite))",
+        args = "()",
         description = "Marks the rect defined by the sprite’s current bounds as needing a redraw.",
         returns = "(fun(self: pd_sprite))",
-        type = "function"
+        type = "method"
       },
       moveBy = {
-        args = "(self: pd_sprite, x: number, y: number))",
+        args = "(x: number, y: number))",
         description = "Moves the sprite by `x`, `y` pixels relative to its current position.",
         returns = "(fun(self: pd_sprite, x: number, y: number))",
-        type = "function"
+        type = "method"
       },
       moveTo = {
-        args = "(self: pd_sprite, x: number, y: number))",
+        args = "(x: number, y: number))",
         description = "Moves the sprite and resets the bounds based on the image dimensions and center.",
         returns = "(fun(self: pd_sprite, x: number, y: number))",
-        type = "function"
+        type = "method"
       },
       moveWithCollisions = {
         args = "(fun(self: pd_sprite, goalX: number, goalY: number): (number, number, pd_sprite_collision_info[], integer)) | (fun(self: pd_sprite, goalPoint: pd_point",
@@ -3188,22 +3188,22 @@ return {
         type = "function"
       },
       overlappingSprites = {
-        args = "(self: pd_sprite)",
+        args = "()",
         description = "Returns an array of sprites that have collide rects that are currently overlapping the calling sprite’s collide rect, taking the sprites' groups and collides-with masks into consideration.",
         returns = "(pd_sprite[])",
-        type = "function"
+        type = "method"
       },
       remove = {
-        args = "(self: pd_sprite))",
+        args = "()",
         description = "Removes the given sprite from the display list.",
         returns = "(fun(self: pd_sprite))",
-        type = "function"
+        type = "method"
       },
       removeAnimator = {
-        args = "(self: pd_sprite))",
+        args = "()",
         description = "Removes a playdate.graphics.animator assigned to the sprite",
         returns = "(fun(self: pd_sprite))",
-        type = "function"
+        type = "method"
       },
       removeSprites = {
         args = "(spriteArray: pd_sprite[]))",
@@ -3212,22 +3212,22 @@ return {
         type = "function"
       },
       resetCollidesWithGroupsMask = {
-        args = "(self: pd_sprite))",
+        args = "()",
         description = "Resets the sprite’s collides-with-groups mask to 0x00000000.",
         returns = "(fun(self: pd_sprite))",
-        type = "function"
+        type = "method"
       },
       resetGroupMask = {
-        args = "(self: pd_sprite))",
+        args = "()",
         description = "Resets the sprite’s group mask to 0x00000000.",
         returns = "(fun(self: pd_sprite))",
-        type = "function"
+        type = "method"
       },
       setAnimator = {
-        args = "(self: pd_sprite, animator: pd_animator, moveWithCollisions?: boolean, removeOnCollision?: boolean))",
+        args = "(animator: pd_animator, moveWithCollisions?: boolean, removeOnCollision?: boolean))",
         description = "You must import `CoreLibs/sprites` to use the setAnimator method.\nsetAnimator assigns an playdate.graphics.animator to the sprite, which will cause the sprite to automatically update its position each frame while the animator is active.\n`movesWithCollisions`, if provided and true will cause the sprite to move with collisions. A collision rect must be set on the sprite prior to passing true for this argument.\n`removeOnCollision`, if provided and true will cause the animator to be removed from the sprite when a collision occurs.\nsetAnimator should be called only after any custom update method has been set on the sprite.",
         returns = "(fun(self: pd_sprite, animator: pd_animator, moveWithCollisions?: boolean, removeOnCollision?: boolean | nil)",
-        type = "function"
+        type = "method"
       },
       setBounds = {
         args = "(fun(self: pd_sprite, upper-left-x: number, upper-left-y: number, width: number, height: number)) | (fun(self: pd_sprite, rect: pd_rect))",
@@ -3236,10 +3236,10 @@ return {
         type = "function"
       },
       setCenter = {
-        args = "(self: pd_sprite, x: number, y: number))",
+        args = "(x: number, y: number))",
         description = "Sets the sprite’s drawing center as a fraction (ranging from 0.0 to 1.0) of the height and width. Default is 0.5, 0.5 (the center of the sprite). This means that when you call :moveTo(x, y), the center of your sprite will be positioned at `x`, `y`. If you want x and y to represent the upper left corner of your sprite, specify the center as 0, 0.",
         returns = "(fun(self: pd_sprite, x: number, y: number))",
-        type = "function"
+        type = "method"
       },
       setClipRect = {
         args = "(fun(self: pd_sprite, x: number, y: number, width: number, height: number)) | (fun(self: pd_sprite, rect: pd_rect))",
@@ -3254,130 +3254,130 @@ return {
         type = "function"
       },
       setCollidesWithGroups = {
-        args = "(self: pd_sprite, groups: integer[]))",
+        args = "(groups: integer[]))",
         description = "Pass in a group number or an array of group numbers to specify which groups this sprite can collide with. Groups are numbered 1 through 32. Use setGroups() to specify which groups a sprite belongs to.\nAlternatively, you can specify group collision behavior with a bitmask by using setCollidesWithGroupsMask().",
         returns = "(fun(self: pd_sprite, groups: integer[]))",
-        type = "function"
+        type = "method"
       },
       setCollidesWithGroupsMask = {
-        args = "(self: pd_sprite, mask: integer))",
+        args = "(mask: integer))",
         description = "Sets the sprite’s collides-with-groups bitmask, which is 32 bits. The mask specifies which other sprite groups this sprite can collide with. Sprites only collide if the moving sprite’s `collidesWithGroupsMask` matches at least one group of a potential collision sprite (i.e. a bitwise AND (&) between the moving sprite’s `collidesWithGroupsMask` and a potential collision sprite’s `groupMask` != zero) or if the moving sprite’s `collidesWithGroupsMask` and the other sprite’s `groupMask` are both set to 0x00000000 (the default values).\nFor large mask numbers, pass the number as a hex value, eg. 0xFFFFFFFF to work around limitations in Lua’s integer sizes.",
         returns = "(fun(self: pd_sprite, mask: integer))",
-        type = "function"
+        type = "method"
       },
       setCollisionsEnabled = {
-        args = "(self: pd_sprite, flag: boolean))",
+        args = "(flag: boolean))",
         description = "The sprite’s `collisionsEnabled` flag (defaults to true) can be set to false in order to temporarily keep a sprite from colliding with any other sprite.",
         returns = "(fun(self: pd_sprite, flag: boolean))",
-        type = "function"
+        type = "method"
       },
       setGroupMask = {
-        args = "(self: pd_sprite, mask: integer))",
+        args = "(mask: integer))",
         description = "setGroupMask() sets the sprite’s group bitmask, which is 32 bits. In conjunction with the setCollidesWithGroupsMask() method, this controls which sprites can collide with each other.\nFor large group mask numbers, pass the number as a hex value, eg. 0xFFFFFFFF to work around limitations in Lua’s integer sizes.",
         returns = "(fun(self: pd_sprite, mask: integer))",
-        type = "function"
+        type = "method"
       },
       setGroups = {
-        args = "(self: pd_sprite, groups: integer[]))",
+        args = "(groups: integer[]))",
         description = "Adds the sprite to one or more collision groups. A group is a collection of sprites that exhibit similar collision behavior. (An example: in Atari’s `Asteroids`, asteroid sprites would all be added to the same group, while the player’s spaceship might be in a different group.) Use setCollidesWithGroups() to define which groups a sprite should collide with.\nThere are 32 groups, each defined by the integer 1 through 32. To add a sprite to only groups 1 and 3, for example, call mySprite:setGroups({1, 3}).\nAlternatively, use setGroupMask() to set group membership via a bitmask.",
         returns = "(fun(self: pd_sprite, groups: integer[]))",
-        type = "function"
+        type = "method"
       },
       setIgnoresDrawOffset = {
-        args = "(self: pd_sprite, flag: boolean))",
+        args = "(flag: boolean))",
         description = "When set to `true`, the sprite will draw in screen coordinates, ignoring the currently-set `drawOffset`.\nThis only affects drawing, and should not be used on sprites being used for collisions, which will still happen in world-space.",
         returns = "(fun(self: pd_sprite, flag: boolean))",
-        type = "function"
+        type = "method"
       },
       setImage = {
-        args = "(self: pd_sprite, image: pd_image, flip?: pd_image_flip, scale?: number, yscale?: number))",
+        args = "(image: pd_image, flip?: pd_image_flip, scale?: number, yscale?: number))",
         description = "Sets the sprite’s image to image, which should be an instance of playdate.graphics.image. The .flip_ argument is optional; see playdate.graphics.image:draw() for valid values. Optional scale arguments are also accepted. Unless disabled with playdate.graphics.sprite:setRedrawOnImageChange(), the sprite is automatically marked for redraw if the image isn’t the previous image.",
         returns = "(fun(self: pd_sprite, image: pd_image, flip?: pd_image_flip, scale?: number, yscale?: number | nil)",
-        type = "function"
+        type = "method"
       },
       setImageDrawMode = {
-        args = "(self: pd_sprite, mode: pd_draw_mode))",
+        args = "(mode: pd_draw_mode))",
         description = "Sets the mode for drawing the bitmap. See playdate.graphics.setImageDrawMode(mode) for valid modes.",
         returns = "(fun(self: pd_sprite, mode: pd_draw_mode))",
-        type = "function"
+        type = "method"
       },
       setImageFlip = {
-        args = "(self: pd_sprite, flip: pd_image_flip, flipCollideRect?: pd_rect))",
+        args = "(flip: pd_image_flip, flipCollideRect?: pd_rect))",
         description = "Flips the bitmap. See playdate.graphics.image:draw() for valid flip values.\nIf true is passed for the optional `flipCollideRect` argument, the sprite’s collideRect will be flipped as well.\nCalling setImage() will reset the sprite to its default, non-flipped orientation. So, if you call both setImage() and setImageFlip(), call setImage() first.",
         returns = "(fun(self: pd_sprite, flip: pd_image_flip, flipCollideRect?: pd_rect | nil)",
-        type = "function"
+        type = "method"
       },
       setOpaque = {
-        args = "(self: pd_sprite, flag: boolean))",
+        args = "(flag: boolean))",
         description = "Marking a sprite opaque tells the sprite system that it doesn’t need to draw anything underneath the sprite, since it will be overdrawn anyway. If you set an image without a mask/alpha channel on the sprite, it automatically sets the opaque flag.\nSetting a sprite to opaque can have performance benefits.",
         returns = "(fun(self: pd_sprite, flag: boolean))",
-        type = "function"
+        type = "method"
       },
       setRedrawsOnImageChange = {
-        args = "(self: pd_sprite, flag: boolean))",
+        args = "(flag: boolean))",
         description = "By default, sprites are automatically marked for redraw when their image is changed via playdate.graphics.sprite:setImage(). If disabled by calling this function with a `false` argument, playdate.graphics.sprite.addDirtyRect() can be used to mark the (potentially smaller) area of the screen that needs to be redrawn.",
         returns = "(fun(self: pd_sprite, flag: boolean))",
-        type = "function"
+        type = "method"
       },
       setRotation = {
-        args = "(self: pd_sprite, angle: number, scale?: number, yScale?: number))",
+        args = "(angle: number, scale?: number, yScale?: number))",
         description = "Sets the rotation for the sprite, in degrees clockwise, with an optional scaling factor. If setImage() is called after this, the rotation and scale is applied to the new image. Only affects sprites that have an image set. This function should be used with discretion, as it’s likely to be slow on the hardware. Consider pre-rendering rotated images for your sprites instead.",
         returns = "(fun(self: pd_sprite, angle: number, scale?: number, yScale?: number | nil)",
-        type = "function"
+        type = "method"
       },
       setScale = {
-        args = "(self: pd_sprite, scale: number, yScale?: number))",
+        args = "(scale: number, yScale?: number))",
         description = "Sets the scaling factor for the sprite, with an optional separate scaling for the y axis. If setImage() is called after this, the scale factor is applied to the new image. Only affects sprites that have an image set.",
         returns = "(fun(self: pd_sprite, scale: number, yScale?: number | nil)",
-        type = "function"
+        type = "method"
       },
       setSize = {
-        args = "(self: pd_sprite, width: number, height: number))",
+        args = "(width: number, height: number))",
         description = "Sets the sprite’s size. The method has no effect if the sprite has an image set.",
         returns = "(fun(self: pd_sprite, width: number, height: number))",
-        type = "function"
+        type = "method"
       },
       setStencilImage = {
-        args = "(self: pd_sprite, stencil: pd_image, tile?: boolean))",
+        args = "(stencil: pd_image, tile?: boolean))",
         description = "Specifies a stencil image to be set on the frame buffer before the sprite is drawn. If `tile` is set, the the stencil will be tiled; in this case, the image width must be a multiple of 32 pixels.",
         returns = "(fun(self: pd_sprite, stencil: pd_image, tile?: boolean | nil)",
-        type = "function"
+        type = "method"
       },
       setStencilPattern = {
-        args = "(self: pd_sprite, level: number, ditherType?: pd_dither_type))",
+        args = "(level: number, ditherType?: pd_dither_type))",
         description = "Sets the sprite’s stencil to a dither pattern specified by `level` and optional `ditherType` (defaults to playdate.graphics.image.kDitherTypeBayer8x8).",
         returns = "(fun(self: pd_sprite, level: number, ditherType?: pd_dither_type | nil)",
-        type = "function"
+        type = "method"
       },
       setTag = {
-        args = "(self: pd_sprite, tag: integer))",
+        args = "(tag: integer))",
         description = "Sets the sprite’s tag, an integer value in the range of 0 to 255, useful for identifying sprites later, particularly when working with collisions.",
         returns = "(fun(self: pd_sprite, tag: integer))",
-        type = "function"
+        type = "method"
       },
       setTilemap = {
-        args = "(self: pd_sprite, tilemap: pd_tilemap))",
+        args = "(tilemap: pd_tilemap))",
         description = "Sets the sprite’s contents to the given tilemap. Useful if you want to automate drawing of your tilemap, especially if interleaved by depth with other sprites being drawn.",
         returns = "(fun(self: pd_sprite, tilemap: pd_tilemap))",
-        type = "function"
+        type = "method"
       },
       setUpdatesEnabled = {
-        args = "(self: pd_sprite, flag: boolean))",
+        args = "(flag: boolean))",
         description = "The sprite’s `updatesEnabled` flag (defaults to true) determines whether a sprite’s update() method will be called. By default, a sprite’s update method does nothing; however, you may choose to have your sprite do something on every frame by implementing an update method on your sprite instance, or implementing it in your sprite subclass.",
         returns = "(fun(self: pd_sprite, flag: boolean))",
-        type = "function"
+        type = "method"
       },
       setVisible = {
-        args = "(self: pd_sprite, flag: boolean))",
+        args = "(flag: boolean))",
         description = "Sprites that aren’t visible don’t get their draw() method called.",
         returns = "(fun(self: pd_sprite, flag: boolean))",
-        type = "function"
+        type = "method"
       },
       setZIndex = {
-        args = "(self: pd_sprite, z: number))",
+        args = "(z: number))",
         description = "Sets the Z-index of the given sprite. Sprites with higher Z-indexes are drawn on top of those with lower Z-indexes. Valid values for `z` are in the range (-32768, 32767).",
         returns = "(fun(self: pd_sprite, z: number))",
-        type = "function"
+        type = "method"
       },
       update = {
         args = "nil | (fun(self: pd_sprite))",
@@ -3386,10 +3386,10 @@ return {
         type = "function"
       },
       updatesEnabled = {
-        args = "(self: pd_sprite)",
+        args = "()",
         description = "Returns a boolean value, true if updates are enabled on the sprite.",
         returns = "(boolean)",
-        type = "function"
+        type = "method"
       },
       width = {
         description = "Can be used to directly read your sprite’s width.",
@@ -3505,142 +3505,142 @@ return {
   pd_synth = {
     childs = {
       copy = {
-        args = "(self: pd_synth)",
+        args = "()",
         description = "Returns a copy of the given synth.",
         returns = "(pd_synth)",
-        type = "function"
+        type = "method"
       },
       getEnvelope = {
-        args = "(self: pd_synth)",
+        args = "()",
         description = "Returns the synth’s envelope as a playdate.sound.envelope object.",
         returns = "(pd_envelope)",
-        type = "function"
+        type = "method"
       },
       getVolume = {
-        args = "(self: pd_synth)",
+        args = "()",
         description = "Returns the current volume for the synth, a single value for mono sources or a pair of values (left, right) for stereo sources.\nVolume values are between 0.0 and 1.0.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       isPlaying = {
-        args = "(self: pd_synth)",
+        args = "()",
         description = "Returns true if the synth is still playing, including the release phase of the envelope.",
         returns = "(boolean)",
-        type = "function"
+        type = "method"
       },
       noteOff = {
-        args = "(self: pd_synth))",
+        args = "()",
         description = "Releases the note, if one is playing. The note will continue to be voiced through the release section of the synth’s envelope.",
         returns = "(fun(self: pd_synth))",
-        type = "function"
+        type = "method"
       },
       playMIDINote = {
-        args = "(self: pd_synth, note: string|number, volume?: number, length?: number, when?: number))",
+        args = "(note: string|number, volume?: number, length?: number, when?: number))",
         description = 'Identical to playNote but uses a note name like "C4", or MIDI note number (60=C4, 61=C#4, etc.). In the latter case, fractional values are allowed.',
         returns = "(fun(self: pd_synth, note: string|number, volume?: number, length?: number, when?: number | nil)",
-        type = "function"
+        type = "method"
       },
       playNote = {
-        args = "(self: pd_synth, pitch: number, volume?: number, length?: number, when?: number)",
+        args = "(pitch: number, volume?: number, length?: number, when?: number)",
         description = "Plays a note with the current waveform or sample.\n`pitch`: the pitch value is in Hertz. If a sample is playing, pitch=261.63 (C4) plays at normal speed\nin either function, a string like Db3 can be used instead of a number\n`volume`: 0 to 1, defaults to 1\n`length`: in seconds. If omitted, note will play until you call noteOff()\n`when`: seconds since the sound engine started (see playdate.sound.getCurrentTime). Defaults to the current time.\nThe function returns true if the synth was successfully added to the sound channel, otherwise false (i.e., if the channel is full).\nIf `pitch` is zero, this function calls noteOff() instead of potentially adding a non-zero sample, or DC offset, to the output.\nSynths currently only have a buffer of one note event. If you call `playNote()` while another note is waiting to play, it will replace that note. To create a sequence of notes to play over a period of time, see playdate.sound.sequence.",
         returns = "(boolean)",
-        type = "function"
+        type = "method"
       },
       setADSR = {
-        args = "(self: pd_synth, attack: number, decay: number, sustain: number, release: number))",
+        args = "(attack: number, decay: number, sustain: number, release: number))",
         description = "Sets the attack time, decay time, sustain level, and release time for the sound envelope, and optionally the curvature.",
         returns = "(fun(self: pd_synth, attack: number, decay: number, sustain: number, release: number))",
-        type = "function"
+        type = "method"
       },
       setAmplitudeMod = {
-        args = "(self: pd_synth, signal: pd_signal?))",
+        args = "(signal: pd_signal?))",
         description = "Sets the signal to use as the amplitude modulator. Set to `nil` to clear the modulator.",
         returns = "(fun(self: pd_synth, signal: pd_signal? | nil)",
-        type = "function"
+        type = "method"
       },
       setAttack = {
-        args = "(self: pd_synth, time: number))",
+        args = "(time: number))",
         description = "Sets the attack time, in seconds.",
         returns = "(fun(self: pd_synth, time: number))",
-        type = "function"
+        type = "method"
       },
       setDecay = {
-        args = "(self: pd_synth, time: number))",
+        args = "(time: number))",
         description = "Sets the decay time, in seconds.",
         returns = "(fun(self: pd_synth, time: number))",
-        type = "function"
+        type = "method"
       },
       setEnvelopeCurvature = {
-        args = "(self: pd_synth, amount: number))",
+        args = "(amount: number))",
         description = "Smoothly changes the envelope’s shape from linear (amount=0) to exponential (amount=1).",
         returns = "(fun(self: pd_synth, amount: number))",
-        type = "function"
+        type = "method"
       },
       setFinishCallback = {
-        args = "(self: pd_synth, function: fun()))",
+        args = "(function: fun()))",
         description = "Sets a function to be called when the synth stops playing.",
         returns = "(fun(self: pd_synth, function: fun()))",
-        type = "function"
+        type = "method"
       },
       setFrequencyMod = {
-        args = "(self: pd_synth, signal: pd_signal?))",
+        args = "(signal: pd_signal?))",
         description = "Sets the signal to use as the frequency modulator. Set to `nil` to clear the modulator.",
         returns = "(fun(self: pd_synth, signal: pd_signal? | nil)",
-        type = "function"
+        type = "method"
       },
       setLegato = {
-        args = "(self: pd_synth, flag: boolean))",
+        args = "(flag: boolean))",
         description = "Sets whether to use legato phrasing for the synth. If the legato flag is set and a new note starts while a previous note is still playing, the synth’s envelope remains in the sustain phase instead of starting a new attack.",
         returns = "(fun(self: pd_synth, flag: boolean))",
-        type = "function"
+        type = "method"
       },
       setParameter = {
-        args = "(self: pd_synth, parameter: integer, value: number))",
+        args = "(parameter: integer, value: number))",
         description = "Sets the parameter at (1-based) position `num` to the given value. Unless otherwise specified, `value` ranges from 0 to 1.",
         returns = "(fun(self: pd_synth, parameter: integer, value: number))",
-        type = "function"
+        type = "method"
       },
       setParameterMod = {
-        args = "(self: pd_synth, parameter: number, signal: pd_signal?))",
+        args = "(parameter: number, signal: pd_signal?))",
         description = "Sets the signal to modulate the parameter. Set to `nil` to clear the modulator.",
         returns = "(fun(self: pd_synth, parameter: number, signal: pd_signal? | nil)",
-        type = "function"
+        type = "method"
       },
       setRelease = {
-        args = "(self: pd_synth, time: number))",
+        args = "(time: number))",
         description = "Sets the release time, in seconds.",
         returns = "(fun(self: pd_synth, time: number))",
-        type = "function"
+        type = "method"
       },
       setSustain = {
-        args = "(self: pd_synth, level: number))",
+        args = "(level: number))",
         description = "Sets the sustain level, as a proportion of the total level (0.0 to 1.0).",
         returns = "(fun(self: pd_synth, level: number))",
-        type = "function"
+        type = "method"
       },
       setVolume = {
-        args = "(self: pd_synth, left: number, right?: number))",
+        args = "(left: number, right?: number))",
         description = "Sets the synth volume. If a single value is passed in, sets both left side and right side volume to the given value. If two values are given, volumes are set separately.\nVolume values are between 0.0 and 1.0.",
         returns = "(fun(self: pd_synth, left: number, right?: number | nil)",
-        type = "function"
+        type = "method"
       },
       setWaveform = {
-        args = "(self: pd_synth, waveform: pd_waveform|pd_sample))",
+        args = "(waveform: pd_waveform|pd_sample))",
         description = "Sets the waveform or Sample the synth plays. If a sample is given, its data must be uncompressed PCM, not ADPCM. Otherwise `waveform` should be one of the following constants:\n`playdate.sound.kWaveSine`\n`playdate.sound.kWaveSquare`\n`playdate.sound.kWaveSawtooth`\n`playdate.sound.kWaveTriangle`\n`playdate.sound.kWaveNoise`\n`playdate.sound.kWavePOPhase`\n`playdate.sound.kWavePODigital`\n`playdate.sound.kWavePOVosim`",
         returns = "(fun(self: pd_synth, waveform: pd_waveform|pd_sample))",
-        type = "function"
+        type = "method"
       },
       setWavetable = {
-        args = "(self: pd_synth, sample: pd_sample, samplesize: integer, xsize: integer, ysize?: integer))",
+        args = "(sample: pd_sample, samplesize: integer, xsize: integer, ysize?: integer))",
         description = 'Sets a wavetable for the synth to play. Sample data must be 16-bit mono uncompressed. samplesize is the number of samples in each waveform "cell" in the table and must be a power of 2. xsize is the number of cells across the wavetable. If the wavetable is two-dimensional, ysize gives the number of cells in the y direction.\nThe synth’s "position" in the wavetable is set manually with setParameter() or automated with setParameterModulator(). In some cases it’s easier to use a parameter that matches the waveform position in the table, in others (notably when using envelopes and lfos) it’s more convenient to use a 0-1 scale, so there’s some redundancy here. Parameters are\n1: x position, values are from 0 to the table width\n2: x position, values are from 0 to 1, parameter is scaled up to table width\nFor 2-D tables (rowwidth > 0):\n3: y position, values are from 0 to the table height\n4: y position, values are from 0 to 1, parameter is scaled up to table height',
         returns = "(fun(self: pd_synth, sample: pd_sample, samplesize: integer, xsize: integer, ysize?: integer | nil)",
-        type = "function"
+        type = "method"
       },
       stop = {
-        args = "(self: pd_synth))",
+        args = "()",
         description = "Stops the synth immediately, without playing the release part of the envelope.",
         returns = "(fun(self: pd_synth))",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -3663,64 +3663,64 @@ return {
         type = "function"
       },
       getCollisionRects = {
-        args = "(self: pd_tilemap, emptyIDs: integer[])",
+        args = "(emptyIDs: integer[])",
         description = 'This function returns an array of playdate.geometry.rect objects that describe the areas of the tilemap that should trigger collisions. You can also think of them as the "impassable" rects of your tilemap. These rects will be in tilemap coordinates, not pixel coordinates.\n`emptyIDs` is an array that contains the tile IDs of "empty" (or "passable") tiles in the tilemap — in other words, tile IDs that should not trigger a collision. Tiles with default IDs of 0 are treated as empty by default, so you do not need to include 0 in the array.\nFor example, if you have a tilemap describing terrain, where tile ID 1 represents grass the player can walk over, and tile ID 2 represents mountains that the player can’t cross, you’d pass an array containing just the value 1. You’ll get a back an array of a minimal number of rects describing the areas where there are mountain tiles.\nYou can then pass each of those rects into playdate.graphics.sprite.addEmptyCollisionSprite() to add an empty (invisible) sprite into the scene for the built-in collision detection methods. In this example, collide rects would be added around mountain tiles but not grass tiles.\nAlternatively, instead of calling getCollisionRects() at all, you can use the convenience function playdate.graphics.sprite.addWallSprites(), which is effectively a shortcut for calling getCollisionRects() and passing all the resulting rects to addEmptyCollisionSprite().',
         returns = "(pd_rect)",
-        type = "function"
+        type = "method"
       },
       getPixelSize = {
-        args = "(self: pd_tilemap)",
+        args = "()",
         description = "Returns the size of the tilemap in pixels; that is, the size of the image multiplied by the number of rows and columns in the map. Returns multiple values (`width`, `height`).",
         returns = "((number, number))",
-        type = "function"
+        type = "method"
       },
       getSize = {
-        args = "(self: pd_tilemap)",
+        args = "()",
         description = "Returns the size of the tile map, in tiles, as a pair, (`width`, `height`).",
         returns = "((number, number))",
-        type = "function"
+        type = "method"
       },
       getTileAtPosition = {
-        args = "(self: pd_tilemap, x: number, y: number)",
+        args = "(x: number, y: number)",
         description = "Returns the image index of the tile at the given `x` and `y` coordinate. If `x` or `y` is out of bounds, returns nil.\nTilemaps and imagetables, like Lua arrays, are 1-based, not 0-based. tilemap:getTileAtPosition(1, 1) will return the index of the top-leftmost tile.",
         returns = "(integer | nil)",
-        type = "function"
+        type = "method"
       },
       getTileSize = {
-        args = "(self: pd_tilemap)",
+        args = "()",
         description = "Returns multiple values (`width`, `height`), the pixel width and height of an individual tile.",
         returns = "((number, number))",
-        type = "function"
+        type = "method"
       },
       getTiles = {
-        args = "(self: pd_tilemap)",
+        args = "()",
         description = "Returns `data`, `width`\n`data` is a flat, one-dimensional array-like table containing index values to the tilemap’s imagetable.\n`width` is the width of the tile map, in number of tiles.",
         returns = "((integer[], integer))",
-        type = "function"
+        type = "method"
       },
       setImageTable = {
-        args = "(self: pd_tilemap, table: pd_imagetable))",
+        args = "(table: pd_imagetable))",
         description = "Sets the tilemap’s playdate.graphics.imagetable to `table`, a playdate.graphics.imagetable.",
         returns = "(fun(self: pd_tilemap, table: pd_imagetable))",
-        type = "function"
+        type = "method"
       },
       setSize = {
-        args = "(self: pd_tilemap, width: number, height: number))",
+        args = "(width: number, height: number))",
         description = "Sets the tilemap’s width and height, in number of tiles.",
         returns = "(fun(self: pd_tilemap, width: number, height: number))",
-        type = "function"
+        type = "method"
       },
       setTileAtPosition = {
-        args = "(self: pd_tilemap, x: number, y: number, index: integer))",
+        args = "(x: number, y: number, index: integer))",
         description = "Sets the index of the tile at tilemap position (`x`, `y`). `index` is the (1-based) index of the image in the tilemap’s playdate.graphics.imagetable.\nTilemaps and imagetables, like Lua arrays, are 1-based, not 0-based. tilemap:setTileAtPosition(1, 1, 2) will set the index of the tile in the top-leftmost position to 2.",
         returns = "(fun(self: pd_tilemap, x: number, y: number, index: integer))",
-        type = "function"
+        type = "method"
       },
       setTiles = {
-        args = "(self: pd_tilemap, data: integer[], width: number))",
+        args = "(data: integer[], width: number))",
         description = "Sets the tilemap’s width to `width`, then populates the tilemap with `data`, which should be a flat, one-dimensional array-like table containing index values to the tilemap’s imagetable.",
         returns = "(fun(self: pd_tilemap, data: integer[], width: number))",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -3806,10 +3806,10 @@ return {
         type = "value"
       },
       pause = {
-        args = "(self: pd_timer))",
+        args = "()",
         description = "Pauses a timer. (There is no need to call :start() on a newly-instantiated timer: timers start automatically.)",
         returns = "(fun(self: pd_timer))",
-        type = "function"
+        type = "method"
       },
       paused = {
         description = "If true, the timer will be paused. The update callback will not be called when the timer is paused. Can be set directly, or by using playdate.timer:pause() and playdate.timer:start(). Defaults to false.",
@@ -3817,10 +3817,10 @@ return {
         type = "value"
       },
       remove = {
-        args = "(self: pd_timer))",
+        args = "()",
         description = "Removes this timer from the list of timers. This happens automatically when a non-repeating timer reaches its end, but you can use this method to dispose of timers manually.\nNote that timers do not actually get removed until the next invocation of playdate.timer.updateTimers().",
         returns = "(fun(self: pd_timer))",
-        type = "function"
+        type = "method"
       },
       repeats = {
         description = "If true, the timer starts over from the beginning when it completes. Defaults to false.",
@@ -3828,10 +3828,10 @@ return {
         type = "value"
       },
       reset = {
-        args = "(self: pd_timer))",
+        args = "()",
         description = "Resets a timer to its initial values.",
         returns = "(fun(self: pd_timer))",
-        type = "function"
+        type = "method"
       },
       reverseEasingFunction = {
         args = "(fun(number, number, number, number",
@@ -3845,10 +3845,10 @@ return {
         type = "value"
       },
       start = {
-        args = "(self: pd_timer))",
+        args = "()",
         description = "Resumes a previously paused timer. There is no need to call :start() on a newly-instantiated timer: timers start automatically.",
         returns = "(fun(self: pd_timer))",
-        type = "function"
+        type = "method"
       },
       startValue = {
         description = "Start value used when calculating `value`.",
@@ -3888,10 +3888,10 @@ return {
   pd_track = {
     childs = {
       addControlSignal = {
-        args = "(self: pd_track, s: pd_controlsignal))",
+        args = "(s: pd_controlsignal))",
         description = "Adds a playdate.sound.controlsignal object to the track. Note that the signal must be assigned to a modulation input for it to have any audible effect. The input can be anywhere in the sound engine—​it’s not required to belong to the track in any way.",
         returns = "(fun(self: pd_track, s: pd_controlsignal))",
-        type = "function"
+        type = "method"
       },
       addNote = {
         args = "(fun(self: pd_track, step: integer, note: string|number, length: number, velocity?: number)) | (fun(self: pd_track, table: pd_note_table))",
@@ -3900,70 +3900,70 @@ return {
         type = "function"
       },
       clearNotes = {
-        args = "(self: pd_track))",
+        args = "()",
         description = "Clears all notes from the track.",
         returns = "(fun(self: pd_track))",
-        type = "function"
+        type = "method"
       },
       getControlSignals = {
-        args = "(self: pd_track)",
+        args = "()",
         description = "Returns an array of playdate.sound.controlsignal objects assigned to this track.",
         returns = "(pd_controlsignal[])",
-        type = "function"
+        type = "method"
       },
       getInstrument = {
-        args = "(self: pd_track)",
+        args = "()",
         description = "Gets the playdate.sound.instrument that this track plays.",
         returns = "(pd_instrument)",
-        type = "function"
+        type = "method"
       },
       getLength = {
-        args = "(self: pd_track)",
+        args = "()",
         description = "Returns the length, in steps, of the track—​that is, the step where the last note in the track ends.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       getNotes = {
-        args = "(self: pd_track, step?: integer, endstep?: integer)",
+        args = "(step?: integer, endstep?: integer)",
         description = "Returns an array of tables representing the note events in the track.\nThe tables contain values for keys step, note, length, and velocity. If step is given, the function returns only the notes at that step; if both step and endstep are set, it returns the notes between the two steps (including notes at endstep). n.b. The note field in the event tables is always a MIDI note number value, even if the note was added using the string notation.",
         returns = "(pd_note_table[])",
-        type = "function"
+        type = "method"
       },
       getNotesActive = {
-        args = "(self: pd_track)",
+        args = "()",
         description = "Returns the current number of notes active in the track.",
         returns = "(integer)",
-        type = "function"
+        type = "method"
       },
       getPolyphony = {
-        args = "(self: pd_track)",
+        args = "()",
         description = "Returns the maximum number of notes simultaneously active in the track. (Known bug: this currently only works for midi files)",
         returns = "(integer)",
-        type = "function"
+        type = "method"
       },
       removeNote = {
-        args = "(self: pd_track, step: integer, note: string|number))",
+        args = "(step: integer, note: string|number))",
         description = "Removes the note event at `step` playing `note`.",
         returns = "(fun(self: pd_track, step: integer, note: string|number))",
-        type = "function"
+        type = "method"
       },
       setInstrument = {
-        args = "(self: pd_track, inst: pd_instrument|pd_synth))",
+        args = "(inst: pd_instrument|pd_synth))",
         description = "Sets the playdate.sound.instrument that this track plays. If inst is a playdate.sound.synth, the function creates an instrument for the synth.",
         returns = "(fun(self: pd_track, inst: pd_instrument|pd_synth))",
-        type = "function"
+        type = "method"
       },
       setMuted = {
-        args = "(self: pd_track, flag: boolean))",
+        args = "(flag: boolean))",
         description = "Mutes or unmutes the track.",
         returns = "(fun(self: pd_track, flag: boolean))",
-        type = "function"
+        type = "method"
       },
       setNotes = {
-        args = "(self: pd_track, list: pd_note_table[]))",
+        args = "(list: pd_note_table[]))",
         description = "Set multiple notes at once, each array element should be a table containing values for the keys The tables contain values for keys step, note, length, and velocity.",
         returns = "(fun(self: pd_track, list: pd_note_table[]))",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -3971,52 +3971,52 @@ return {
   pd_twopolefilter = {
     childs = {
       setFrequency = {
-        args = "(self: pd_twopolefilter, f: number))",
+        args = "(f: number))",
         description = "Sets the center frequency (in Hz) of the filter to `f`.",
         returns = "(fun(self: pd_twopolefilter, f: number))",
-        type = "function"
+        type = "method"
       },
       setFrequencyMod = {
-        args = "(self: pd_twopolefilter, signal: pd_signal?))",
+        args = "(signal: pd_signal?))",
         description = "Sets a signal to modulate the filter frequency. Set to `nil` to clear the modulator.",
         returns = "(fun(self: pd_twopolefilter, signal: pd_signal? | nil)",
-        type = "function"
+        type = "method"
       },
       setGain = {
-        args = "(self: pd_twopolefilter, g: number))",
+        args = "(g: number))",
         description = "Sets the gain of the filter to `g`. Gain is only used in PEQ and shelf type filters.",
         returns = "(fun(self: pd_twopolefilter, g: number))",
-        type = "function"
+        type = "method"
       },
       setMix = {
-        args = "(self: pd_twopolefilter, level: number))",
+        args = "(level: number))",
         description = "Sets the wet/dry mix for the effect. A level of 1 (full wet) replaces the input with the effect output; 0 leaves the effect out of the mix.",
         returns = "(fun(self: pd_twopolefilter, level: number))",
-        type = "function"
+        type = "method"
       },
       setMixMod = {
-        args = "(self: pd_twopolefilter, signal: pd_signal?))",
+        args = "(signal: pd_signal?))",
         description = "Sets a signal to modulate the mix level. Set to `nil` to clear the modulator.",
         returns = "(fun(self: pd_twopolefilter, signal: pd_signal? | nil)",
-        type = "function"
+        type = "method"
       },
       setResonance = {
-        args = "(self: pd_twopolefilter, r: number))",
+        args = "(r: number))",
         description = "Sets the resonance of the filter to `r`. Valid values are in the range 0-1. This parameter has no effect on shelf type filters.",
         returns = "(fun(self: pd_twopolefilter, r: number))",
-        type = "function"
+        type = "method"
       },
       setResonanceMod = {
-        args = "(self: pd_twopolefilter, signal: pd_signal?))",
+        args = "(signal: pd_signal?))",
         description = "Sets a signal to modulate the filter resonance. Set to `nil` to clear the modulator.",
         returns = "(fun(self: pd_twopolefilter, signal: pd_signal? | nil)",
-        type = "function"
+        type = "method"
       },
       setType = {
-        args = "(self: pd_twopolefilter, type: pd_sound_filter))",
+        args = "(type: pd_sound_filter))",
         description = "Sets the type of the filter to `type`.",
         returns = "(fun(self: pd_twopolefilter, type: pd_sound_filter))",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -4024,28 +4024,28 @@ return {
   pd_vector2D = {
     childs = {
       addVector = {
-        args = "(self: pd_vector2D, v: pd_vector2D))",
+        args = "(v: pd_vector2D))",
         description = "Modifies the caller by adding vector `v`.",
         returns = "(fun(self: pd_vector2D, v: pd_vector2D))",
-        type = "function"
+        type = "method"
       },
       angleBetween = {
-        args = "(self: pd_vector2D, v: pd_vector2D)",
+        args = "(v: pd_vector2D)",
         description = "Returns the angle between the caller and the vector `v`.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       copy = {
-        args = "(self: pd_vector2D)",
+        args = "()",
         description = "Returns a new copy of the vector2D.",
         returns = "(pd_vector2D)",
-        type = "function"
+        type = "method"
       },
       dotProduct = {
-        args = "(self: pd_vector2D, v: pd_vector2D)",
+        args = "(v: pd_vector2D)",
         description = "Returns the dot product of the caller and the vector `v`.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       dx = {
         description = "Returns the vector formed by negating the components of vector `v`.\nReturns the vector formed by adding vector `v2` to vector `v1`.\nReturns the vector formed by subtracting vector `v2` from vector `v1`.\nReturns the vector `v1` scaled by `s`.\nReturns the dot product of the two vectors.\nReturns the vector transformed by transform `t`.\nReturns the vector divided by scalar `s`.\nYou can directly read or write `dx`, or `dy` values to a vector2D.",
@@ -4058,70 +4058,70 @@ return {
         type = "value"
       },
       leftNormal = {
-        args = "(self: pd_vector2D)",
+        args = "()",
         description = "Returns a vector that is the left normal of the caller.",
         returns = "(pd_vector2D)",
-        type = "function"
+        type = "method"
       },
       magnitude = {
-        args = "(self: pd_vector2D)",
+        args = "()",
         description = "Returns the magnitude of the caller.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       magnitudeSquared = {
-        args = "(self: pd_vector2D)",
+        args = "()",
         description = "Returns the square of the magnitude of the caller.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       normalize = {
-        args = "(self: pd_vector2D))",
+        args = "()",
         description = "Modifies the caller by normalizing it so that its length is 1. If the vector is (0,0), the vector is unchanged.",
         returns = "(fun(self: pd_vector2D))",
-        type = "function"
+        type = "method"
       },
       normalized = {
-        args = "(self: pd_vector2D)",
+        args = "()",
         description = "Returns a new vector by normalizing the given vector.",
         returns = "(pd_vector2D)",
-        type = "function"
+        type = "method"
       },
       projectAlong = {
-        args = "(self: pd_vector2D, v: pd_vector2D))",
+        args = "(v: pd_vector2D))",
         description = "Modifies the caller by projecting it along the vector `v`.",
         returns = "(fun(self: pd_vector2D, v: pd_vector2D))",
-        type = "function"
+        type = "method"
       },
       projectedAlong = {
-        args = "(self: pd_vector2D, v: pd_vector2D)",
+        args = "(v: pd_vector2D)",
         description = "Returns a new vector created by projecting the given vector along the vector `v`.",
         returns = "(pd_vector2D)",
-        type = "function"
+        type = "method"
       },
       rightNormal = {
-        args = "(self: pd_vector2D)",
+        args = "()",
         description = "Returns a vector that is the right normal of the caller.",
         returns = "(pd_vector2D)",
-        type = "function"
+        type = "method"
       },
       scale = {
-        args = "(self: pd_vector2D, s: number))",
+        args = "(s: number))",
         description = "Modifies the caller, scaling it by amount `s`.",
         returns = "(fun(self: pd_vector2D, s: number))",
-        type = "function"
+        type = "method"
       },
       scaledBy = {
-        args = "(self: pd_vector2D, s: number)",
+        args = "(s: number)",
         description = "Returns the given vector scaled by `s`.",
         returns = "(pd_vector2D)",
-        type = "function"
+        type = "method"
       },
       unpack = {
-        args = "(self: pd_vector2D)",
+        args = "()",
         description = "Returns the values `dx, dy`.",
         returns = "((number, number))",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
@@ -4129,46 +4129,46 @@ return {
   pd_video = {
     childs = {
       getContext = {
-        args = "(self: pd_video)",
+        args = "()",
         description = "Returns the image into which the video will be rendered, creating it if needed.",
         returns = "(pd_image)",
-        type = "function"
+        type = "method"
       },
       getFrameCount = {
-        args = "(self: pd_video)",
+        args = "()",
         description = "Returns the number of frames in the video.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       getFrameRate = {
-        args = "(self: pd_video)",
+        args = "()",
         description = "Returns the number of frames per second of the video source. This number is simply for record-keeping, it is not used internally—​the game code is responsible for figuring out which frame to show when.",
         returns = "(number)",
-        type = "function"
+        type = "method"
       },
       getSize = {
-        args = "(self: pd_video)",
+        args = "()",
         description = "Returns the width and height of the video as multiple vlaues (`width`, `height`).",
         returns = "((number, number))",
-        type = "function"
+        type = "method"
       },
       renderFrame = {
-        args = "(self: pd_video, number: integer))",
+        args = "(number: integer))",
         description = "Draws the given frame into the video’s render context.",
         returns = "(fun(self: pd_video, number: integer))",
-        type = "function"
+        type = "method"
       },
       setContext = {
-        args = "(self: pd_video, image: pd_image))",
+        args = "(image: pd_image))",
         description = "Sets the given image to the video render context. Future video:renderFrame() calls will draw into this image.",
         returns = "(fun(self: pd_video, image: pd_image))",
-        type = "function"
+        type = "method"
       },
       useScreenContext = {
-        args = "(self: pd_video))",
+        args = "()",
         description = "Sets the display framebuffer as the video’s render context.",
         returns = "(fun(self: pd_video))",
-        type = "function"
+        type = "method"
       }
     },
     type = "class"
