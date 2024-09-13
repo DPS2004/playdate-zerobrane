@@ -180,6 +180,12 @@ api.pd_json_lib = nil
 api.table = copy(api.tablelib)
 api.tablelib = nil
 
+api.import = {
+	type = 'keyword',
+	description = 'The Playdate runtime uses import instead of the standard Lua require function, and it behaves a little differently: All files imported from main.lua (and imported from files imported from main.lua, and so on) are compiled into a single pdz file, and import runs the code from the file only once. A second import call from anywhere in the pdz will do nothing.',
+	args = '(file: file)'
+}
+
 out = io.open('playdate.lua','w')
 out:write('return ' .. inspect(api))
 out:close()
