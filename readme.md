@@ -19,10 +19,13 @@ For the purpose of compiling and running your code, the `PLAYDATE_SDK_PATH` envi
 Once installed, `Playdate` can be selected as an option for a project's Lua interpreter.
 
 Take care to ensure that your project path is the `Source` folder, and not the folder containing it!
+![sourcedir](https://github.com/user-attachments/assets/d3e19091-dde8-44ed-baf1-2fb85ccf837a)
 
 To run your program on the simulator, use the Run option from within ZeroBrane, by default mapped to F6.
 
 To run your program on a real Playdate, first connect your system to your computer via USB, and ensure that it is unlocked (not on the clock screen). Then, use the Start Debugging option, by default mapped to F5.
+
+![runs](https://github.com/user-attachments/assets/96a1d15f-7f90-45cc-b988-0dde7ad38b1b)
 
 
 ## License
