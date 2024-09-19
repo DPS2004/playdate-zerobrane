@@ -18,6 +18,8 @@ end
 return {
 	name = 'Playdate',
 	description = 'Playdate Lua API',
+	luaversion = '5.4',
+	skipcompile = true,
 	api = {'baselib','playdate'},
 	frun = function(self,wfilename,rundebug)
 		
