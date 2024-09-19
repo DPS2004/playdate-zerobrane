@@ -36,3 +36,7 @@ This project makes use of code from the following projects:
 [inspect.lua](https://github.com/kikito/inspect.lua) by [Enrique García Cota](https://github.com/kikito) (MIT License)
 
 All other code is under the MIT License. Please see the LICENSE file for more information.
+
+
+
+The Playdate SDK and Playdate platform are solely the properties of Panic. If Panic wishes for me to stop distibution of this project, I will do so.
