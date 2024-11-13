@@ -2,7 +2,7 @@
 
 This project aims to allow [ZeroBrane Studio](https://zerobrane.com/) to support the [Playdate SDK and API](https://play.date/dev/). 
 
-Current API version: 2.5.0
+Current API version: 2.6.0
 
 
 ## Features

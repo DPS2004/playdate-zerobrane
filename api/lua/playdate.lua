@@ -407,10 +407,22 @@ return {
         returns = "(fun(self: pd_channel, source: pd_source))",
         type = "method"
       },
+      getDryLevelSignal = {
+        args = "()",
+        description = "Returns a signal that follows the volume of the channel before effects are applied.",
+        returns = "(pd_signal)",
+        type = "method"
+      },
       getVolume = {
         args = "()",
         description = "Gets the volume (0.0 - 1.0) for the channel.",
         returns = "(number)",
+        type = "method"
+      },
+      getWetLevelSignal = {
+        args = "()",
+        description = "Returns a signal that follows the volume of the channel after effects are applied.",
+        returns = "(pd_signal)",
         type = "method"
       },
       remove = {
@@ -486,6 +498,12 @@ return {
       getControllerType = {
         args = "()",
         description = "Control signals in midi files are assigned a controller number, which describes the intent of the control. This function returns the controller number.",
+        returns = "(number)",
+        type = "method"
+      },
+      getValue = {
+        args = "()",
+        description = "Returns the current output value of the control signal.",
         returns = "(number)",
         type = "method"
       },
@@ -598,6 +616,12 @@ return {
   },
   pd_envelope = {
     childs = {
+      getValue = {
+        args = "()",
+        description = "Returns the current signal value of the envelope.",
+        returns = "(number)",
+        type = "method"
+      },
       setAttack = {
         args = "(attack: number))",
         description = "Sets the envelope attack time to `attack`, in seconds.",
@@ -723,9 +747,9 @@ return {
         type = "method"
       },
       seek = {
-        args = "(offset: number))",
-        description = "Sets the file read/write position to the given byte offset.\nEquivalent to playdate->file->seek() in the C API.",
-        returns = "(fun(self: pd_file_file, offset: number))",
+        args = "(offset: number, whence?: pd_seek_mode))",
+        description = "Sets the file read/write position to the given byte offset. whence, if given is one of the following:\nplaydate.file.kSeekSet: offset is an absolute offset from the start of the file\nplaydate.file.kSeekFromCurrent: offset is relative to the current position\nplaydate.file.kSeekFromEnd: offset is an offset from the end of the file (negative values are before the end, positive are past the end)\nEquivalent to playdate->file->seek() in the C API.",
+        returns = "(fun(self: pd_file_file, offset: number, whence?: pd_seek_mode | nil)",
         type = "method"
       },
       tell = {
@@ -900,10 +924,10 @@ return {
   pd_font = {
     childs = {
       drawText = {
-        args = "(text: string, x: number, y: number, leadingAdjustment?: number)",
-        description = 'Draws a string at the specified x, y coordinate using this particular font instance. (Compare to playdate.graphics.drawText(text, x, y), which draws the string with whatever the "current font", as defined by playdate.graphics.setFont(font)).\nThe optional `leadingAdjustment` may be used to modify the spacing between lines of text. Pass nil to use the default leading for the font.\nReturns `width`, `height`, indicating the size in pixels of the drawn text.\nfont:drawText() does not support inline styles like bold and italics. Instead use playdate.graphics.drawText().',
-        returns = "((number, number))",
-        type = "method"
+        args = "(fun(self: pd_font, text: string, x: number, y: number, width?: number, height?: number, leadingAdjustment?: number, wrapMode?: pd_wrap_mode, alignment?: pd_text_alignment): (number, number)) | (fun(self: pd_font, text: string, rect: pd_rect, leadingAdjustment?: number, wrapMode?: pd_wrap_mode, alignment?: pd_text_alignment",
+        description = 'Draws a string at the specified `x, y` coordinate using this particular font instance. (Compare to playdate.graphics.drawText(text, x, y), which draws the string with whatever the "current font" is, as defined by playdate.graphics.setFont(font)).\nIf `width` and `height` are specified, drawing is constrained to the rectangle (x,y,width,height), using the given wrapMode and alignment if provided. Alternatively, a playdate.geometry.rect object can be passed instead of x,y,width,height. Valid values for `wrapMode` are\n`playdate.graphics.kWrapClip`\n`playdate.graphics.kWrapCharacter`\n`playdate.graphics.kWrapWord`\nand values for `alignment` are\n`playdate.graphics.kAlignLeft`\n`playdate.graphics.kAlignCenter`\n`playdate.graphics.kAlignRight`\nThe default wrap mode is playdate.graphics.kWrapWord and the default alignment is playdate.graphics.kAlignLeft.\nThe optional `leadingAdjustment` may be used to modify the spacing between lines of text.\nThe function returns two numbers indicating the width and height of the drawn text.\nfont:drawText() does not support inline styles like bold and italics. Instead use playdate.graphics.drawText().',
+        returns = "((number, number)))",
+        type = "function"
       },
       drawTextAligned = {
         args = "(text: string, x: number, y: number, alignment: pd_text_alignment, leadingAdjustment?: number))",
@@ -1815,6 +1839,18 @@ return {
         returns = "(fun(self: pd_instrument, frequency: number, vel?: number, length?: number, when?: number | nil)",
         type = "method"
       },
+      setPitchBend = {
+        args = "(amount: number))",
+        description = "Sets the pitch bend to be applied to the voices in the instrument, as a fraction of the full range.",
+        returns = "(fun(self: pd_instrument, amount: number))",
+        type = "method"
+      },
+      setPitchBendRange = {
+        args = "(halfsteps: number))",
+        description = "Sets the pitch bend range for the voices in the instrument. The default range is 12, for a full octave.",
+        returns = "(fun(self: pd_instrument, halfsteps: number))",
+        type = "method"
+      },
       setTranspose = {
         args = "(halfsteps: number))",
         description = "Transposes all voices in the instrument. `halfsteps` can be a fractional value.",
@@ -1870,6 +1906,12 @@ return {
   },
   pd_lfo = {
     childs = {
+      getValue = {
+        args = "()",
+        description = "Returns the current signal value of the LFO.",
+        returns = "(number)",
+        type = "method"
+      },
       setArpeggio = {
         args = "(note1: number, ...: number))",
         description = "Sets the LFO type to arpeggio, where the given values are in half-steps from the center note. For example, the sequence (0, 4, 7, 12) plays the notes of a major chord.",
@@ -2848,6 +2890,9 @@ return {
     },
     type = "class"
   },
+  pd_seek_mode = {
+    type = "class"
+  },
   pd_sequence = {
     childs = {
       addTrack = {
@@ -2939,6 +2984,12 @@ return {
   },
   pd_signal = {
     childs = {
+      getValue = {
+        args = "()",
+        description = "Returns the current output value of the signal.",
+        returns = "(number)",
+        type = "method"
+      },
       setOffset = {
         args = "(offset: number))",
         description = "Adds a constant offset to the signal (lfo, envelope, etc.).",
@@ -3230,7 +3281,7 @@ return {
       },
       setAnimator = {
         args = "(animator: pd_animator, moveWithCollisions?: boolean, removeOnCollision?: boolean))",
-        description = "You must import `CoreLibs/sprites` to use the setAnimator method.\nsetAnimator assigns an playdate.graphics.animator to the sprite, which will cause the sprite to automatically update its position each frame while the animator is active.\n`movesWithCollisions`, if provided and true will cause the sprite to move with collisions. A collision rect must be set on the sprite prior to passing true for this argument.\n`removeOnCollision`, if provided and true will cause the animator to be removed from the sprite when a collision occurs.\nsetAnimator should be called only after any custom update method has been set on the sprite.",
+        description = "You must import `CoreLibs/sprites` to use the setAnimator method.\nsetAnimator assigns an playdate.graphics.animator to the sprite, which will cause the sprite to automatically update its position each frame while the animator is active.\n`animator` should be a playdate.graphics.animator created using playdate.geometry.points for its start and end values.\n`movesWithCollisions`, if provided and true will cause the sprite to move with collisions. A collision rect must be set on the sprite prior to passing true for this argument.\n`removeOnCollision`, if provided and true will cause the animator to be removed from the sprite when a collision occurs.\nsetAnimator should be called only after any custom update method has been set on the sprite.",
         returns = "(fun(self: pd_sprite, animator: pd_animator, moveWithCollisions?: boolean, removeOnCollision?: boolean | nil)",
         type = "method"
       },
@@ -3509,6 +3560,12 @@ return {
   },
   pd_synth = {
     childs = {
+      clearEnvelope = {
+        args = "()",
+        description = "Clears the synth’s envelope settings.",
+        returns = "(fun(self: pd_synth))",
+        type = "method"
+      },
       copy = {
         args = "()",
         description = "Returns a copy of the given synth.",
@@ -4181,6 +4238,9 @@ return {
   pd_waveform = {
     type = "class"
   },
+  pd_wrap_mode = {
+    type = "class"
+  },
   playdate = {
     childs = {
       AButtonDown = {
@@ -4758,6 +4818,18 @@ return {
               kFileWrite = {
                 returns = "(pd_filemode)",
                 type = "value"
+              },
+              kSeekFromCurrent = {
+                returns = "(pd_seek_mode)",
+                type = "value"
+              },
+              kSeekFromEnd = {
+                returns = "(pd_seek_mode)",
+                type = "value"
+              },
+              kSeekSet = {
+                returns = "(pd_seek_mode)",
+                type = "value"
               }
             },
             type = "class"
@@ -4790,6 +4862,18 @@ return {
           },
           kFileWrite = {
             returns = "(pd_filemode)",
+            type = "value"
+          },
+          kSeekFromCurrent = {
+            returns = "(pd_seek_mode)",
+            type = "value"
+          },
+          kSeekFromEnd = {
+            returns = "(pd_seek_mode)",
+            type = "value"
+          },
+          kSeekSet = {
+            returns = "(pd_seek_mode)",
             type = "value"
           },
           listFiles = {
@@ -5242,9 +5326,9 @@ return {
             type = "function"
           },
           drawLocalizedText = {
-            args = "(key: string, x: number, y: number, language?: pd_language, leadingAdjustment?: number))",
-            description = 'Draws the text found by doing a lookup of `key` in the .strings file corresponding to the current system language, or `language`, if specified.\nThe optional `language` argument can be one of the strings "en", "jp", or one of the constants:\n`playdate.graphics.font.kLanguageEnglish`\n`playdate.graphics.font.kLanguageJapanese`\nFor more information about localization and strings files, see the Localization section.',
-            returns = "(fun(key: string, x: number, y: number, language?: pd_language, leadingAdjustment?: number | nil)",
+            args = "(fun(key: string, x: number, y: number, width?: number, height?: number, language?: pd_language, leadingAdjustment?: number, wrapMode?: pd_wrap_mode, alignment?: pd_text_alignment)) | (fun(key: string, rect: pd_rect, language?: pd_language, leadingAdjustment?: number))",
+            description = 'Draws the text found by doing a lookup of `key` in the .strings file corresponding to the current system language, or `language`, if specified.\nThe optional `language` argument can be one of the strings "en", "jp", or one of the constants:\n`playdate.graphics.font.kLanguageEnglish`\n`playdate.graphics.font.kLanguageJapanese`\nOther arguments work the same as in drawText().\nFor more information about localization and strings files, see the Localization section.',
+            returns = "((fun(key: string, x: number, y: number, width?: number, height?: number, language?: pd_language, leadingAdjustment?: number, wrapMode?: pd_wrap_mode, alignment?: pd_text_alignment)) | (fun(key: string, rect: pd_rect, language?: pd_language, leadingAdjustment?: number) | nil)",
             type = "function"
           },
           drawLocalizedTextAligned = {
@@ -5290,9 +5374,9 @@ return {
             type = "function"
           },
           drawText = {
-            args = "(text: string, x: number, y: number, fontFamily?: pd_font_family, leadingAdjustment?: number)",
-            description = 'Draws the text using the current font and font advance at location (`x`, `y`).\nIf `fontFamily` is provided, the text is draw using the given fonts instead of the currently set font. `fontFamily` should be a table of fonts using keys as specified in setFontFamily(fontFamily).\nThe optional `leadingAdjustment` may be used to modify the spacing between lines of text. Pass nil to use the default leading for the font.\nReturns `width`, `height`, indicating the size in pixels of the drawn text.\nStyling text\nTo draw bold text, surround the bold portion of text with asterisks. To draw italic text, surround the italic portion of text with underscores. For example:\nplaydate.graphics.drawText("normal *bold* _italic_", x, y)\nwhich will output: "normal bold `italic`". Bold and italic font variations must be set using setFont() with the appropriate variant argument, otherwise the default Playdate fonts will be used.\nEscaping styling characters\nTo draw an asterisk or underscore, use a double-asterisk or double-underscore. Styles may not be nested, but double-characters can be used inside of a styled portion of text.\nFor a complete set of characters allowed in `text`, see playdate.graphics.font. In addition, the newline character \\n is allowed and works as expected.\nAvoiding styling\nUse playdate.graphics.font:drawText(), which doesn’t support formatted text.\nInverting text color\nTo draw white-on-black text (assuming the font you are using is defined in the standard black-on-transparent manner), first call playdate.graphics.setImageDrawMode(playdate.graphics.kDrawModeFillWhite), followed by the appropriate drawText() call. setImageDrawMode() affects how text is rendered because characters are technically images.\nEquivalent to playdate->graphics->drawText() in the C API.',
-            returns = "((number, number))",
+            args = "(fun(text: string, x: number, y: number, width?: number, height?: number, fontFamily?: pd_font_family, leadingAdjustment?: number, wrapMode?: pd_wrap_mode, alignment?: pd_text_alignment): (number, number)) | (fun(text: string, rect: pd_rect, fontFamily?: pd_font_family, leadingAdjustment?: number, wrapMode?: pd_wrap_mode, alignment?: pd_text_alignment",
+            description = 'Draws the text using the current font and font advance at location (`x`, `y`). If `width` and `height` are specified, drawing is constrained to the rectangle (x,y,width,height), using the given `wrapMode` and `alignment`, if provided. Alternatively, a playdate.geometry.rect object can be passed instead of x,y,width,height. Valid values for `wrapMode` are\n`playdate.graphics.kWrapClip`\n`playdate.graphics.kWrapTruncateEnd`\n`playdate.graphics.kWrapCharacter`\n`playdate.graphics.kWrapWord`\nand values for `alignment` are\n`playdate.graphics.kAlignLeft`\n`playdate.graphics.kAlignCenter`\n`playdate.graphics.kAlignRight`\nThe default wrap mode is playdate.graphics.kWrapWord and the default alignment is playdate.graphics.kAlignLeft.\nIf `fontFamily` is provided, the text is draw using the given fonts instead of the currently set font. `fontFamily` should be a table of fonts using keys as specified in setFontFamily(fontFamily).\nThe optional `leadingAdjustment` may be used to modify the spacing between lines of text. Pass nil to use the default leading for the font.\nReturns two numbers indicating the width and height of the drawn text.\nStyling text\nTo draw bold text, surround the bold portion of text with asterisks. To draw italic text, surround the italic portion of text with underscores. For example:\nplaydate.graphics.drawText("normal *bold* _italic_", x, y)\nwhich will output: "normal bold `italic`". Bold and italic font variations must be set using setFont() with the appropriate variant argument, otherwise the default Playdate fonts will be used.\nEscaping styling characters\nTo draw an asterisk or underscore, use a double-asterisk or double-underscore. Styles may not be nested, but double-characters can be used inside of a styled portion of text.\nFor a complete set of characters allowed in `text`, see playdate.graphics.font. In addition, the newline character \\n is allowed and works as expected.\nAvoiding styling\nUse playdate.graphics.font:drawText(), which doesn’t support formatted text.\nInverting text color\nTo draw white-on-black text (assuming the font you are using is defined in the standard black-on-transparent manner), first call playdate.graphics.setImageDrawMode(playdate.graphics.kDrawModeFillWhite), followed by the appropriate drawText() call. setImageDrawMode() affects how text is rendered because characters are technically images.\nEquivalent to playdate->graphics->drawText() in the C API.',
+            returns = "((number, number)))",
             type = "function"
           },
           drawTextAligned = {
@@ -5560,6 +5644,18 @@ return {
             },
             type = "class"
           },
+          kAlignCenter = {
+            returns = "(pd_text_alignment)",
+            type = "value"
+          },
+          kAlignLeft = {
+            returns = "(pd_text_alignment)",
+            type = "value"
+          },
+          kAlignRight = {
+            returns = "(pd_text_alignment)",
+            type = "value"
+          },
           kColorBlack = {
             returns = "(pd_color)",
             type = "value"
@@ -5666,6 +5762,22 @@ return {
           },
           kVariantNormal = {
             returns = "(pd_font_variant)",
+            type = "value"
+          },
+          kWrapCharacter = {
+            returns = "(pd_wrap_mode)",
+            type = "value"
+          },
+          kWrapClip = {
+            returns = "(pd_wrap_mode)",
+            type = "value"
+          },
+          kWrapTruncateEnd = {
+            returns = "(pd_wrap_mode)",
+            type = "value"
+          },
+          kWrapWord = {
+            returns = "(pd_wrap_mode)",
             type = "value"
           },
           lockFocus = {
@@ -6688,7 +6800,7 @@ return {
             childs = {
               new = {
                 args = "(fun(waveform?: pd_waveform): pd_synth) | (fun(sample: pd_sample, sustainStart?: number?, sustainEnd?: number?",
-                description = "### Overload 1 ###\nReturns a new synth object to play a waveform or wavetable. See playdate.sound.synth:setWaveform for waveform values.\n### Overload 2 ###\nReturns a new synth object to play a Sample. An optional sustain region (measured in samples) defines a loop to play while the note is on. Sample data must be uncompressed PCM, not ADPCM.",
+                description = "### Overload 1 ###\nReturns a new synth object to play a waveform or wavetable. See playdate.sound.synth:setWaveform for waveform values.\n### Overload 2 ###\nReturns a new synth object to play a Sample. Sample data must be uncompressed PCM, not ADPCM. An optional sustain region (measured in sample frames) defines a loop to play while the note is active. When the note ends, if an envelope has been set on the synth and the sustain range goes to the end of the sample (i.e. there’s no release section of the sample after the sustain range) then the sustain section continues looping during the envelope release; otherwise it plays through the end of the sample and stops. As a convenience, if sustainStart is greater than zero and sustainEnd isn’t given, it will be set to the length of the sample.",
                 returns = "(pd_synth))",
                 type = "function"
               }
